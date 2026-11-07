@@ -8,7 +8,6 @@ __pycache__/
 node_modules/
 *.sqlite
 *.db
-data/videos/
 !data/video_catalogue.json
 scratch/
 .pytest_cache/
