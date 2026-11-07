@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: healher-backend
+    runtime: python
+    rootDir: .
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: SARVAM_API_KEY
+        sync: false
+      - key: ENABLE_STT
+        value: "false"
+    # Optional persistent disk configuration (Render Starter plan or above):
+    # disk:
+    #   name: healher-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
+    # envVars:
+    #   - key: DATABASE_PATH
+    #     value: /var/data/healher.db
+

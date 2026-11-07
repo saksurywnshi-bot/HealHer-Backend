@@ -1,0 +1,203 @@
+{
+  "_notice": "CLINICIAN REVIEW REQUIRED - DRAFT PLACEHOLDERS FOR VALIDATED TRANSLATIONS",
+  "epds": {
+    "title": "Edinburgh Postnatal Depression Scale (EPDS)",
+    "description": "A 10-item screening tool for perinatal and postpartum emotional well-being.",
+    "cutoff_positive": 10,
+    "self_harm_item_index": 9,
+    "self_harm_positive_goes_to": "tier3",
+    "items_count": 10,
+    "scoring_scale": "0_to_3",
+    "placeholder_items": [
+      { "id": 1, "prompt": "I have been able to laugh and see the funny side of things", "options": ["As much as I always could", "Not quite so much now", "Definitely not so much now", "Not at all"] },
+      { "id": 2, "prompt": "I have looked forward with enjoyment to things", "options": ["As much as I ever did", "Rather less than I used to", "Definitely less than I used to", "Hardly at all"] },
+      { "id": 3, "prompt": "I have blamed myself unnecessarily when things went wrong", "options": ["Yes, most of the time", "Yes, some of the time", "Not very often", "No, never"] },
+      { "id": 4, "prompt": "I have been anxious or worried for no good reason", "options": ["No, not at all", "Hardly ever", "Yes, sometimes", "Yes, very often"] },
+      { "id": 5, "prompt": "I have felt scared or panicky for no very good reason", "options": ["Yes, quite a lot", "Yes, sometimes", "No, not much", "No, not at all"] },
+      { "id": 6, "prompt": "Things have been getting on top of me", "options": ["Yes, most of the time I haven't been able to cope at all", "Yes, sometimes I haven't been coping as well as usual", "No, most of the time I have coped quite well", "No, I have been coping as well as ever"] },
+      { "id": 7, "prompt": "I have been so unhappy that I have had difficulty sleeping", "options": ["Yes, most of the time", "Yes, sometimes", "Not very often", "No, not at all"] },
+      { "id": 8, "prompt": "I have felt sad or miserable", "options": ["Yes, most of the time", "Yes, quite often", "Not very often", "No, not at all"] },
+      { "id": 9, "prompt": "I have been so unhappy that I have been crying", "options": ["Yes, most of the time", "Yes, quite often", "Only occasionally", "No, never"] },
+      { "id": 10, "prompt": "The thought of harming myself has occurred to me", "options": ["Yes, quite often", "Sometimes", "Hardly ever", "Never"], "is_self_harm": true }
+    ],
+    "translations": {
+      "hi": {
+        "title": "एडिनबर्ग प्रसव पश्चात डिप्रेशन स्केल (EPDS)",
+        "intro": "आप प्रेग्नेंट/गर्भवती हैं या आपने हाल ही में बच्चे को जन्म दिया है, हम यह जानना चाहते हैं कि आप कैसा महसूस कर रही हो। कृपया उस उत्तर पर टिक [✔] का निशान लगाएं जो पिछले 7 दिनों में आपकी भावनाओं को दर्शाता है। आपको पिछले 7 दिनों की भावनाओं के बारे में बताना है, न कि आप आज कैसा महसूस कर रही हैं।",
+        "items": [
+          { "prompt": "मैं हँस पा रही थी और चीज़ों के मज़ेदार पहलुओं को देख पा रही थी", "options": ["जितना मैं हमेशा रह सकती थी", "बहुत ज्यादा नहीं", "निश्चित रूप से अब उतना नहीं", "बिलकुल भी नहीं"] },
+          { "prompt": "मैंने चीज़ों को ख़ुशी के साथ महसूस किया है", "options": ["जितना मैंने हमेशा किया है", "जितना मैं पहले करती थी उस से कम", "निश्चित ही पहले से कम", "शायद बिलकुल भी नहीं"] },
+          { "prompt": "जब चीज़ें गलत हुई थी मैंने अपने आपको अनावश्यक रूप से दोषी ठहराया है", "options": ["हाँ, अधिकतर समय", "हाँ, कुछ समय के लिए", "अक्सर नहीं (अधिकतर नहीं)", "नहीं, कभी नहीं"] },
+          { "prompt": "मैं बिना किसी कारण के बेचैन या चिंतित रही हूँ", "options": ["नहीं, बिलकुल नहीं", "शायद ही कभी", "हाँ, कभी कभी", "हाँ, अक्सर ही"] },
+          { "prompt": "मैंने बिना किसी कारण के ही डर और घबराहट महसूस की है", "options": ["हाँ, बहुत ज्यादा", "हाँ, कभी कभी", "नहीं, ज्यादा नहीं", "नहीं, बिलकुल नहीं"] },
+          { "prompt": "चीज़ें मेरे ऊपर हावी हो रही थी", "options": ["हाँ, अधिकतर समय मैं सभी के साथ तालमेल नहीं बिठा पा रही थी", "हाँ, कभी कभी, मैं पहले की तरह तालमेल बिठाने में असमर्थ रही हूँ", "नहीं, ज्यादातर समय मैं अच्छे से तालमेल बिठा पाई हूँ", "नहीं, मैं पहले के जैसे ही तालमेल बिठा पा रही थी"] },
+          { "prompt": "मैं इतनी दुखी थी कि मैं सो (नींद) नहीं पा रही थी", "options": ["हाँ, ज्यादातर समय", "हाँ, कभी कभी", "नहीं, अक्सर नहीं", "नहीं, कभी नहीं"] },
+          { "prompt": "मैंने उदासी या तकलीफ महसूस की है", "options": ["हाँ, अधिकतर समय", "हाँ, अक्सर ही", "नहीं, ज्यादातर नहीं", "नहीं, बिलकुल नहीं"] },
+          { "prompt": "मैं इतनी दुखी थी कि मैं रो रही थी", "options": ["हाँ, अधिकतर समय", "हाँ, अक्सर ही", "केवल, कभी कभी", "नहीं, कभी नहीं"] },
+          { "prompt": "अपने आप को नुकसान पहुंचाने का विचार मुझे आया है", "options": ["हाँ, अक्सर ही", "कभी कभी", "शायद ही कभी", "कभी नहीं"], "is_self_harm": true }
+        ]
+      },
+      "ta": {
+        "title": "எடின்பர்க் பிரசவத்திற்குப் பிந்தைய மனச்சோர்வு அளவுகோல் (EPDS)",
+        "intro": "நீங்கள் சமீபத்தில் ஒரு குழந்தை பெற்றிருப்பதினால், நீங்கள் இப்போது எப்படி உணர்கிறீர்கள் என்று அறிய விரும்புகிறோம். இன்று மட்டுமல்லாது, கடந்த 7 நாட்களாகவும் நீங்கள் எவ்வாறு உணர்ந்திருக்கிறீர்கள் என்பதை விவரிக்கும் மிகப் பொருத்தமான பதிலின் பெட்டியினுள் சரி அடையாளம் இடுங்கள்.",
+        "items": [
+          { "prompt": "என்னால் வேடிக்கையான நிகழ்வுகளைக்கண்டு சிரிக்க முடிந்தது", "options": ["எப்போதும் என்னால் செய்ய முடிந்த அளவுக்கு", "தற்போது அந்த அளவுக்கு அல்ல", "தற்போது கண்டிப்பாக அந்த அளவுக்கு அல்ல", "எப்போதுமே அல்ல"] },
+          { "prompt": "நான் காரியங்களை மகிழ்வுடன் எதிர்நோக்கினேன்", "options": ["எப்போதும் செய்வது போல அந்த அளவுக்கு", "எப்போதும் செய்வதைவிட ஓரளவு குறைந்த அளவுக்கு", "எப்போதும் செய்வதைவிட நிச்சயமாகக் குறைந்த அளவுக்கு", "அரிதாக மட்டுமே"] },
+          { "prompt": "ஏதாவது தவறு நேர்ந்துவிட்டால் நான் என்மீதே தேவையின்றி பழிசுமத்தினேன்", "options": ["ஆம், பெரும்பாலான சமயங்களில்", "ஆம், சிலநேரங்களில்", "அடிக்கடி அல்ல", "இல்லை, ஒருபோதும் இல்லை"] },
+          { "prompt": "தேவையில்லாத காரணத்துக்காக நான் பதற்றப்பட்டு அல்லது கவலைப்பட்டு இருந்துள்ளேன்", "options": ["இல்லை, இல்லவே இல்லை", "எப்போதாவது", "ஆம், சில நேரங்களில்", "ஆம், அடிக்கடி"] },
+          { "prompt": "ஒன்றுமேயில்லாத காரணத்துக்காக நான் பயந்துள்ளேன் அல்லது பீதியடைந்துள்ளேன்", "options": ["ஆம், நிறைய தடவை", "ஆம், சில நேரங்களில்", "இல்லை, அவ்வளவாக இல்லை", "இல்லை, எப்போதுமே இல்லை"] },
+          { "prompt": "என்மேல் அழுத்தம் அதிகரித்துள்ளது", "options": ["ஆம், பெரும்பாலான நேரங்களில் என்னால் சமாளிக்க முடியவில்லை", "ஆம், சில சமயங்களில் வழக்கம்போல் என்னால் சமாளிக்க முடியவில்லை", "இல்லை, பெரும்பாலான நேரங்களில் நான் நன்றாக சமாளித்து வந்துள்ளேன்", "இல்லை, நான் எப்போதும் போலவே சமாளித்துக் கொண்டு வந்துள்ளேன்"] },
+          { "prompt": "நான் மகிழ்ச்சியின்றி இருந்ததால் தூங்குவது கூட சிரமமாய் இருந்துள்ளது", "options": ["ஆம், பெரும்பாலான சமயங்களில்", "ஆம், சிலநேரங்களில்", "இல்லை, அடிக்கடி அல்ல", "இல்லை, எப்போதுமே இல்லை"] },
+          { "prompt": "நான் துக்கமாக அல்லது பரிதாபகரமாக உணர்ந்திருக்கிறேன்", "options": ["ஆம், பெரும்பாலான சமயங்களில்", "ஆம், அடிக்கடி", "அடிக்கடி அல்ல", "இல்லை, எப்போதுமே இல்லை"] },
+          { "prompt": "நான் மகிழ்ச்சியின்றி இருந்ததால் அழுதுகொண்டே இருந்திருக்கிறேன்", "options": ["ஆம், பெரும்பாலான சமயங்களில்", "ஆம், அடிக்கடி", "எப்போதாவது மட்டும்", "இல்லை, ஒருபோதும் இல்லை"] },
+          { "prompt": "என்னை நானே காயப்படுத்திக்கொள்ளும் எண்ணம் எனக்கு ஏற்பட்டிருக்கிறது", "options": ["ஆம், அடிக்கடி", "சில சமயங்களில்", "எப்போதாவது", "ஒருபோதும் இல்லை"], "is_self_harm": true }
+        ]
+      },
+      "bn": {
+        "title": "এডিনবার্গের প্রসবোত্তর বিষণ্নতা স্কেল (EPDS)",
+        "intro": "আপনার যেহেতু সম্প্রতি একটি বাচ্চা হয়েছে, আমরা জানতে চাইছি আপনি এখন কেমন অনুভব করছেন। দয়া করে উত্তরের সেই বাক্সটিতে টিক চিহ্ন দিন যেটি গত 7 দিন ধরে আপনার কেমন লাগছে তার সবচেয়ে কাছাকাছি যায়, শুধু আজ আপনার কেমন লাগছে তার নয়।",
+        "items": [
+          { "prompt": "আমাকে আনন্দ দেওয়া হয়েছে এবং মজার জিনিসগুলি উপভোগ করতে দেওয়া হয়েছে", "options": ["যতটা আমি সবসময়ই করতে পারতাম", "এখন খুব বেশি না", "এখন অবশ্যই ততটা না", "একেবারেই না"] },
+          { "prompt": "আমি সবকিছু থেকে আনন্দ পাওয়ার আশায় থেকেছি", "options": ["যতটা আমি বরাবর থেকেছি", "যতটা সাধারণত থাকি তার চেয়ে বরং কম", "যতটা থাকি অবশ্যই তার থেকে কম", "প্রায় একেবারেই না"] },
+          { "prompt": "সবকিছু ঠিক মতো না হলে আমি অযথা নিজেকে দোষারোপ করেছি", "options": ["হ্যাঁ, বেশিরভাগ সময়েই", "হ্যাঁ, কিছু কিছু সময়ে", "খুব একটা না", "না, কখনোই না"] },
+          { "prompt": "কোন সঙ্গত কারণ ছাড়াই আমি উদ্বিগ্ন ও চিন্তিত হয়ে পড়ছি", "options": ["না, একেবারেই না", "প্রায় কখনোই না", "হ্যাঁ, কোন কোন সময়ে", "হ্যাঁ, খুব বেশি করে"] },
+          { "prompt": "খুব সঙ্গত কোন কারণ ছাড়াই আমি ভীত বা আতঙ্কিত বোধ করেছি", "options": ["হ্যাঁ, বহুবার", "হ্যাঁ, কোন কোন সময়", "না, খুব বেশি নয়", "না, একেবারেই নয়"] },
+          { "prompt": "সবকিছু আমার উপর চেপে বসেছে", "options": ["হ্যাঁ, বেশিরভাগ সময়েই আমি একেবারেই পেরে উঠছি না", "হ্যাঁ, মাঝে মাঝে আমি ততটা পেরে উঠছি না যতটা সাধারণ পেরে থাকি", "না, বেশিরভাগ সময়েই আমি খুব ভালভাবেই পেরে উঠেছি", "না, আমি বরাবরের মতোই ভালভাবেই পেরে উঠছি"] },
+          { "prompt": "আমি এতটাই অখুশী ছিলাম যে, আমার ঘুমোতে অসুবিধা হয়েছে", "options": ["হ্যাঁ, বেশিরভাগ সময়েই", "হ্যাঁ, কোন কোন সময়ে", "না, খুব একটা না", "না, একেবারেই না"] },
+          { "prompt": "আমি দুঃখিত ও নিঃস্ব বোধ করেছি", "options": ["হ্যাঁ, বেশিরভাগ সময়েই", "হ্যাঁ, প্রায়শই", "খুব একটা না", "না, একেবারেই না"] },
+          { "prompt": "আমি এতটাই অখুশী রয়েছি যে, আমি কাঁদছি", "options": ["হ্যাঁ, বেশিরভাগ সময়ে", "হ্যাঁ, প্রায়শই", "শুধু মাঝে-মধ্যে", "না, কখনোই নয়"] },
+          { "prompt": "নিজের ক্ষতি করার চিন্তা আমার মধ্যে এসেছে", "options": ["হ্যাঁ, প্রায়শই", "কোন কোন সময়ে", "প্রায় কখনোই না", "কখনোই না"], "is_self_harm": true }
+        ]
+      }
+    }
+  },
+  "gad7": {
+    "title": "Generalised Anxiety Disorder Assessment (GAD-7)",
+    "description": "A 7-item screening tool for anxiety symptoms.",
+    "cutoff_positive": 5,
+    "items_count": 7,
+    "scoring_scale": "0_to_3",
+    "placeholder_items": [
+      { "id": 1, "prompt": "[Clinician Placeholder: GAD-7 Item 1 - Feeling nervous, anxious, or on edge]" },
+      { "id": 2, "prompt": "[Clinician Placeholder: GAD-7 Item 2 - Not being able to stop or control worrying]" },
+      { "id": 3, "prompt": "[Clinician Placeholder: GAD-7 Item 3 - Worrying too much about different things]" },
+      { "id": 4, "prompt": "[Clinician Placeholder: GAD-7 Item 4 - Trouble relaxing]" },
+      { "id": 5, "prompt": "[Clinician Placeholder: GAD-7 Item 5 - Being so restless that it's hard to sit still]" },
+      { "id": 6, "prompt": "[Clinician Placeholder: GAD-7 Item 6 - Becoming easily annoyed or irritable]" },
+      { "id": 7, "prompt": "[Clinician Placeholder: GAD-7 Item 7 - Feeling afraid as if something awful might happen]" }
+    ],
+    "options": ["Not at all", "Several days", "More than half the days", "Nearly every day"]
+  },
+  "mdq": {
+    "title": "Mood Disorder Questionnaire (MDQ)",
+    "description": "A screening tool for mood swings and high-energy symptoms.",
+    "cutoff_positive_yes_count": 7,
+    "items_count": 13,
+    "scoring_scale": "yes_no",
+    "placeholder_items": [
+      { "id": 1, "prompt": "[Clinician Placeholder: MDQ Item 1 - Felt so good or hyper that other people thought you were not your normal self]" },
+      { "id": 2, "prompt": "[Clinician Placeholder: MDQ Item 2 - So irritable that you shouted at people or started fights]" },
+      { "id": 3, "prompt": "[Clinician Placeholder: MDQ Item 3 - Felt much more self-confident than usual]" },
+      { "id": 4, "prompt": "[Clinician Placeholder: MDQ Item 4 - Got much less sleep than usual and found you didn't really miss it]" },
+      { "id": 5, "prompt": "[Clinician Placeholder: MDQ Item 5 - Much more talkative or spoke much faster than usual]" },
+      { "id": 6, "prompt": "[Clinician Placeholder: MDQ Item 6 - Thoughts raced through your head or couldn't slow your mind down]" },
+      { "id": 7, "prompt": "[Clinician Placeholder: MDQ Item 7 - Easily distracted by things around you]" },
+      { "id": 8, "prompt": "[Clinician Placeholder: MDQ Item 8 - Much more energy than usual]" },
+      { "id": 9, "prompt": "[Clinician Placeholder: MDQ Item 9 - Much more active or did many more things than usual]" },
+      { "id": 10, "prompt": "[Clinician Placeholder: MDQ Item 10 - Much more social or outgoing than usual]" },
+      { "id": 11, "prompt": "[Clinician Placeholder: MDQ Item 11 - Much more interested in sex than usual]" },
+      { "id": 12, "prompt": "[Clinician Placeholder: MDQ Item 12 - Did things that were unusual for you or that other people might have thought were risky]" },
+      { "id": 13, "prompt": "[Clinician Placeholder: MDQ Item 13 - Spending money got you or your family into trouble]" }
+    ],
+    "options": ["No", "Yes"]
+  },
+  "phq9": {
+    "title": "Patient Health Questionnaire-9 (PHQ-9)",
+    "description": "A 9-item depression screening tool with validated clinical translations.",
+    "cutoff_positive": 10,
+    "self_harm_item_index": 8,
+    "self_harm_positive_goes_to": "tier3",
+    "items_count": 9,
+    "scoring_scale": "0_to_3",
+    "options": [
+      "Not at all",
+      "Several days",
+      "More than half the number of days",
+      "Almost every day"
+    ],
+    "items": [
+      { "id": 1, "prompt": "Little interest or pleasure in doing things" },
+      { "id": 2, "prompt": "Feeling down, depressed, or hopeless" },
+      { "id": 3, "prompt": "Trouble falling or staying asleep, or sleeping too much" },
+      { "id": 4, "prompt": "Feeling tired or having little energy" },
+      { "id": 5, "prompt": "Poor appetite or overeating" },
+      { "id": 6, "prompt": "Feeling bad about yourself — or that you are a failure or have let yourself down or your family down" },
+      { "id": 7, "prompt": "Trouble concentrating on things, such as reading the newspaper or watching television" },
+      { "id": 8, "prompt": "Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual" },
+      { "id": 9, "prompt": "Thoughts that you would be better off dead or of hurting yourself in some way", "is_self_harm": true }
+    ],
+    "difficulty_q": "If you ticked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",
+    "difficulty_options": [
+      "Not difficult at all",
+      "Somewhat difficult",
+      "Very difficult",
+      "Extremely difficult"
+    ],
+    "translations": {
+      "hi": {
+        "title": "रोगी स्वास्थ्य प्रश्नावली – 9 (PHQ-9)",
+        "stem": "पिछले 2 सप्ताहों में, आप इन समस्याओं में से किसी से भी कितनी बार परेशान रहे/रही हैं? (अपना उत्तर बताने के लिए \"✔\" का प्रयोग करें)",
+        "options": ["बिल्कुल नहीं", "कई दिन", "आधे से अधिक दिन", "लगभग हर दिन"],
+        "items": [
+          "कुछ करने में बहुत कम दिलचस्पी या मज़ा आना",
+          "उदास, अवसादग्रस्त या निराश महसूस करना",
+          "नींद आने या सोये रहने में परेशानी, या फिर बहुत अधिक सोना",
+          "थकान महसूस करना या बहुत कम ऊर्जा होना",
+          "भूख कम लगना या ज़्यादा खाना",
+          "अपने बारे में बुरा महसूस करना - या ऐसा महसूस करना कि आप नाकाम इंसान हैं और आपने खुद को और अपने परिवार को नीचा दिखाया है",
+          "अखबार पढ़ने या टेलीविज़न देखने जैसी चीज़ों पर ध्यान देने में परेशानी",
+          "इतना धीमे चलना-फिरना या बोलना कि लोगों का ध्यान जाये? या इसका उल्टा - इतना अस्थिर या बेचैन होना कि आप सामान्य से काफ़ी ज़्यादा हिलते-डुलते और चलते-फिरते रहे हैं",
+          "ऐसे विचार कि आप मर जाते तो अच्छा होता या किसी ढंग से ख़ुद को नुक़सान पहुंचाना"
+        ],
+        "difficulty_q": "अगर आपने किन्हीं समस्याओं पर निशान लगाया है, तो बतायें कि इन समस्याओं ने आपके लिए काम करना, घर पर चीज़ों की देखभाल करना, या दूसरे लोगों के साथ मेल-जोल रखना कितना मुश्किल किया है?",
+        "difficulty_options": ["बिल्कुल मुश्किल नहीं", "थोड़ा-बहुत मुश्किल", "बहुत मुश्किल", "बेहद मुश्किल"]
+      },
+      "ta": {
+        "title": "நோயாளியின் ஆரோக்கியம் தொடர்பான வினாப்பட்டியல் – 9 (PHQ-9)",
+        "stem": "கடந்த 2 வாரங்களில், பின்வரும் ஏதேனும் பிரச்சனைகளால் நீங்கள் எவ்வளவு அடிக்கடி தொந்தரவுக்கு ஆளாகியிருக்கிறீர்கள்? (உங்கள் பதிலைக் குறிப்பிட “✔” பயன்படுத்துங்கள்)",
+        "options": ["இல்லவே இல்லை", "பல நாட்களுக்கு", "பாதிக்கு மேற்பட்ட நாட்களில்", "அநேகமாக ஒவ்வொரு நாளும்"],
+        "items": [
+          "செயல்களை செய்வதில் சிறிதளவே ஆர்வம் அல்லது இன்பம்",
+          "உற்சாகமில்லாமல் இருத்தல், மனச்சோர்வு அடைதல், அல்லது நம்பிக்கை இல்லாதிருத்தல்",
+          "தூங்க முற்பட அல்லது தூக்கத்தில் இருக்க சிக்கல், அல்லது அதிக நேரம் தூங்குதல்",
+          "சோர்வாக உணர்தல் அல்லது சிறிதளவே சக்தி இருப்பதாக உணர்தல்",
+          "குறைந்த பசி உணர்வு அல்லது அதிகமாக உண்ணுதல்",
+          "உங்களை பற்றி நீங்களே மோசமாக உணர்தல் — அல்லது நீங்கள் தோல்வியை தழுவியதாக உணர்தல் அல்லது உங்களையோ அல்லது உங்கள் குடும்பத்தையோ விட்டுக் கொடுத்ததாக உணர்தல்.",
+          "விஷயங்களில் கவனம் செலுத்துவதில் சிரமம், செய்தித்தாள் படிப்பது, தொலைக்காட்சி பார்ப்பது போன்ற விஷயங்களைப் போல.",
+          "மிகவும் மெதுவாக பேசுவதாலும், நடப்பதாலும் மற்றவர்கள் உங்களை கவனித்திருக்க கூடுமா? அல்லது அதற்கு நேர்மாறாக — மிகவும் அமைதியற்று இருப்பதாலும் அல்லது மிகவும் நிலைகொள்ளாதிருப்பதாலும், நீங்கள் வழக்கத்திற்கு மாறாக அதிகமாக அங்கும் இங்குமாக சென்று வருகிறீர்கள்",
+          "இறந்து விடுவதே மேல் என்ற சிந்தனை அல்லது உங்களை நீங்களாகவே ஏதாவது ஒரு வகையில் வேதனைக்குள்ளாக்கிக் கொள்ள வேண்டும் என்ற சிந்தனைகள்"
+        ],
+        "difficulty_q": "நீங்கள் ஏதேனும் ஒரு பிரச்சனைக்கு அடையாள குறியிட்டிருந்தால், அந்த பிரச்சனைகள், உங்கள் வேலையை செய்யவிடாமல் இருப்பதிலும், தங்கள் குடும்பத்தை பார்த்துக் கொள்ள விடாமல் இருப்பதிலும், மற்றவர்களுடன் பழக விடாமல் இருப்பதிலும், எந்த அளவிற்கு கடினமானதாக அமைந்தன ?",
+        "difficulty_options": ["கடினமாகவே இல்லை", "ஓரளவுக்கு கடினம்", "மிகவும் கடினம்", "மிக மிக கடினம்"]
+      },
+      "bn": {
+        "title": "রোগীর স্বাস্থ্য প্রশ্নাবলী - 9 (PHQ-9)",
+        "stem": "গত 2 সপ্তাহে কত ঘন ঘন আপনি নিম্নলিখিত সমস্যাগুলিতে বিব্রত হয়েছেন? (আপনার উত্তরের জন্য “✔” ব্যবহার করুন)",
+        "options": ["একদমই নয়", "বহুদিন", "অর্ধেক দিনেরও বেশী", "প্রায় প্রত্যেক দিন"],
+        "items": [
+          "কোন কিছু করতে কম উৎসাহ বা আনন্দ",
+          "মনমরা, বিষণ্ণ, বা হতাশ বোধ করা",
+          "ঘুম আসতে বা ঘুমিয়ে থাকতে অসুবিধা, বা অনেকক্ষণ ঘুম",
+          "ক্লান্ত অথবা শক্তিহীন অনুভব করা",
+          "অক্ষুধা বা অত্যধিক খাওয়া",
+          "নিজের সম্পর্কে খারাপ ধারণা অনুভব করা - বা আপনি জীবনে ব্যর্থ বা নিজে বা নিজের পরিবারকে হতাশ করেছেন",
+          "কোনো কিছুতে মনোযোগ করতে অসুবিধা, যেমন খবরের কাগজ পড়া বা টেলিভিশন দেখা",
+          "এত আস্তে কথা বলা বা চলা ফেরা করা যাহা অন্যদেরও নজরে পড়তে পারে? বা বিপরীতভাবে – চঞ্চল বা অস্থিরভাবে আপনি স্বাভাবিকের চেয়ে অনেক বেশি চলে ফিরে বেড়াচ্ছেন",
+          "মারা গেলেই ভালো বা কোনোভাবে নিজেকে আহত করলে ভালো হয় এমন চিন্তাধারা"
+        ],
+        "difficulty_q": "যদি আপনি কোনো সমস্যা পরীক্ষা করেন, এই সমস্যাগুলি আপনার কাজের জন্য, ঘরের কাজের যত্ন নিতে, বা অন্য লোকেদের সাথে মিশতে কতটা অসুবিধা সৃষ্টি করেছে?",
+        "difficulty_options": ["কোনো অসুবিধাই হয় নি", "কিছুটা অসুবিধা হয়েছে", "খুব অসুবিধা হয়েছে", "অত্যন্ত অসুবিধা হয়েছে"]
+      }
+    }
+  }
+}

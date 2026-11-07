@@ -1,0 +1,53 @@
+{
+  "_notice": "Forbidden non-diagnostic words across all 4 supported languages. Model guidance and rewrites must never contain these terms.",
+  "en": [
+    "mild",
+    "moderate",
+    "severe",
+    "depressed",
+    "depression",
+    "diagnos",
+    "diagnosis",
+    "diagnose",
+    "disorder",
+    "clinical",
+    "bipolar",
+    "psychosis",
+    "schizo",
+    "syndrome",
+    "pathology",
+    "mental illness"
+  ],
+  "hi": [
+    "हल्का",
+    "मध्यम",
+    "गंभीर",
+    "डिप्रेशन",
+    "अवसाद",
+    "निदान",
+    "रोग",
+    "बीमारी",
+    "विकार"
+  ],
+  "bn": [
+    "মৃদু",
+    "মাঝারি",
+    "তীব্র",
+    "গুরুতর",
+    "ডিপ্রেশন",
+    "বিষণ্নতা",
+    "রোগ",
+    "নির্ণয়",
+    "অসুস্থতা",
+    "ব্যাধি"
+  ],
+  "ta": [
+    "லேசான",
+    "மிதமான",
+    "தீவிரமான",
+    "மனச்சோர்வு",
+    "நோய்",
+    "கண்டறிதல்",
+    "கோளாறு"
+  ]
+}

@@ -1,0 +1,68 @@
+"""Reference for the caregiver 'How you can help her today' daily picker (v0.2). Plain code, no AI."""
+import hashlib, random
+
+AWARE = {"notice", "avoid", "self_care", "clinician"}
+LIGHT = {"small_joy", "try_together"}
+CAPS = {"self_care": 1, "clinician": 1, "notice": 1, "avoid": 1, "say": 2, "do": 3, "check_in": 1}
+FLAG_THEMES = {  # caregiver questionnaire risk area -> themes to favour (clinician to confirm; keep in config)
+    "money_food": {"share_chores", "ask_others"}, "tension": {"calm_home"},
+    "isolated": {"help_her_connect"}, "baby_hard": {"share_baby_care"},
+    "no_support": {"ask_others", "share_chores", "help_her_connect"},
+    "signs_high": {"appointments", "start_conversation", "notice_changes"},
+}
+
+def _rank(user_ref, stage, day, key):
+    h = hashlib.sha256(f"{user_ref}|{stage}|{day.isoformat()}|{key}".encode()).hexdigest()
+    return int(h[:12], 16)
+
+def pick_daily(lib, stage, user_ref, day, history, result_state="keep_supporting", flags=(), n=5, recency_days=7):
+    if result_state == "get_help_today":
+        return []
+    pool = [i for i in lib["suggestions"] if i["status"] == "approved" or i.get("_serve_draft")]
+    pool = [i for i in pool if i["stage"] in (stage, "both")]
+    want = set().union(*[FLAG_THEMES.get(f, set()) for f in flags]) if flags else set()
+    if result_state == "talk_soon":
+        want |= {"appointments", "start_conversation"}
+
+    def age(i):
+        last = history.get(i["id"])
+        return 10**6 if last is None else (day - last).days
+
+    def key(i):
+        recent = age(i) < recency_days
+        match = bool(want & set(i["themes"]))
+        return (recent, -age(i) if recent else 0, not match, _rank(user_ref, stage, day, i["id"]))
+    cand = sorted(pool, key=key)
+
+    chosen, kinds, themes = [], {}, set()
+    def light_count(): return sum(kinds.get(k, 0) for k in LIGHT)
+    def ok(i):
+        if i in chosen or i["themes"][0] in themes: return False
+        k = i["kind"]
+        if kinds.get(k, 0) >= CAPS.get(k, 99): return False
+        if k in LIGHT and light_count() >= 2: return False
+        return True
+    def add(i):
+        chosen.append(i); kinds[i["kind"]] = kinds.get(i["kind"], 0) + 1; themes.add(i["themes"][0])
+    def take(pred):
+        for i in cand:
+            if pred(i) and ok(i): add(i); return True
+        return False
+
+    if want:  # favoured topic first (talk_soon, flagged areas)
+        take(lambda i: bool(want & set(i["themes"])))
+    # daily mix: check_in, one light kind, one do, one say
+    if not kinds.get("check_in"): take(lambda i: i["kind"] == "check_in")
+    if light_count() == 0: take(lambda i: i["kind"] in LIGHT)
+    if not kinds.get("do"): take(lambda i: i["kind"] == "do")
+    if not kinds.get("say"): take(lambda i: i["kind"] == "say")
+    # wildcard: a seeded coin picks "aware" kinds or any kind
+    if len(chosen) < n:
+        if _rank(user_ref, stage, day, "wild") % 2 == 0 and not any(c["kind"] in AWARE for c in chosen):
+            take(lambda i: i["kind"] in AWARE)
+        for i in cand:
+            if len(chosen) >= n: break
+            if ok(i): add(i)
+    r = random.Random(_rank(user_ref, stage, day, "order"))
+    r.shuffle(chosen)
+    return chosen

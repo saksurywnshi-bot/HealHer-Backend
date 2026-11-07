@@ -1,0 +1,2172 @@
+{
+ "version": "0.2-draft",
+ "date": "2026-11-06",
+ "status_note": "EVERYTHING IS DRAFT. Nothing is approved for users. A clinician must approve each item. These tips are taken from published health-service and clinical-charity advice for families, plus research on partner support. No trial tested the individual tips.",
+ "purpose": "Daily 'How you can help her today' tips for the family and caregiver track, separate for prenatal and postnatal, shown five at a time.",
+ "themes": [
+  "listen",
+  "say_kind_words",
+  "ask_what_she_needs",
+  "share_chores",
+  "share_baby_care",
+  "prepare_ahead",
+  "protect_rest",
+  "her_own_time",
+  "help_her_connect",
+  "appointments",
+  "start_conversation",
+  "notice_changes",
+  "things_to_avoid",
+  "calm_home",
+  "food_and_movement",
+  "appreciate",
+  "ask_others",
+  "your_own_wellbeing",
+  "learn",
+  "bonding",
+  "check_in",
+  "small_joys",
+  "do_together",
+  "calm_moments",
+  "respect_her_wishes",
+  "notice_progress"
+ ],
+ "theme_labels_en": {
+  "listen": "listening to her",
+  "say_kind_words": "kind words",
+  "ask_what_she_needs": "asking what she needs",
+  "share_chores": "household tasks",
+  "share_baby_care": "baby care",
+  "prepare_ahead": "getting ready",
+  "protect_rest": "her rest",
+  "her_own_time": "time for herself",
+  "help_her_connect": "staying connected",
+  "appointments": "check-ups and appointments",
+  "start_conversation": "starting a conversation",
+  "notice_changes": "changes you may notice",
+  "things_to_avoid": "things to avoid",
+  "calm_home": "a calm home",
+  "food_and_movement": "food and gentle movement",
+  "appreciate": "appreciation",
+  "ask_others": "asking other family for help",
+  "your_own_wellbeing": "looking after yourself",
+  "learn": "learning about it",
+  "bonding": "closeness with the baby",
+  "check_in": "a quick check-in",
+  "small_joys": "little joys",
+  "do_together": "doing something together",
+  "calm_moments": "calm moments",
+  "respect_her_wishes": "respecting her wishes",
+  "notice_progress": "noticing progress"
+ },
+ "stages": [
+  "prenatal",
+  "postnatal"
+ ],
+ "kinds": [
+  "do",
+  "say",
+  "notice",
+  "avoid",
+  "self_care",
+  "clinician",
+  "check_in",
+  "small_joy",
+  "try_together"
+ ],
+ "kind_labels_en": {
+  "do": "Something to do",
+  "say": "Something to say",
+  "notice": "Something to notice",
+  "avoid": "Something to avoid",
+  "self_care": "For you",
+  "clinician": "When to get help",
+  "check_in": "Ask her",
+  "small_joy": "A little kindness",
+  "try_together": "Try together"
+ },
+ "efforts": [
+  "none",
+  "1min",
+  "5min",
+  "talk",
+  "longer"
+ ],
+ "selection_rules": {
+  "daily_count": 5,
+  "never_for": [
+   "caregiver result is 'Get help today'"
+  ],
+  "never_for_note": "In that case show only the support block (verified helplines + safe text). No daily tips.",
+  "daily_mix": "one check_in, one small_joy or try_together, one do, one say, and one wildcard (a seeded coin picks: notice, avoid, self_care or clinician, or any kind)",
+  "per_day_limits": {
+   "self_care": 1,
+   "clinician": 1,
+   "notice": 1,
+   "avoid": 1,
+   "say": 2,
+   "do": 3,
+   "check_in": 1,
+   "light_kinds_small_joy_try_together": 2,
+   "same_first_theme": 1
+  },
+  "recency_days": 7,
+  "seed": "SHA-256(user_ref + stage + local date + tip id)",
+  "stage_rule": "item.stage equals stage or 'both'",
+  "storage": "ids and the date shown only"
+ },
+ "sources": {
+  "S1": {
+   "title": "HSE Ireland: Postnatal depression, a guide for mothers, family and friends",
+   "url": "https://www.hse.ie/eng/services/publications/children/postnatal-depression-a-guide-for-mothers,-family-and-friends.pdf",
+   "type": "national health service leaflet for families"
+  },
+  "S2": {
+   "title": "HSE Ireland: Postnatal depression, information for carers",
+   "url": "https://www.hse.ie/eng/services/publications/mentalhealth/postnatal-depression-information-for-carers.pdf",
+   "type": "national health service leaflet for carers"
+  },
+  "S3": {
+   "title": "NSW Health (Australia): How to support your partner",
+   "url": "https://www.health.nsw.gov.au/mentalhealth/services/parents/dads/pages/supporting-partner.aspx",
+   "type": "state government health page"
+  },
+  "S4": {
+   "title": "Queensland Government (Australia): Supporting your partner",
+   "url": "https://www.qld.gov.au/health/pregnancy-and-birth/emotional-and-mental-wellbeing-during-pregnancy-and-early-parenting/for-dads-and-partners/supporting-your-partner",
+   "type": "state government health page"
+  },
+  "S5": {
+   "title": "Pregnancy, Birth and Baby (Australian Government): Supporting your partner during their pregnancy",
+   "url": "https://www.pregnancybirthbaby.org.au/supporting-your-partner-during-pregnancy",
+   "type": "government health information service"
+  },
+  "S6": {
+   "title": "Tommy's (UK): Your partner's emotions during pregnancy (clinically reviewed by a midwife)",
+   "url": "https://www.tommys.org/pregnancy-information/dads-and-partners/your-partners-emotions-during-pregnancy",
+   "type": "clinical charity page, reviewed January 2026"
+  },
+  "S7": {
+   "title": "Raising Children Network (Australia): Postnatal depression and your partner",
+   "url": "https://raisingchildren.net.au/grown-ups/fathers/mental-health-wellbeing/pnd-your-partner",
+   "type": "government-supported parenting site; no named reviewer"
+  },
+  "S8": {
+   "title": "Pilkington 2015: Modifiable partner factors associated with perinatal depression and anxiety, meta-analysis, J Affect Disord",
+   "url": "https://consensus.app/papers/details/f4bdcca591665392ab0d2df9b80e1a64/?utm_source=claude_desktop",
+   "type": "meta-analysis of observational studies"
+  },
+  "S9": {
+   "title": "Gopalakrishnan 2026: Couples-based interventions for perinatal depression and anxiety, systematic review",
+   "url": "https://consensus.app/papers/details/f7d69490fca75f7e99a348d6c2a63c4d/?utm_source=claude_desktop",
+   "type": "systematic review, mixed evidence"
+  },
+  "S10": {
+   "title": "Pilkington 2016 Delphi consensus on reciprocal partner support (thesis chapter, ACU): 214 recommendations rated important or essential by at least 80 percent of two expert panels (21 consumer advocates, 39 professionals)",
+   "url": "https://acuresearchbank.acu.edu.au/item/87035/enhancing-reciprocal-partner-support-to-prevent-perinatal-depression-and-anxiety-a-delphi-consensus-study",
+   "type": "expert consensus (full item list not read)"
+  },
+  "S11": {
+   "title": "La Rosa 2025: Psychological and social factors influencing mother-child bonding (sleep, support), Front Psychol",
+   "url": "https://consensus.app/papers/details/150a6ebc9f8b5de8830aa0b06fb6e3f3/?utm_source=claude_desktop",
+   "type": "cross-sectional study, 1495 mothers"
+  },
+  "S12": {
+   "title": "Singla 2019: Mediation analysis of the Thinking Healthy Programme, India and Pakistan, Br J Psychiatry",
+   "url": "https://consensus.app/papers/details/26a10e746fe4528b947db765dfb151f1/?utm_source=claude_desktop",
+   "type": "mediation analysis of two trials"
+  },
+  "S13": {
+   "title": "Goldstein 2020: Interventions for paternal perinatal depression, systematic review, J Affect Disord",
+   "url": "https://consensus.app/papers/details/d1c98544354c5b05bedf8e0bb13b0720/?utm_source=claude_desktop",
+   "type": "systematic review"
+  },
+  "S14": {
+   "title": "Adlington 2023: Loneliness and perinatal depression, BMC Psychiatry (UCL news)",
+   "url": "https://www.ucl.ac.uk/news/2023/feb/loneliness-central-perinatal-depression",
+   "type": "cohort study report"
+  },
+  "S15": {
+   "title": "Vengadavaradan 2019: Frequency and correlates of mother-infant bonding disorders in India, Asian J Psychiatry",
+   "url": "https://consensus.app/papers/details/8c82f7e4d23c5ce2b3b6ef64abeae9cd/?utm_source=claude_desktop",
+   "type": "cohort study, Tamil Nadu"
+  },
+  "S16": {
+   "title": "WHO Thinking Healthy Programme manual (family support, Health Calendar, slow-breathing relaxation, basic helping skills)",
+   "url": "https://mhpsshub.org/wp-content/uploads/2023/01/Thinking-Healthy-Interractive-for-web.pdf",
+   "type": "WHO manual; first part of the manual read (sessions 10 onward not read)"
+  },
+  "S17": {
+   "title": "PANDA (Australia): Tips for caring for your partner",
+   "url": "https://www.panda.org.au/articles/tips-for-caring-for-your-partner",
+   "type": "national perinatal mental health charity; no named reviewer"
+  },
+  "S18": {
+   "title": "MHPSS Network: Thinking Healthy Programme summary (trial of over 900 women in Pakistan; behavioural activation, family support)",
+   "url": "https://www.mhpss.net/toolkit/curated-space-for-psychological-interventions/resource/thinking-healthy-programme",
+   "type": "toolkit summary of a WHO programme"
+  },
+  "S19": {
+   "title": "Wulff 2021: Maternal singing and well-being, randomised trial, BMC Pregnancy Childbirth (mood lifted at the time; no lasting effect on bonding or low mood)",
+   "url": "https://consensus.app/papers/details/b1aa632cc8f452a0a9e8a98e0f1eb32a/?utm_source=claude_desktop",
+   "type": "randomised trial, immediate effect only"
+  }
+ },
+ "suggestions": [
+  {
+   "id": "CG_P_APPT",
+   "themes": [
+    "appointments"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5",
+    "S6"
+   ],
+   "evidence_note": "Going to check-ups is advised for partners; Tommy's notes midwives ask about feelings at booking.",
+   "text_en": "If she would like it, go with her to a check-up. Hearing the baby's heartbeat together and asking questions can bring you closer.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अगर वह चाहें, तो डॉक्टर की जांच के लिए उनके साथ जाएं। एक साथ बच्चे की धड़कन सुनना और सवाल पूछना आपको करीब ला सकता है।",
+   "text_bn": "তিনি চাইলে চেক-আপের জন্য তার সাথে যান। একসাথে শিশুর হৃদস্পন্দন শোনা এবং প্রশ্ন করা আপনাদের আরও কাছাকাছি আনতে পারে।",
+   "text_ta": "அவர் விரும்பினால், மருத்துவப் பரிசோதனைக்கு அவருடன் செல்லுங்கள். ஒன்றாகக் குழந்தையின் இதயத்துடிப்பைக் கேட்பதும் கேள்விகள் கேட்பதும் உங்களை நெருக்கமாக்கும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_HELPPLAN",
+   "themes": [
+    "prepare_ahead"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S5",
+    "S10"
+   ],
+   "evidence_note": "Plan time off and later childcare advised; a Delphi panel endorsed practical planning among 214 recommendations (list not read).",
+   "text_en": "Sit down together and talk about who will help at home once the baby arrives, so she knows she will not be doing it alone.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "साथ बैठकर बात करें कि बच्चे के आने के बाद घर के कामों में कौन मदद करेगा, ताकि उन्हें पता रहे कि उन्हें यह सब अकेले नहीं करना पड़ेगा।",
+   "text_bn": "একসাথে বসে কথা বলুন যে শিশু আসার পর বাড়িতে কে কে সাহায্য করবে, যাতে তিনি জানেন যে তাকে একা সব করতে হবে না।",
+   "text_ta": "குழந்தை பிறந்த பிறகு வீட்டில் யார் யார் உதவுவார்கள் என்பதைப் பற்றி ஒன்றாக அமர்ந்து பேசுங்கள், இதனால் அவர் தனியாக செய்ய வேண்டியதில்லை என்பதை அறிவார்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_HOSPBAG",
+   "themes": [
+    "prepare_ahead"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Hospital checklist, route and bag before the due date.",
+   "text_en": "Plan the way to the hospital and keep her bag packed and ready before the due date, so she feels calm if labour starts.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अस्पताल जाने का रास्ता पहले से तय कर लें और प्रसव तिथि से पहले उनका बैग तैयार रखें, ताकि प्रसव पीड़ा शुरू होने पर वे शांत महसूस करें।",
+   "text_bn": "হাসপাতালে যাওয়ার পথ আগে থেকেই ঠিক করে রাখুন এবং নির্ধারিত তারিখের আগেই তার ব্যাগ প্রস্তুত রাখুন, যাতে প্রসববেদনা শুরু হলে তিনি শান্ত থাকতে পারেন।",
+   "text_ta": "மருத்துவமனைக்குச் செல்லும் வழியைத் திட்டமிடுங்கள் மற்றும் பிரசவ தேதிக்கு முன்னதாகவே பையைத் தயார் செய்து வையுங்கள், இதனால் பிரசவ வலி தொடங்கினால் அமைதியாக இருக்கலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_BIRTHHOPES",
+   "themes": [
+    "prepare_ahead",
+    "listen"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Discuss birth plan, knowing it may change.",
+   "text_en": "Ask what she hopes for the birth and listen without arguing. Plans can change, and it helps her to know you are with her whichever way it goes.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनसे पूछें कि प्रसव के बारे में उनकी क्या इच्छाएं हैं और बिना बहस किए सुनें। योजनाएं बदल सकती हैं, और यह जानना उनके लिए मददगार होता है कि आप हर स्थिति में उनके साथ हैं।",
+   "text_bn": "প্রসব সম্পর্কে তার কী প্রত্যাশা তা জিজ্ঞাসা করুন এবং তর্ক না করে শুনুন। পরিকল্পনা পরিবর্তন হতে পারে, এবং তিনি জানলে শান্তি পাবেন যে যেকোনো পরিস্থিতিতে আপনি তার পাশে আছেন।",
+   "text_ta": "பிரசவத்தைப் பற்றி அவர் என்ன விரும்புகிறார் என்று கேளுங்கள், வாக்குவாதம் செய்யாமல் கேளுங்கள். திட்டங்கள் மாறலாம், எந்த சூழ்நிலையிலும் நீங்கள் அவருடன் இருக்கிறீர்கள் என்பதை அவர் அறிவது உதவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_GETREADY",
+   "themes": [
+    "prepare_ahead"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Look at baby equipment together; help with housework and preparation.",
+   "text_en": "Get things ready for the baby together, such as clothes and a place for the baby to sleep, and let her choose what matters to her.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "बच्चे के लिए मिलकर तैयारी करें, जैसे कपड़े और सोने की जगह, और उन्हें अपनी पसंद चुनने दें।",
+   "text_bn": "একসাথে শিশুর জন্য জিনিসপত্র গুছিয়ে নিন, যেমন জামাকাপড় এবং ঘুমানোর জায়গা, এবং তার পছন্দের বিষয়গুলিকে গুরুত্ব দিন।",
+   "text_ta": "குழந்தைக்கான துணிகள் மற்றும் தூங்கும் இடம் போன்றவற்றை ஒன்றாகச் சேர்ந்து தயார் செய்யுங்கள், அவருக்கு விருப்பமானதைத் தேர்ந்தெடுக்க அனுமதியுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_MOODSWING",
+   "themes": [
+    "listen",
+    "things_to_avoid"
+   ],
+   "stage": "prenatal",
+   "kind": "say",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5",
+    "S6"
+   ],
+   "evidence_note": "Do not take mood swings personally; hormones can make feelings change quickly.",
+   "text_en": "Try not to take her mood swings personally. Feelings can change quickly in pregnancy, and patience helps her more than advice.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनके मूड में आने वाले बदलावों को व्यक्तिगत रूप से न लें। गर्भावस्था में भावनाएं तेजी से बदल सकती हैं, और सलाह देने से ज्यादा धैर्य काम आता है।",
+   "text_bn": "তার মেজাজের পরিবর্তনকে ব্যক্তিগতভাবে নেবেন না। গর্ভাবস্থায় মানসিক অনুভূতি দ্রুত বদলাতে পারে, এবং উপদেশের চেয়ে আপনার ধৈর্য বেশি সাহায্য করবে।",
+   "text_ta": "அவரது மனநிலை மாற்றங்களை தனிப்பட்ட முறையில் எடுத்துக்கொள்ளாதீர்கள். கர்ப்ப காலத்தில் உணர்வுகள் விரைவாக மாறக்கூடும், ஆலோசனையை விட பொறுமை அதிகம் உதவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_NAP",
+   "themes": [
+    "protect_rest"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Help her find time for daytime naps.",
+   "text_en": "Help her find time for a daytime rest. Take over a small job so she can lie down for a while.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "दिन में उनके आराम के लिए समय निकालने में मदद करें। कोई छोटा काम खुद संभाल लें ताकि वे थोड़ी देर लेट सकें।",
+   "text_bn": "দিনের বেলা তার বিশ্রামের জন্য সময় করে দিন। একটি ছোট কাজ নিজের দায়িত্বে নিন যাতে তিনি কিছুক্ষণের জন্য শুয়ে বিশ্রাম নিতে পারেন।",
+   "text_ta": "பகலில் அவர் ஓய்வெடுக்க நேரம் ஒதுக்க உதவுங்கள். ஒரு சிறிய வேலையை நீங்கள் பொறுப்பேற்றுக்கொள்ளுங்கள், இதனால் அவர் சிறிது நேரம் படுத்து ஓய்வெடுக்கலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_SNACKS",
+   "themes": [
+    "food_and_movement"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Small frequent meals for morning sickness; contact the doctor if she cannot keep food down.",
+   "text_en": "If she feels sick, offer small snacks often rather than big meals. If she cannot keep food down, help her tell her doctor.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अगर उन्हें उल्टी या जी मिचलाने जैसा लगे, तो भारी भोजन के बजाय बार-बार हल्का नाश्ता दें। अगर खाना न पच रहा हो, तो डॉक्टर को बताने में मदद करें।",
+   "text_bn": "যদি তার বমি ভাব হয়, তবে ভারী খাবারের চেয়ে ঘন ঘন হালকা খাবার দিন। যদি তিনি খাবার একদমই খেতে না পারেন, তবে ডাক্তারকে জানাতে সাহায্য করুন।",
+   "text_ta": "அவருக்கு குமட்டல் அல்லது உடல்நிலை சரியில்லை எனில், பெரிய உணவுகளுக்குப் பதிலாக அடிக்கடி சிறிய தின்பண்டங்களைக் கொடுங்கள். அவரால் சாப்பிட முடியாவிட்டால், மருத்துவரிடம் தெரிவிக்க உதவுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_SING",
+   "themes": [
+    "bonding"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Talk or sing to the baby; bonding can start before birth. Guidance only; no trial of this tip.",
+   "text_en": "Talk or sing to the baby together. The baby can hear you, and it can help you both feel close before the birth.",
+   "needs_source": false,
+   "flag_list": [
+    "guidance_only_no_trial"
+   ],
+   "text_hi": "साथ मिलकर बच्चे से बात करें या कोई लोरी/गीत गाएं। बच्चा आपकी आवाज़ सुन सकता है, और यह जन्म से पहले ही आप दोनों को करीब ला सकता है।",
+   "text_bn": "একসাথে শিশুর সাথে কথা বলুন বা গান গান। শিশু আপনার কথা শুনতে পায়, এবং এটি জন্মের আগেই আপনাদের দুজনের মধ্যে ঘনিষ্ঠতা তৈরি করতে সাহায্য করে।",
+   "text_ta": "ஒன்றாகச் சேர்ந்து குழந்தையிடம் பேசுங்கள் அல்லது பாடுங்கள். குழந்தை உங்கள் குரலைக் கேட்க முடியும், இது பிரசவத்திற்கு முன்பே உங்கள் இருவரையும் குழந்தையுடன் நெருக்கமாக்க உதவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_WORRYALWAYS",
+   "themes": [
+    "notice_changes"
+   ],
+   "stage": "prenatal",
+   "kind": "notice",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S6"
+   ],
+   "evidence_note": "Worry or low mood is common, but all the time or feeling unable to cope needs support.",
+   "text_en": "Some worry in pregnancy is common. If she seems worried or low most of the time, or says she cannot cope, gently ask how she is and suggest she tells her doctor or midwife.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "गर्भावस्था में थोड़ी चिंता होना आम है। अगर वे ज्यादातर समय परेशान या उदास दिखें, या कहें कि वे संभाल नहीं पा रही हैं, तो प्यार से पूछें और डॉक्टर या मिडवाइफ को बताने का सुझाव दें।",
+   "text_bn": "গর্ভাবস্থায় কিছুটা উদ্বেগ থাকা স্বাভাবিক। যদি তিনি বেশিরভাগ সময় চিন্তিত বা মনমরা থাকেন, বা বলেন যে তিনি সামলাতে পারছেন না, তবে শান্তভাবে জিজ্ঞাসা করুন এবং ডাক্তার বা মিডওয়াইফকে জানাতে বলুন।",
+   "text_ta": "கர்ப்ப காலத்தில் சில கவலைகள் ஏற்படுவது இயல்பானது. அவர் பெரும்பாலான நேரம் கவலையாகவோ சோர்வாகவோ காணப்பட்டால், அல்லது சமாளிக்க முடியவில்லை என்று சொன்னால், கனிவாக விசாரித்து மருத்துவரிடம் தெரிவிக்க பரிந்துரைக்கவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_TALKFEEL",
+   "themes": [
+    "listen"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5",
+    "S6"
+   ],
+   "evidence_note": "Talk openly about how you both feel; pregnancy can add pressure to a relationship.",
+   "text_en": "Talk openly about how she feels about the pregnancy and the baby, including the hard parts. Pregnancy can put pressure on a family.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "गर्भावस्था और बच्चे को लेकर वे कैसा महसूस कर रही हैं, इस पर खुलकर बात करें, जिसमें कठिन बातें भी शामिल हों। गर्भावस्था से परिवार पर कुछ दबाव आ सकता है।",
+   "text_bn": "গর্ভাবস্থা এবং শিশু সম্পর্কে তিনি কেমন অনুভব করছেন তা নিয়ে খোলাখুলি কথা বলুন, কঠিন বিষয়গুলিও বাদ দেবেন না। গর্ভাবস্থা পরিবারের উপর কিছুটা চাপ ফেলতে পারে।",
+   "text_ta": "கர்ப்பம் மற்றும் குழந்தையைப் பற்றி அவர் என்ன உணர்கிறார் என்பதைப் பற்றி வெளிப்படையாகப் பேசுங்கள், கடினமான தருணங்கள் உட்பட. கர்ப்பம் குடும்பத்திற்கு சில அழுத்தங்களை ஏற்படுத்தலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_HISTORY",
+   "themes": [
+    "notice_changes",
+    "say_kind_words"
+   ],
+   "stage": "prenatal",
+   "kind": "say",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S6"
+   ],
+   "evidence_note": "A past history or a past loss can bring fears of it returning, and the effects of loss can be larger than expected. Sensitive; clinician to review.",
+   "text_en": "If she has felt very low or anxious before, or has lost a baby, she may fear it will come back. Tell her you are with her, and encourage her to share this with her midwife.",
+   "needs_source": false,
+   "flag_list": [
+    "sensitive_wording_clinician_review"
+   ],
+   "text_hi": "अगर वे पहले कभी बहुत उदास या चिंतित रही हैं, या गर्भपात हुआ है, तो उन्हें डर हो सकता है कि यह दोबारा होगा। उनसे कहें कि आप साथ हैं, और मिडवाइफ से यह साझा करने के लिए प्रोत्साहित करें।",
+   "text_bn": "যদি তিনি অতীতে বিষণ্ণতা বা উদ্বেগে ভুগে থাকেন, বা সন্তান হারিয়ে থাকেন, তবে তার ভয় হতে পারে যে এটি আবার ফিরে আসবে। তাকে জানান আপনি পাশে আছেন, এবং মিডওয়াইফকে এটি জানানোর সাহস দিন।",
+   "text_ta": "அவர் இதற்கு முன்பு கடுமையான மனச்சோர்வு அல்லது கவலையை எதிர்கொண்டிருந்தால், அல்லது குழந்தையை இழந்திருந்தால், அது மீண்டும் வரக்கூடும் என்று அஞ்சலாம். நீங்கள் அவருடன் இருக்கிறீர்கள் என்று கூறி, இதை மருத்துவரிடம் தெரிவிக்க ஊக்குவிக்கவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_TAKEBABY",
+   "themes": [
+    "share_baby_care",
+    "her_own_time"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S3",
+    "S4",
+    "S7"
+   ],
+   "evidence_note": "One-to-one time with the baby so she gets a break; share baby care.",
+   "text_en": "Take the baby for a while so she can wash, rest or sit quietly on her own. Do this every day if you can.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "कुछ समय के लिए बच्चे को संभाल लें ताकि माँ नहा सकें, आराम कर सकें या शांति से बैठ सकें। अगर संभव हो तो ऐसा रोज करें।",
+   "text_bn": "কিছুক্ষণের জন্য শিশুকে নিজের কাছে রাখুন যাতে মা গোসল করতে, বিশ্রাম নিতে বা একা কিছুটা শান্ত সময় কাটাতে পারেন। পারলে প্রতিদিন এটি করুন।",
+   "text_ta": "சிறிது நேரம் குழந்தையை நீங்கள் கவனித்துக் கொள்ளுங்கள், இதனால் அவர் குளிக்கவோ, ஓய்வெடுக்கவோ அல்லது தனியாக அமைதியாக அமரவோ முடியும். முடிந்தால் தினமும் இதைச் செய்யுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_NIGHT",
+   "themes": [
+    "share_baby_care",
+    "protect_rest"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S1",
+    "S3",
+    "S11"
+   ],
+   "evidence_note": "Night feed with expressed milk so she can rest (HSE, NSW). Sleep problems go with poorer mood and bonding, cross-sectional (La Rosa 2025).",
+   "text_en": "At night, take over what you can, such as changing, settling or burping the baby, or a bottle of expressed milk if she has chosen that, so she gets a longer stretch of sleep.",
+   "needs_source": false,
+   "flag_list": [
+    "only_if_feeding_plan_allows"
+   ],
+   "text_hi": "रात में जो काम आप कर सकें, खुद संभालें, जैसे बच्चे की लंगोट बदलना, सुलाना या डकार दिलाना, ताकि उन्हें लंबी नींद मिल सके।",
+   "text_bn": "রাতে শিশুর ডায়াপার পরিবর্তন, ঘুম পাড়ানো বা ঢেকুর তোলার মতো কাজগুলো নিজে করুন, যাতে মা একটানা দীর্ঘ সময় ঘুমাতে পারেন।",
+   "text_ta": "இரவில் குழந்தைக்கு உடை மாற்றுவது, தூங்க வைப்பது அல்லது ஏப்பம் விட வைப்பது போன்ற பணிகளை நீங்கள் செய்யுங்கள், இதனால் அவருக்கு நீண்ட நேரம் தூங்க வாய்ப்பு கிடைக்கும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_WALK",
+   "themes": [
+    "her_own_time"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S3",
+    "S4"
+   ],
+   "evidence_note": "Give her time to herself, for example by taking the baby out for a walk.",
+   "text_en": "Give her time to herself. Take the baby out for a walk and let her have the house to herself.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उन्हें अपने लिए कुछ समय दें। बच्चे को थोड़ी देर बाहर टहलाने ले जाएं और उन्हें घर में अकेला और शांत रहने दें।",
+   "text_bn": "তাকে নিজের জন্য কিছু সময় দিন। শিশুকে নিয়ে বাইরে হাঁটতে যান এবং তাকে বাড়িতে নিজের মতো শান্ত থাকতে দিন।",
+   "text_ta": "அவருக்கு தனியாக நேரம் கொடுங்கள். குழந்தையை வெளியில் நடைப்பயிற்சிக்கு அழைத்துச் செல்லுங்கள், அவர் வீட்டில் அமைதியாக இருக்கட்டும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_VISITORS",
+   "themes": [
+    "calm_home"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Agree visitor arrangements together so they meet both your needs.",
+   "text_en": "Agree together who will visit and when. Help keep visits short or fewer if she is tired, so they suit her and not only others.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "मिलकर तय करें कि कौन और कब मिलने आएगा। अगर वे थकी हुई हैं, तो मुलाकात को छोटा रखने में मदद करें ताकि उनकी सुविधा बनी रहे।",
+   "text_bn": "একসাথে সিদ্ধান্ত নিন কে কখন দেখা করতে আসবে। তিনি ক্লান্ত থাকলে অতিথিদের সাক্ষাতের সময় কম রাখতে সাহায্য করুন, যাতে তার অসুবিধা না হয়।",
+   "text_ta": "யார் எப்போது வந்து பார்க்க வேண்டும் என்பதை ஒன்றாக முடிவு செய்யுங்கள். அவர் சோர்வாக இருந்தால் சந்திப்புகளைக் குறைக்க உதவுங்கள், இதனால் மற்றவர்களை விட அவரது சௌகரியம் பாதுகாக்கப்படும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_BLUESLONG",
+   "themes": [
+    "notice_changes"
+   ],
+   "stage": "postnatal",
+   "kind": "notice",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Tearfulness and low spirits in the first days usually pass within a few days; if longer, may be a sign of a perinatal mental health problem.",
+   "text_en": "Tearfulness and low spirits in the first few days after birth are common and usually pass. If they last longer, gently encourage her to talk to her doctor or nurse.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "जन्म के पहले कुछ दिनों में रोना आना और मन उदास होना आम बात है। अगर यह उदासी लंबे समय तक बनी रहे, तो डॉक्टर या नर्स से बात करने के लिए कहें।",
+   "text_bn": "সন্তান জন্মের প্রথম কয়েক দিন মন খারাপ হওয়া বা কান্না আসা খুব সাধারণ বিষয়। তবে এটি দীর্ঘস্থায়ী হলে ডাক্তার বা নার্সের সাথে কথা বলার পরামর্শ দিন।",
+   "text_ta": "பிரசவத்திற்குப் பிறகு முதல் சில நாட்களில் அழுகை வருவதும் சோர்வடைவதும் இயல்பானது. ஆனால் இது நீண்ட நாட்களுக்கு நீடித்தால், அவரிடம் மருத்துவரிடம் பேச பரிந்துரையுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_PULLAWAY",
+   "themes": [
+    "notice_changes"
+   ],
+   "stage": "postnatal",
+   "kind": "notice",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S2",
+    "S4"
+   ],
+   "evidence_note": "Withdrawal, anxiety, excessive fears about the baby's health and not enjoying anything are listed warning signs.",
+   "text_en": "Notice if she pulls away from you, the baby or other people, stops enjoying things, or worries a great deal about the baby's health. Ask her gently about it.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "ध्यान दें कि क्या वे आपसे, बच्चे से या अन्य लोगों से दूरी बना रही हैं, खुश रहना बंद कर दिया है, या बच्चे के स्वास्थ्य को लेकर बहुत चिंतित हैं। प्यार से पूछें।",
+   "text_bn": "লক্ষ্য রাখুন তিনি আপনার কাছ থেকে, শিশুর কাছ থেকে বা অন্যদের থেকে নিজেকে গুটিয়ে নিচ্ছেন কিনা, আনন্দ উপভোগ করা বন্ধ করেছেন কিনা। শান্তভাবে জিজ্ঞাসা করুন।",
+   "text_ta": "அவர் உங்களிடமிருந்தோ, குழந்தையிடமிருந்தோ அல்லது மற்றவர்களிடமிருந்தோ விலகி இருக்கிறாரா, எதையும் ரசிக்கவில்லையா என்பதை கவனியுங்கள். கனிவாகக் கேளுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_GOODMOTHER",
+   "themes": [
+    "say_kind_words"
+   ],
+   "stage": "postnatal",
+   "kind": "say",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S3"
+   ],
+   "evidence_note": "Reassure her she is doing a good job as a mother.",
+   "text_en": "Tell her she is doing a good job as a mother, especially on days when she feels she is not.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनसे कहें कि वे एक बहुत अच्छी माँ हैं, खासकर उन दिनों में जब उन्हें खुद पर संदेह हो।",
+   "text_bn": "তাকে বলুন যে তিনি একজন খুব ভালো মা, বিশেষ করে সেই দিনগুলিতে যখন তার নিজের প্রতি সন্দেহ হয়।",
+   "text_ta": "அவர் ஒரு சிறந்த தாயாகச் செயல்படுகிறார் என்று அவரிடம் சொல்லுங்கள், குறிப்பாக தன்னால் முடியவில்லை என்று அவர் உணரும் நாட்களில்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_CRYING",
+   "themes": [
+    "share_baby_care",
+    "calm_home"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "derived_from_research",
+   "source_refs": [
+    "S7",
+    "S15"
+   ],
+   "evidence_note": "Derived: infant crying and settling load is a named stress factor; sharing baby care is advised (S7). No source for this exact tip.",
+   "text_en": "When the baby cries a lot, take turns settling the baby so she does not carry it alone.",
+   "needs_source": false,
+   "flag_list": [
+    "derived_clinician_to_confirm"
+   ],
+   "text_hi": "जब बच्चा बहुत रोए, तो बारी-बारी से बच्चे को शांत कराने की कोशिश करें ताकि सारा बोझ सिर्फ उन्हीं पर न पड़े।",
+   "text_bn": "শিশু যখন খুব বেশি কান্নাকাটি করে, তখন পালা করে শিশুকে শান্ত করুন যাতে সম্পূর্ণ বোঝা তার একার উপর না পড়ে।",
+   "text_ta": "குழந்தை அதிகமாக அழும்போது, குழந்தையை அமைதிப்படுத்த இருவரும் முறை வைத்துப் பாருங்கள், இதனால் சுமை அவர் மீது மட்டுமே விழாது.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_FEEDING",
+   "themes": [
+    "say_kind_words",
+    "things_to_avoid"
+   ],
+   "stage": "postnatal",
+   "kind": "say",
+   "effort": "talk",
+   "evidence_level": "derived_from_research",
+   "source_refs": [
+    "S2",
+    "S15"
+   ],
+   "evidence_note": "Do not blame her (S2). In one Indian study, breastfeeding difficulty was the only factor linked with bonding problems (S15). Derived advice; clinician to confirm.",
+   "text_en": "If feeding is hard, be patient and tell her it is not her fault. Help her reach a nurse or feeding helper if she would like that.",
+   "needs_source": false,
+   "flag_list": [
+    "derived_clinician_to_confirm"
+   ],
+   "text_hi": "अगर दूध पिलाना कठिन हो रहा हो, तो धैर्य रखें और उनसे कहें कि इसमें उनकी कोई गलती नहीं है। उनकी इच्छा हो तो स्वास्थ्य कार्यकर्ता से संपर्क कराएं।",
+   "text_bn": "যদি শিশুকে দুধ খাওয়ানো কঠিন মনে হয়, তবে ধৈর্য ধরুন এবং বলুন এতে তার কোনো দোষ নেই। তিনি চাইলে স্বাস্থ্যকর্মীর সাহায্য পেতে সহযোগিতা করুন।",
+   "text_ta": "தாய்ப்பால் கொடுப்பது கடினமாக இருந்தால், பொறுமையாக இருங்கள் மற்றும் இது அவரது தவறு அல்ல என்று சொல்லுங்கள். அவர் விரும்பினால் ஒரு தாதியிடம் பேச உதவுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_HERCHECKUP",
+   "themes": [
+    "appointments",
+    "share_baby_care"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S7"
+   ],
+   "evidence_note": "Help with appointments by arranging, driving to, or attending them, and arranging childcare.",
+   "text_en": "Offer to look after the baby so she can go to her own check-up, and go with her if she wants you to.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "बच्चे को संभालने की पेशकश करें ताकि वे अपने स्वास्थ्य की जांच के लिए जा सकें, और अगर वे चाहें तो उनके साथ जाएं।",
+   "text_bn": "শিশুর দেখাশোনার দায়িত্ব নিন যাতে তিনি নিজের চেক-আপে যেতে পারেন, এবং তিনি চাইলে আপনিও সাথে যান।",
+   "text_ta": "அவரது சொந்த மருத்துவ பரிசோதனைக்குச் செல்ல குழந்தையை நீங்கள் பார்த்துக் கொள்ளுங்கள், அவர் விரும்பினால் அவருடன் செல்லுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_TOGETHER",
+   "themes": [
+    "your_own_wellbeing",
+    "calm_home"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1"
+   ],
+   "evidence_note": "Do things as a couple without the children, never pressure her into activities she does not want. Partner-specific; may not suit other relatives.",
+   "text_en": "Spend a short time together without the baby, like a walk or a quiet meal, but never pressure her if she is not ready.",
+   "needs_source": false,
+   "flag_list": [
+    "partner_source_extended_to_other_relatives"
+   ],
+   "text_hi": "बच्चे के बिना एक साथ थोड़ा समय बिताएं, जैसे टहलना या शांति से भोजन करना, लेकिन अगर वे तैयार न हों तो कोई दबाव न डालें।",
+   "text_bn": "শিশুকে ছাড়া একসাথে কিছুটা সময় কাটান, যেমন একটু হাঁটা বা শান্তভাবে খাবার খাওয়া, তবে তিনি প্রস্তুত না থাকলে জোর করবেন না।",
+   "text_ta": "குழந்தை இல்லாமல் சிறிது நேரம் இருவரும் ஒன்றாகச் செலவிடுங்கள், நடைப்பயிற்சி அல்லது அமைதியான உணவு போல; ஆனால் அவர் தயாராக இல்லாவிட்டால் வற்புறுத்தாதீர்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_LISTEN",
+   "themes": [
+    "listen"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S4",
+    "S7",
+    "S8"
+   ],
+   "evidence_note": "Listen with empathy; you do not have to fix everything. Emotional support and closeness protect against low mood and anxiety (meta-analysis).",
+   "text_en": "Sit with her for a few minutes without your phone and listen to how she feels. You do not need to fix anything.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "फ़ोन अलग रखकर कुछ मिनट उनके पास बैठें और सुनें कि वह कैसा महसूस कर रही हैं। आपको कुछ भी ठीक करने की ज़रूरत नहीं है।",
+   "text_bn": "ফোন দূরে রেখে কয়েক মিনিট তার পাশে বসুন এবং তিনি কেমন অনুভব করছেন তা শুনুন। আপনার কিছু ঠিক করার দরকার নেই।",
+   "text_ta": "தொலைபேசியை ஓரமாக வைத்துவிட்டு சில நிமிடங்கள் அவருடன் அமர்ந்து, அவர் உணர்வுகளைக் கேளுங்கள். எதையும் சரிசெய்ய முயற்சிக்க வேண்டியதில்லை.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_ASK",
+   "themes": [
+    "ask_what_she_needs"
+   ],
+   "stage": "both",
+   "kind": "say",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4",
+    "S7"
+   ],
+   "evidence_note": "Ask what she needs; it may differ from what you expect.",
+   "text_en": "Ask her, 'What can I do to help today?' Her answer may be different from what you expect.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनसे पूछें, 'आज मैं आपकी क्या मदद कर सकता हूँ?' उनका जवाब आपकी उम्मीद से अलग हो सकता है।",
+   "text_bn": "তাকে জিজ্ঞাসা করুন, 'আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?' তার উত্তর আপনার প্রত্যাশার চেয়ে আলাদা হতে পারে।",
+   "text_ta": "அவரிடம், 'இன்று நான் என்ன உதவி செய்ய வேண்டும்?' என்று கேளுங்கள். அவரது பதில் உங்கள் எதிர்பார்ப்பை விட மாறுபட்டதாக இருக்கலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_HERE",
+   "themes": [
+    "say_kind_words"
+   ],
+   "stage": "both",
+   "kind": "say",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S3",
+    "S4"
+   ],
+   "evidence_note": "Phrases like 'I'm here for you'; she may need to hear reassurance often.",
+   "text_en": "Tell her, 'I'm here for you.' Say it often, because she may need to hear it again and again.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनसे कहें, 'मैं आपके साथ हूँ।' इसे बार-बार कहें, क्योंकि उन्हें यह दोबारा सुनने की ज़रूरत हो सकती है।",
+   "text_bn": "তাকে বলুন, 'আমি তোমার পাশে আছি।' এটি প্রায়ই বলুন, কারণ তার এটি বারবার শোনার প্রয়োজন হতে পারে।",
+   "text_ta": "அவரிடம், 'நான் உனக்காக இருக்கிறேன்' என்று கூறுங்கள். இதை அடிக்கடி சொல்லுங்கள், ஏனெனில் அவர் இதை மீண்டும் மீண்டும் கேட்க விரும்பலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_NOTFAULT",
+   "themes": [
+    "say_kind_words"
+   ],
+   "stage": "both",
+   "kind": "say",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S2",
+    "S7"
+   ],
+   "evidence_note": "It is not her fault (HSE); reassure that things get better and setbacks are part of recovery (Raising Children).",
+   "text_en": "Tell her that how she feels is not her fault, and that with support things can get better.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनसे कहें कि वे जैसा महसूस कर रही हैं उसमें उनकी कोई गलती नहीं है, और सही सहयोग से सब कुछ बेहतर हो सकता है।",
+   "text_bn": "তাকে বলুন তিনি যেমন অনুভব করছেন তাতে তার কোনো দোষ নেই, এবং পরিবারের সাহায্যে পরিস্থিতি ভালো হয়ে উঠবে।",
+   "text_ta": "அவர் உணர்வது அவரது தவறு அல்ல என்றும், சரியான ஆதரவோடு நிலைமை சீராகும் என்றும் அவரிடம் கூறுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_NOTHINK",
+   "themes": [
+    "things_to_avoid"
+   ],
+   "stage": "both",
+   "kind": "avoid",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S2"
+   ],
+   "evidence_note": "Do not tell her to think more positively or get on with it.",
+   "text_en": "Avoid telling her to 'think positive' or 'just get on with it'. When she is struggling, she cannot switch it off by willpower.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उन्हें 'सकारात्मक सोचो' या 'हिम्मत रखो' जैसी बातें कहने से बचें। जब कोई संघर्ष कर रहा हो, तो यह इच्छाशक्ति से बंद नहीं होता।",
+   "text_bn": "তাকে 'ইতিবাচক চিন্তা করুন' বা 'সব ঠিক হয়ে যাবে' বলে উপদেশ দেওয়া এড়িয়ে চলুন। মানসিক কষ্টে থাকলে ইচ্ছা করলেই তা দূর করা যায় না।",
+   "text_ta": "'நேர்மறையாக சிந்தியுங்கள்' அல்லது 'எளிதாக எடுத்துக்கொள்ளுங்கள்' என்று அவரிடம் சொல்வதைத் தவிர்க்கவும். அவர் கஷ்டப்படும்போது, அதை எளிதில் மாற்ற முடியாது.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_NOBLAME",
+   "themes": [
+    "things_to_avoid"
+   ],
+   "stage": "both",
+   "kind": "avoid",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1",
+    "S2"
+   ],
+   "evidence_note": "Avoid criticising or blaming her.",
+   "text_en": "Avoid blaming or criticising her, even when you are tired or worried.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उन्हें दोष देने या उनकी आलोचना करने से बचें, तब भी जब आप खुद थके हुए या चिंतित हों।",
+   "text_bn": "তাকে দোষারোপ বা সমালোচনা করা এড়িয়ে চলুন, এমনকি আপনি নিজে ক্লান্ত বা চিন্তিত থাকলেও।",
+   "text_ta": "நீங்கள் சோர்வாகவோ கவலையாகவோ இருந்தாலும் கூட, அவரைக் குறை கூறுவதையோ அல்லது விமர்சிப்பதையோ தவிர்க்கவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_NOLABEL",
+   "themes": [
+    "things_to_avoid"
+   ],
+   "stage": "both",
+   "kind": "avoid",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Do not try to diagnose; describe what you notice and leave it to a professional.",
+   "text_en": "Avoid guessing what is wrong or putting a name to it. Tell her what you have noticed, and leave the rest to her doctor.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "खुद से अनुमान लगाने या कोई बीमारी का नाम देने से बचें। आपने जो देखा है केवल वह बताएं, और बाकी डॉक्टर पर छोड़ दें।",
+   "text_bn": "নিজে থেকে রোগের নাম দেওয়া বা অনুমান করা এড়িয়ে চলুন। আপনি যা লক্ষ্য করেছেন শুধু তা বলুন, বাকিটা ডাক্তারের ওপর ছেড়ে দিন।",
+   "text_ta": "சுயமாக நோயைக் கணிப்பதையோ அல்லது பெயரிடுவதையோ தவிர்க்கவும். நீங்கள் கவனித்ததை மட்டும் அவரிடம் சொல்லி, மீதியை மருத்துவரிடம் விட்டுவிடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_NOTAKEOVER",
+   "themes": [
+    "things_to_avoid",
+    "ask_what_she_needs"
+   ],
+   "stage": "both",
+   "kind": "avoid",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "You do not have to fix or manage everything; stay open and flexible about what she needs.",
+   "text_en": "Try not to take over or decide everything for her. Ask what she needs, and let her choose when she can.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "सब कुछ खुद तय करने की कोशिश न करें। उनसे पूछें कि उन्हें क्या चाहिए, और जहां संभव हो उन्हें फैसला लेने दें।",
+   "text_bn": "সবকিছু নিজের নিয়ন্ত্রণে নেওয়ার চেষ্টা করবেন না। তার কী প্রয়োজন তা জিজ্ঞাসা করুন এবং যেখানে সম্ভব তাকে নিজের পছন্দ বেছে নিতে দিন।",
+   "text_ta": "அவருக்குரிய எல்லாவற்றையும் நீங்களே தீர்மானிக்க முயற்சிக்காதீர்கள். அவருக்கு என்ன தேவை என்று கேட்டு, முடிந்தவரை அவரே தேர்வு செய்ய அனுமதியுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CHORE",
+   "themes": [
+    "share_chores"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S4",
+    "S7",
+    "S8"
+   ],
+   "evidence_note": "Take on tasks she does not feel up to; instrumental support protects against low mood (meta-analysis).",
+   "text_en": "Do a household job without being asked, such as cooking, washing up or laundry.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "बिना कहे घर का कोई काम खुद कर दें, जैसे खाना बनाना, बर्तन धोना या कपड़े धोना।",
+   "text_bn": "না বলতেই ঘরের কোনো একটি কাজ করে দিন, যেমন রান্না করা, বাসন মাজা বা কাপড় ধোয়া।",
+   "text_ta": "அவர் கேட்காமலேயே சமையல், பாத்திரங்கள் கழுவுதல் அல்லது துணி துவைப்பது போன்ற வீட்டு வேலையைச் செய்து முடியுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_ONETASK",
+   "themes": [
+    "share_chores"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S4",
+    "S8"
+   ],
+   "evidence_note": "Take on tasks she does not feel up to.",
+   "text_en": "Take over one job she usually does, for the whole day.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "वह जो काम आमतौर पर करती हैं, उनमें से एक काम पूरे दिन के लिए खुद संभाल लें।",
+   "text_bn": "তিনি সাধারণত যে কাজগুলি করেন, তার মধ্যে একটি কাজ সারাদিনের জন্য নিজের দায়িত্বে নিন।",
+   "text_ta": "அவர் வழக்கமாக செய்யும் பணிகளில் ஒன்றை, நாள் முழுவதும் நீங்களே பொறுப்பேற்று செய்யுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_THANKS",
+   "themes": [
+    "appreciate",
+    "say_kind_words"
+   ],
+   "stage": "both",
+   "kind": "say",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4",
+    "S7"
+   ],
+   "evidence_note": "Notice what she does and say thanks; express gratitude.",
+   "text_en": "Notice something she did today for the family and thank her for it in words.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "परिवार के लिए आज उन्होंने जो भी किया, उस पर ध्यान दें और शब्दों में उनका धन्यवाद करें।",
+   "text_bn": "পরিবারের জন্য আজ তিনি যে কাজটি করেছেন তা লক্ষ্য করুন এবং মুখে তাকে ধন্যবাদ জানান।",
+   "text_ta": "குடும்பத்திற்காக இன்று அவர் செய்த ஒரு விஷயத்தைக் கவனித்து, அதற்காக வாய்மொழியாக நன்றி கூறுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_ASKOTHERS",
+   "themes": [
+    "ask_others"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1",
+    "S7"
+   ],
+   "evidence_note": "Accept help from family and friends and tell them specifically what to do; help arrange childcare.",
+   "text_en": "Tell relatives and friends exactly how they can help, such as bringing a meal or minding an older child for an hour. Say yes when they offer.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "रिश्तेदारों और दोस्तों को बताएं कि वे कैसे मदद कर सकते हैं, जैसे खाना लाना या बड़े बच्चे को थोड़ी देर संभालना।",
+   "text_bn": "আত্মীয় এবং বন্ধুদের স্পষ্টভাবে জানান তারা কীভাবে সাহায্য করতে পারেন, যেমন খাবার আনা বা বড় সন্তানকে কিছুক্ষণের জন্য দেখা।",
+   "text_ta": "உறவினர்கள் மற்றும் நண்பர்களிடம் அவர்கள் எவ்வாறு உதவலாம் என்று தெளிவாகக் கூறுங்கள், உணவு கொண்டு வருவது அல்லது மூத்த குழந்தையைப் பார்த்துக் கொள்வது போல.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CONNECT",
+   "themes": [
+    "help_her_connect"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S1",
+    "S12",
+    "S14"
+   ],
+   "evidence_note": "Support group and staying connected. Social support carried part of the benefit of a programme tested in India and Pakistan (S12); loneliness is central to low mood in the perinatal period (S14).",
+   "text_en": "Help her stay in touch with people she trusts, with a phone call, a visit or a trip out together.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "भरोसेमंद लोगों से संपर्क बनाए रखने में उनकी मदद करें, जैसे फोन कॉल, मुलाकात या छोटी सैर के जरिए।",
+   "text_bn": "বিশ্বস্ত মানুষদের সাথে যোগাযোগ রাখতে তাকে সাহায্য করুন, ফোনের মাধ্যমে, দেখা করে বা একসাথে বাইরে কোথাও গিয়ে।",
+   "text_ta": "நம்பகமான நபர்களுடன் தொலைபேசி அழைப்பு, சந்திப்பு அல்லது சிறிய பயணங்கள் மூலம் தொடர்பில் இருக்க அவருக்கு உதவுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_GROUP",
+   "themes": [
+    "help_her_connect"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1"
+   ],
+   "evidence_note": "Encourage her to join a support group; help her find mother-to-mother groups.",
+   "text_en": "If she would like it, help her find a group of other mothers or families. Do not push if she is not ready.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अगर वे चाहें, तो अन्य नई माताओं या प्रसवपूर्व समूह से मिलने में उनकी मदद करें। दूसरों से मिलना बहुत दिलासा देता है।",
+   "text_bn": "তিনি আগ্রহী হলে অন্য মায়েদের সাথে বা প্রসবপূর্ব গ্রুপের সাথে যুক্ত হতে সাহায্য করুন। অন্যদের কথা শুনলে মনে সাহস বাড়ে।",
+   "text_ta": "அவர் விரும்பினால், பிற புதிய தாய்மார்கள் அல்லது ஆதரவுக் குழுக்களுடன் தொடர்பு கொள்ள அவருக்கு உதவுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_WALKTOGETHER",
+   "themes": [
+    "food_and_movement",
+    "her_own_time"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1",
+    "S7"
+   ],
+   "evidence_note": "Encourage physical activity such as a walk together.",
+   "text_en": "Go for a short, gentle walk together if she feels up to it. Fresh air and moving can lift the mood.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अगर वे तैयार महसूस करें, तो साथ मिलकर छोटी और धीमी सैर पर जाएं। ताजी हवा और चलना मूड को अच्छा कर सकता है।",
+   "text_bn": "তিনি স্বাচ্ছন্দ্য বোধ করলে একসাথে কিছুটা শান্তভাবে হেঁটে আসুন। তাজা বাতাস এবং হাঁটা মন ভালো করতে পারে।",
+   "text_ta": "அவர் விரும்பினால், மெதுவான சிறிய நடைப்பயிற்சிக்கு ஒன்றாகச் செல்லுங்கள். புதிய காற்றும் உடற்பயிற்சியும் மனநிலையை உயர்த்தும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_MEALS",
+   "themes": [
+    "food_and_movement"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1"
+   ],
+   "evidence_note": "Help make sure she eats enough and rests.",
+   "text_en": "Make sure she is eating regular meals and drinking water. Make something simple and sit with her while she eats.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "ध्यान रखें कि वे नियमित भोजन कर रही हैं और पानी पी रही हैं। कुछ सादा बनाएं और खाते समय उनके साथ बैठें।",
+   "text_bn": "তিনি যাতে নিয়মিত খাবার ও জল পান করেন তা লক্ষ্য রাখুন। সাধারণ কিছু খাবার তৈরি করে তিনি খাওয়ার সময় তার পাশে বসুন।",
+   "text_ta": "அவர் வழக்கமான உணவை உண்பதையும் போதுமான தண்ணீர் குடிப்பதையும் உறுதி செய்யுங்கள். எளிய ஒன்றைச் சமைத்து அவர் சாப்பிடும்போது அவருடன் அமருங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_REST",
+   "themes": [
+    "protect_rest"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1",
+    "S11"
+   ],
+   "evidence_note": "Help make sure she rests; poor sleep goes with poorer mood and bonding (cross-sectional).",
+   "text_en": "Make sure she gets some real rest today. Ask others to cover a chore or the children for a short while.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "जब भी संभव हो, उन्हें आराम करने के लिए कहें। आराम करना आलस्य नहीं बल्कि शरीर और मन के ठीक होने का हिस्सा है।",
+   "text_bn": "যখনই সম্ভব তাকে বিশ্রাম নিতে বলুন। বিশ্রাম নেওয়া কোনো আলসেমি নয়, এটি শরীর ও মনের সেরে ওঠার গুরুত্বপূর্ণ অংশ।",
+   "text_ta": "வாய்ப்புக் கிடைக்கும் போதெல்லாம் அவரை ஓய்வெடுக்கச் சொல்லுங்கள். ஓய்வு என்பது சோம்பேறித்தனம் அல்ல, அது உடல் நலமடைவதற்கான வழி.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_QUIETTALK",
+   "themes": [
+    "start_conversation"
+   ],
+   "stage": "both",
+   "kind": "say",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Choose a relaxed time and place, remove distractions, explain why you are concerned, listen, ask what you can do.",
+   "text_en": "Choose a quiet time and place and put phones and the TV away. Tell her kindly what you have noticed and that you care, then listen.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "एक शांत समय और जगह चुनें और फोन व टीवी दूर रख दें। प्यार से बताएं कि आपने क्या महसूस किया है और आप उनकी परवाह करते हैं, फिर ध्यान से सुनें।",
+   "text_bn": "একটি নিরিবিলি সময় ও জায়গা বেছে নিন এবং ফোন ও টিভি বন্ধ রাখুন। আপনি যা লক্ষ্য করেছেন তা ভালোবাসা দিয়ে বলুন এবং শুনুন।",
+   "text_ta": "ஒரு அமைதியான நேரத்தையும் இடத்தையும் தேர்ந்தெடுத்து, தொலைபேசி மற்றும் டிவியை ஓரமாக வையுங்கள். நீங்கள் கவனித்ததை அன்பாகக் கூறி, பின்னர் கேளுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_STAYCLOSE",
+   "themes": [
+    "start_conversation",
+    "listen"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S3"
+   ],
+   "evidence_note": "Do not leave her alone, but do not expect her to talk about everything.",
+   "text_en": "If she does not want to talk, stay close anyway. You do not need to make her talk about everything.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अगर वे बात न करना चाहें, तब भी उनके पास ही रहें। उनसे हर बात पर बोलने का दबाव बनाने की ज़रूरत नहीं है।",
+   "text_bn": "যদি তিনি কথা বলতে না চান, তবুও তার কাছেই থাকুন। সব বিষয়ে তাকে কথা বলানোর জোর করার প্রয়োজন নেই।",
+   "text_ta": "அவர் பேச விரும்பாவிட்டாலும் கூட, அருகிலேயே இருங்கள். அவர் எல்லாவற்றையும் பற்றிப் பேச வேண்டும் என்று நீங்கள் கட்டாயப்படுத்த வேண்டியதில்லை.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_HELPSEEK",
+   "themes": [
+    "appointments"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4",
+    "S7"
+   ],
+   "evidence_note": "Help with appointments by arranging, driving or childcare; offer to make an appointment with a doctor or someone she trusts.",
+   "text_en": "Offer to help her see a doctor, nurse or counsellor. You could make the call, take her, or look after the children. Ask what she would like.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "डॉक्टर, नर्स या काउंसलर से मिलने में उनकी मदद करने की पेशकश करें। आप फोन कर सकते हैं, साथ ले जा सकते हैं या बच्चों को संभाल सकते हैं।",
+   "text_bn": "ডাক্তার, নার্স বা কাউন্সেলরের সাহায্য নেওয়ার প্রস্তাব দিন। আপনি ফোন করতে পারেন, সাথে নিয়ে যেতে পারেন বা সন্তানদের দেখাশোনা করতে পারেন।",
+   "text_ta": "மருத்துவர், செவிலியர் அல்லது ஆலோசகரை அணுக அவருக்கு உதவுங்கள். நீங்கள் அழைக்கலாம், அழைத்துச் செல்லலாம் அல்லது குழந்தைகளைப் பார்த்துக் கொள்ளலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_PREPARE",
+   "themes": [
+    "appointments"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S2",
+    "S4"
+   ],
+   "evidence_note": "Write down concerns before an appointment; attend only if it helps her, and give her space if she wants to speak to the doctor alone.",
+   "text_en": "Before a visit, write down together what to ask. If she prefers to see the doctor on her own, give her that space.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "डॉक्टर के पास जाने से पहले मिलकर लिख लें कि क्या पूछना है। अगर वे अकेले डॉक्टर से मिलना चाहें, तो उन्हें वह मौका दें।",
+   "text_bn": "ডাক্তারের কাছে যাওয়ার আগে কী কী জানতে চান তা একসাথে লিখে রাখুন। তিনি যদি একা ডাক্তারের সাথে দেখা করতে চান, তবে তাকে সেই সুযোগ দিন।",
+   "text_ta": "மருத்துவரைப் பார்க்கும் முன் என்ன கேட்க வேண்டும் என்பதை ஒன்றாக எழுதி வையுங்கள். அவர் தனியாக மருத்துவரைப் பார்க்க விரும்பினால், அவருக்கு அந்த வாய்ப்பைக் கொடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_NOTEBOOK",
+   "themes": [
+    "appointments",
+    "notice_changes"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S2"
+   ],
+   "evidence_note": "Keep a notebook of changes and questions between visits. Added consent wording is ours.",
+   "text_en": "Keep a short note of what you notice, such as sleep, eating and mood. Share it with her doctor only with her agreement.",
+   "needs_source": false,
+   "flag_list": [
+    "consent_wording_added_by_us"
+   ],
+   "text_hi": "नींद, खान-पान और मूड जैसी चीज़ों का एक छोटा नोट रखें। उनकी सहमति होने पर ही इसे डॉक्टर के साथ साझा करें।",
+   "text_bn": "ঘুম, খাওয়া এবং মেজাজের মতো লক্ষণগুলির একটি ছোট নোট রাখুন। শুধুমাত্র তার সম্মতি নিয়েই এটি ডাক্তারের সাথে শেয়ার করুন।",
+   "text_ta": "தூக்கம், உணவு மற்றும் மனநிலை போன்ற நீங்கள் கவனிக்கும் விஷயங்களை ஒரு சிறிய குறிப்பில் வையுங்கள். அவரது ஒப்புதலுடன் மட்டுமே மருத்துவரிடம் பகிருங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CALMHOME",
+   "themes": [
+    "calm_home"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "none",
+   "evidence_level": "derived_from_research",
+   "source_refs": [
+    "S8",
+    "S9"
+   ],
+   "evidence_note": "Derived: partner conflict is linked with low mood in a meta-analysis (S8); no source gives this exact tip.",
+   "text_en": "If there is tension at home, try to settle it calmly and away from her, and avoid arguments in front of her.",
+   "needs_source": false,
+   "flag_list": [
+    "derived_clinician_to_confirm"
+   ],
+   "text_hi": "अगर घर में कोई तनाव हो, तो उसे शांति से और उनसे दूर सुलझाने की कोशिश करें, और उनके सामने बहस करने से बचें।",
+   "text_bn": "বাড়িতে কোনো অশান্তি থাকলে তা শান্তভাবে তার থেকে দূরে মেটানোর চেষ্টা করুন এবং তার সামনে তর্কাতর্কি করা এড়িয়ে চলুন।",
+   "text_ta": "வீட்டில் ஏதேனும் பதற்றம் இருந்தால், அதை அமைதியாகவும் அவரிடமிருந்து விலகியும் தீர்க்க முயற்சிக்கவும், அவரது முன்னிலையில் வாக்குவாதங்களைத் தவிர்க்கவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CLOSENESS",
+   "themes": [
+    "listen",
+    "calm_home"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "talk",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S8",
+    "S4"
+   ],
+   "evidence_note": "Emotional closeness and communication protect against low mood and anxiety in a meta-analysis of partner studies; partner-based, extension to other relatives is our assumption.",
+   "text_en": "Make time to talk about how the two of you are getting on. Feeling close to someone is protective for her.",
+   "needs_source": false,
+   "flag_list": [
+    "partner_source_extended_to_other_relatives"
+   ],
+   "text_hi": "आप दोनों के आपसी रिश्ते पर बात करने के लिए समय निकालें। किसी अपने का करीबी होना उनके लिए मानसिक सुरक्षा है।",
+   "text_bn": "আপনারা দুজন কেমন আছেন তা নিয়ে কথা বলার জন্য সময় বের করুন। প্রিয়জনের ঘনিষ্ঠতা তার মানসিক সুরক্ষার জন্য সহায়ক।",
+   "text_ta": "நீங்கள் இருவரும் எவ்வாறு பழகுகிறீர்கள் என்பதைப் பற்றிப் பேச நேரம் ஒதுக்குங்கள். ஒருவருடன் நெருக்கமாக இருப்பது அவருக்குப் பாதுகாப்பைத் தரும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_LEARN",
+   "themes": [
+    "learn"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1",
+    "S7"
+   ],
+   "evidence_note": "Learn more about mood changes around birth so you can support her better.",
+   "text_en": "Learn a little about the mood changes that can come around pregnancy and birth, so you can notice them early and respond kindly.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "गर्भावस्था और प्रसव के बाद के मूड बदलावों के बारे में थोड़ा जानें, ताकि आप उन्हें समझ सकें और प्यार से संभाल सकें।",
+   "text_bn": "গর্ভাবস্থা এবং প্রসবের পর মানসিক পরিবর্তনের লক্ষণগুলি সম্পর্কে জানুন, যাতে আপনি তা আগে থেকে বুঝে সদয় আচরণ করতে পারেন।",
+   "text_ta": "கர்ப்பம் மற்றும் பிரசவத்தை சுற்றியுள்ள மனநிலை மாற்றங்களைப் பற்றி அறிந்துகொள்ளுங்கள், இதனால் ஆரம்பத்திலேயே கவனித்து கனிவுடன் உதவ முடியும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_TWOWEEKS",
+   "themes": [
+    "notice_changes"
+   ],
+   "stage": "both",
+   "kind": "notice",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S7"
+   ],
+   "evidence_note": "Emotional changes lasting more than two weeks and interfering with daily life: get professional advice.",
+   "text_en": "If low mood, loss of interest, or changes in sleep or eating last more than two weeks and get in the way of daily life, suggest she sees a doctor.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अगर उदासी, अरुचि, या नींद और खाने में बदलाव दो सप्ताह से अधिक रहे, तो उन्हें डॉक्टर को दिखाने का सुझाव दें।",
+   "text_bn": "যদি মন খারাপ, কাজে অনিহা, বা ঘুম ও খাওয়ার পরিবর্তন দুই সপ্তাহের বেশি স্থায়ী হয়, তবে ডাক্তার দেখানোর পরামর্শ দিন।",
+   "text_ta": "குறைந்த மனநிலை, தூக்கம் அல்லது உணவில் ஏற்படும் மாற்றங்கள் இரண்டு வாரங்களுக்கு மேல் நீடித்தால், மருத்துவரை அணுக பரிந்துரைக்கவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_ANXIOUS",
+   "themes": [
+    "notice_changes"
+   ],
+   "stage": "both",
+   "kind": "notice",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S7"
+   ],
+   "evidence_note": "Depression often comes with anxiety: racing heart, constant worry, restlessness.",
+   "text_en": "Notice if she seems very anxious, restless or keeps worrying. Worry often goes with low mood, and it can be helped too.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "ध्यान दें कि क्या वे बहुत बेचैन हैं या लगातार चिंता कर रही हैं। चिंता का भी उचित इलाज और समाधान संभव है।",
+   "text_bn": "লক্ষ্য রাখুন তিনি খুব অস্থির বা ক্রমাগত চিন্তিত কিনা। উদ্বেগেরও উপযুক্ত চিকিৎসা ও সমাধান রয়েছে।",
+   "text_ta": "அவர் மிகுந்த பதற்றமாகவோ அல்லது தொடர்ந்து கவலையுடனோ இருக்கிறாரா என்பதைக் கவனியுங்கள். கவலைக்கும் சரியான தீர்வு உண்டு.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_DONTWAIT",
+   "themes": [
+    "appointments"
+   ],
+   "stage": "both",
+   "kind": "clinician",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Seek help as soon as you think she might need it; many parents wish they had asked sooner.",
+   "text_en": "Do not wait. Many families say they wish they had asked for help sooner. If you are worried, help her speak to a doctor or nurse.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "इंतज़ार न करें। अगर आपको कोई चिंता हो, तो तुरंत डॉक्टर या स्वास्थ्य कार्यकर्ता से बात करने में उनकी मदद करें।",
+   "text_bn": "দেরি করবেন না। যদি আপনি উদ্বিগ্ন হন, তবে যত তাড়াতাড়ি সম্ভব ডাক্তার বা স্বাস্থ্যকর্মীর সাথে কথা বলতে সাহায্য করুন।",
+   "text_ta": "காத்திருக்க வேண்டாம். உங்களுக்கு சந்தேகம் அல்லது கவலை இருந்தால், மருத்துவரிடம் உடனடியாகப் பேச அவருக்கு உதவுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_S_YOU",
+   "themes": [
+    "your_own_wellbeing"
+   ],
+   "stage": "both",
+   "kind": "self_care",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4",
+    "S7"
+   ],
+   "evidence_note": "Look after your own wellbeing so you can support her better.",
+   "text_en": "Look after yourself too. Eat, move and sleep as well as you can. You can support her better when you are well.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अपनी देखभाल भी करें। अच्छा खाएं, घूमें और पूरी नींद लें। जब आप स्वस्थ रहेंगे तभी उनकी बेहतर मदद कर पाएंगे।",
+   "text_bn": "নিজের যত্নও নিন। ভালো খাবার খান এবং পর্যাপ্ত ঘুমান। আপনি নিজে সুস্থ থাকলেই তার পাশে ভালোভাবে দাঁড়াতে পারবেন।",
+   "text_ta": "உங்களையும் கவனித்துக் கொள்ளுங்கள். நன்றாக சாப்பிட்டு, போதுமான தூக்கத்தைப் பெறுங்கள். நீங்கள் நலமாக இருக்கும்போதுதான் அவருக்கு நன்றாக உதவ முடியும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_S_TALK",
+   "themes": [
+    "your_own_wellbeing"
+   ],
+   "stage": "both",
+   "kind": "self_care",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S2",
+    "S7"
+   ],
+   "evidence_note": "Share your own feelings with a relative, friend or health professional.",
+   "text_en": "Share your own worries with a trusted friend, relative or your doctor. Supporting someone can wear you down.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अपनी चिंताओं को किसी भरोसेमंद दोस्त, रिश्तेदार या डॉक्टर से साझा करें। किसी की देखभाल करना भी थका सकता है।",
+   "text_bn": "আপনার নিজের মানসিক চাপ কোনো বিশ্বস্ত বন্ধু বা ডাক্তারের সাথে ভাগ করুন। অন্যকে সমর্থন দেওয়াও কখনো কখনো ক্লান্তিকর হতে পারে।",
+   "text_ta": "உங்கள் சொந்த கவலைகளை ஒரு நண்பர் அல்லது மருத்துவரிடம் பகிர்ந்து கொள்ளுங்கள். ஒருவரைத் தொடர்ந்து கவனித்துக் கொள்வது உங்களையும் சோர்வடையச் செய்யலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_S_LOAD",
+   "themes": [
+    "your_own_wellbeing",
+    "ask_others"
+   ],
+   "stage": "both",
+   "kind": "self_care",
+   "effort": "talk",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S2"
+   ],
+   "evidence_note": "Share the load with others so you can take regular breaks.",
+   "text_en": "Share the load with other family members so you can take regular breaks.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "परिवार के अन्य सदस्यों के साथ जिम्मेदारियां बांटें ताकि आपको भी समय-समय पर आराम मिल सके।",
+   "text_bn": "পরিবারের অন্য সদস্যদের সাথে কাজের বোঝা ভাগ করে নিন যাতে আপনিও নিয়মিত বিরতি ও বিশ্রাম পেতে পারেন।",
+   "text_ta": "குடும்பத்தின் பிற உறுப்பினர்களுடன் பணிகளைப் பகிர்ந்துகொள்ளுங்கள், இதனால் நீங்களும் வழக்கமான இடைவெளிகளை எடுத்துக்கொள்ளலாம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_S_DOCTOR",
+   "themes": [
+    "your_own_wellbeing"
+   ],
+   "stage": "both",
+   "kind": "self_care",
+   "effort": "talk",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S2",
+    "S13",
+    "S6"
+   ],
+   "evidence_note": "Partners have a higher risk of low mood and anxiety (HSE, Tommy's); roughly one in ten fathers affected in a systematic review (S13), with little evidence on treatment.",
+   "text_en": "If you feel tired all the time, very low or anxious yourself, see your own doctor. Many partners go through this too.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "अगर आप खुद को बहुत थका हुआ, उदास या चिंतित महसूस करें, तो अपने डॉक्टर से मिलें। कई देखभालकर्ता भी इससे गुजरते हैं।",
+   "text_bn": "যদি আপনি নিজে সবসময় ক্লান্ত, খুব বিষণ্ণ বা উদ্বিগ্ন বোধ করেন, তবে নিজের ডাক্তার দেখান। অনেক সঙ্গীও এই পরিস্থিতির মুখোমুখি হন।",
+   "text_ta": "நீங்களே சோர்வாகவோ, மிகவும் மனச்சோர்வாகவோ உணர்ந்தால், உங்கள் மருத்துவரை அணுகுங்கள். பல துணைகளும் இதை எதிர்கொள்கிறார்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CI_FEEL",
+   "themes": [
+    "check_in",
+    "listen"
+   ],
+   "stage": "both",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S16",
+    "S4"
+   ],
+   "evidence_note": "WHO helping skills: validate feelings, do not interrupt or rush (S16); listen with empathy (S4).",
+   "text_en": "Ask her, 'How are you feeling today, really?' Then listen without rushing her or jumping in with fixes.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनसे पूछें, 'आज आप सचमुच कैसा महसूस कर रही हैं?' फिर बिना जल्दबाजी किए उनकी पूरी बात सुनें।",
+   "text_bn": "তাকে জিজ্ঞাসা করুন, 'আজ আপনি সত্যি কেমন অনুভব করছেন?' তারপর কোনো বাধা না দিয়ে মন দিয়ে শুনুন।",
+   "text_ta": "அவரிடம், 'இன்று நீங்கள் உண்மையில் எப்படி உணர்கிறீர்கள்?' என்று கேட்டு, அவசரப்படாமல் முழுமையாகக் கேளுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CI_GOODHARD",
+   "themes": [
+    "check_in",
+    "listen"
+   ],
+   "stage": "both",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S16",
+    "S8"
+   ],
+   "evidence_note": "Principle: listening and open communication (S16, S8). The exact question is ours.",
+   "text_en": "Ask her, 'What was one hard thing and one good thing about today?' Listen to both, and do not hurry to fix the hard one.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उनसे पूछें, 'आज का दिन कैसा रहा, क्या एक बात अच्छी और क्या एक बात मुश्किल रही?' दोनों को ध्यान से सुनें, और मुश्किल बात को तुरंत सुलझाने की जल्दबाजी न करें।",
+   "text_bn": "তাকে জিজ্ঞাসা করুন, 'আজকের দিনে একটি কঠিন এবং একটি ভালো দিক কী ছিল?' উভয়ই শুনুন, এবং কঠিন দিকটি তাড়াহুড়ো করে ঠিক করতে যাবেন না।",
+   "text_ta": "அவரிடம், 'இன்றைய நாளில் ஒரு கடினமான விஷயம் மற்றும் ஒரு நல்ல விஷயம் என்ன?' என்று கேளுங்கள். இரண்டையும் கேளுங்கள், கடினமானதை அவசரமாகச் சரிசெய்ய முயற்சிக்காதீர்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CI_MOOD",
+   "themes": [
+    "check_in"
+   ],
+   "stage": "both",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S16"
+   ],
+   "evidence_note": "The Thinking Healthy Health Calendar includes a mood chart. The one-question version is ours.",
+   "text_en": "Ask her, 'Is your mood low, okay or good today?' A quick question each day helps you both notice changes over time.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उनसे पूछें, 'आज आपका मूड कैसा है - कम, ठीक या अच्छा?' रोज का एक छोटा सवाल समय के साथ बदलाव समझने में मदद करता है।",
+   "text_bn": "তাকে জিজ্ঞাসা করুন, 'আজ আপনার মেজাজ কেমন - খারাপ, ঠিকঠাক নাকি ভালো?' প্রতিদিনের এই সহজ প্রশ্ন মানসিক পরিবর্তন বুঝতে সাহায্য করে।",
+   "text_ta": "அவரிடம், 'இன்று உங்கள் மனநிலை சோர்வாக, சாதாரணமாக அல்லது நன்றாக உள்ளதா?' என்று கேளுங்கள். இது நாளடைவில் மாற்றங்களைக் கவனிக்க உதவும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CI_SLEEPEAT",
+   "themes": [
+    "check_in",
+    "food_and_movement"
+   ],
+   "stage": "both",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S16",
+    "S1"
+   ],
+   "evidence_note": "Health Calendar tracks diet, rest and sleep (S16); help her eat and rest (S1).",
+   "text_en": "Ask her, 'Have you been able to eat and sleep enough today?' If not, ask what would make tomorrow easier.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उनसे पूछें, 'क्या आज आपको पर्याप्त खाने और सोने का समय मिला?' अगर नहीं, तो पूछें कि कल का दिन आसान कैसे बनाया जाए।",
+   "text_bn": "তাকে জিজ্ঞাসা করুন, 'আজ কি ঠিকমতো খাওয়ার ও ঘুমানোর সুযোগ পেয়েছেন?' যদি না হয়, তবে আগামী দিনটি কীভাবে সহজ করা যায় তা ভাবুন।",
+   "text_ta": "அவரிடம், 'இன்று நீங்கள் போதுமான அளவு சாப்பிடவும் தூங்கவும் முடிந்ததா?' என்று கேளுங்கள். இல்லையெனில் நாளை எப்படி எளிதாக்கலாம் என்று கேளுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CI_WORRY",
+   "themes": [
+    "check_in",
+    "listen"
+   ],
+   "stage": "both",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S7",
+    "S16"
+   ],
+   "evidence_note": "Talk often and ask how she is feeling (S7). The exact question is ours.",
+   "text_en": "Ask her, 'Is anything on your mind that we have not talked about?' Let her answer in her own time.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उनसे पूछें, 'क्या आपके मन में कोई ऐसी बात है जिस पर हमने अभी तक बात नहीं की है?' उन्हें अपनी गति से जवाब देने दें।",
+   "text_bn": "তাকে জিজ্ঞাসা করুন, 'আপনার মনে কি এমন কিছু আছে যা নিয়ে আমরা এখনও কথা বলিনি?' তাকে নিজের মতো সময় নিয়ে বলতে দিন।",
+   "text_ta": "அவரிடம், 'நாம் இதுவரை பேசாத ஏதேனும் விஷயம் உங்கள் மனதில் உள்ளதா?' என்று கேட்டு, அவர் நிதானமாக பதிலளிக்க இடமளியுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CI_ENOUGH",
+   "themes": [
+    "check_in",
+    "ask_what_she_needs"
+   ],
+   "stage": "both",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Ask what she needs; it may differ from what you expect (S4).",
+   "text_en": "Ask her, 'Is the help I am giving what you need, or would something else help more?'",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उनसे पूछें, 'क्या मेरी मदद आपके काम आ रही है, या किसी और तरीके से मदद करने से आपको ज्यादा आसानी होगी?'",
+   "text_bn": "তাকে জিজ্ঞাসা করুন, 'আমি যেভাবে সাহায্য করছি তা কি আপনার কাজে আসছে, নাকি অন্যভাবে সাহায্য করলে সুবিধা হতো?'",
+   "text_ta": "அவரிடம், 'நான் செய்யும் உதவி உங்களுக்குப் போதுமானதாக உள்ளதா, அல்லது வேறு ஏதேனும் அதிகம் உதவுமா?' என்று கேளுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_CI_PROUD",
+   "themes": [
+    "check_in",
+    "appreciate"
+   ],
+   "stage": "both",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S7",
+    "S4"
+   ],
+   "evidence_note": "Celebrate progress and share good times (S7, S4). The exact question is ours.",
+   "text_en": "Ask her what she is proud of this week, however small. Then tell her one thing you are proud of in her.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उनसे पूछें कि इस हफ्ते उन्हें खुद की किस बात पर गर्व है। फिर उन्हें एक ऐसी बात बताएं जिस पर आपको उन पर गर्व है।",
+   "text_bn": "তাকে জিজ্ঞাসা করুন এই সপ্তাহে নিজের কোন কাজের জন্য তিনি গর্বিত। তারপর আপনি তার এমন একটি গুণের কথা বলুন যার জন্য আপনি গর্ববোধ করেন।",
+   "text_ta": "இந்த வாரம் எதைப் பற்றி அவர் பெருமைப்படுகிறார் என்று கேளுங்கள். பின்னர் அவரிடம் நீங்கள் பெருமைப்படும் ஒரு விஷயத்தைக் கூறுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_CI_ABOUT",
+   "themes": [
+    "check_in",
+    "listen"
+   ],
+   "stage": "prenatal",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S6",
+    "S4"
+   ],
+   "evidence_note": "Be present and talk openly (S6, S4). The exact question is ours.",
+   "text_en": "Ask about her, not only the pregnancy: 'How are you doing, apart from the check-ups and the plans?'",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "सिर्फ गर्भावस्था के बारे में ही नहीं, उनके बारे में भी पूछें: 'जांच और योजनाओं के अलावा, आप खुद कैसी हैं?'",
+   "text_bn": "শুধু গর্ভাবস্থার খবর নয়, তার নিজের অনুভূতি জানতে চান: 'ডাক্তারি পরীক্ষা ও পরিকল্পনার বাইরে, আপনি নিজে কেমন আছেন?'",
+   "text_ta": "கர்ப்பத்தைப் பற்றி மட்டுமல்லாமல், அவரைப் பற்றியும் கேளுங்கள்: 'மருத்துவ சோதனைகளைத் தாண்டி, நீங்கள் எப்படி இருக்கிறீர்கள்?'",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_CI_ABOUT",
+   "themes": [
+    "check_in",
+    "listen"
+   ],
+   "stage": "postnatal",
+   "kind": "check_in",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S4",
+    "S7"
+   ],
+   "evidence_note": "Listen and ask how she is (S4, S7). The exact question is ours.",
+   "text_en": "Ask about her, not only the baby: 'How are you doing, apart from the baby?'",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "सिर्फ बच्चे के बारे में ही नहीं, उनके बारे में भी पूछें: 'शिशु की देखभाल के अलावा, आप खुद कैसी हैं?'",
+   "text_bn": "শুধু শিশুর কথা নয়, মায়ের নিজের খবর নিন: 'শিশুর যত্ন নেওয়ার পাশাপাশি, আপনি নিজে কেমন বোধ করছেন?'",
+   "text_ta": "குழந்தையைப் பற்றி மட்டுமல்லாமல், அவரைப் பற்றியும் கேளுங்கள்: 'குழந்தையைத் தாண்டி, நீங்கள் எப்படி உணர்கிறீர்கள்?'",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_PRIVACY",
+   "themes": [
+    "respect_her_wishes"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S17"
+   ],
+   "evidence_note": "Check with her before telling other people about her situation (PANDA).",
+   "text_en": "Before you tell anyone else how she is doing, ask what she is comfortable with you sharing.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "दूसरों को उनकी स्थिति बताने से पहले, उनसे पूछ लें कि वे क्या साझा करने में सहज हैं।",
+   "text_bn": "অন্য কাউকে তার স্বাস্থ্য বা অনুভূতির কথা জানানোর আগে, তিনি কতটুকু শেয়ার করতে স্বাচ্ছন্দ্য বোধ করেন তা জেনে নিন।",
+   "text_ta": "அவர் எப்படி இருக்கிறார் என்பதை மற்றவர்களிடம் சொல்வதற்கு முன், அவர் எதைப் பகிர விரும்புகிறார் என்று கேட்டுக்கொள்ளுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_TEA",
+   "themes": [
+    "small_joys"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S1",
+    "S8"
+   ],
+   "evidence_note": "Help her eat (S1); emotional and practical support protect against low mood (S8). The gesture is ours.",
+   "text_en": "Bring her a warm drink or her favourite snack without being asked, and sit with her for a few minutes.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "बिना मांगे उनके लिए गर्म पेय या उनकी पसंद का नाश्ता ले आएं, और कुछ मिनट उनके साथ बैठें।",
+   "text_bn": "না চাইতেই তার প্রিয় গরম পানীয় বা নাস্তা নিয়ে আসুন এবং কয়েক মিনিট তার সাথে বসে গল্প করুন।",
+   "text_ta": "அவர் கேட்காமலேயே அவருக்குப் பிடித்த சூடான பானம் அல்லது சிற்றுண்டியைக் கொண்டு வந்து கொடுத்து, சில நிமிடங்கள் அவருடன் அமருங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_SONG",
+   "themes": [
+    "small_joys"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S19"
+   ],
+   "evidence_note": "A trial found singing lifted mood at the time, with no lasting effect. Offered as a small pleasant moment only.",
+   "text_en": "Play a song she loves and sit with her while it plays. A favourite song can lift the mood for a little while.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm",
+    "immediate_mood_benefit_only"
+   ],
+   "text_hi": "उनका पसंदीदा गाना चलाएं और उनके साथ बैठकर सुनें। एक प्यारा गाना कुछ देर के लिए मन को खुश कर देता है।",
+   "text_bn": "তার পছন্দের একটি গান বাজান এবং গানটি চলার সময় তার পাশে বসুন। একটি প্রিয় গান মুহূর্তেই মন ভালো করে দিতে পারে।",
+   "text_ta": "அவருக்குப் பிடித்த பாடலை ஒலிக்கவிட்டு அவருடன் அமருங்கள். ஒரு இனிமையான பாடல் மனநிலையை உடனடியாக மாற்றும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_NOTE",
+   "themes": [
+    "small_joys",
+    "say_kind_words"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S3",
+    "S7"
+   ],
+   "evidence_note": "Reassure her she is doing well and express thanks (S3, S7). The gesture is ours.",
+   "text_en": "Send her a short, kind message or leave a note: 'Thinking of you. You are doing well.'",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उन्हें एक छोटा प्यारा संदेश भेजें या पर्ची छोड़ें: 'आपके बारे में सोच रहा हूँ। आप बहुत अच्छा कर रही हैं।'",
+   "text_bn": "তাকে একটি ছোট মিষ্টি বার্তা পাঠান বা চিরকুট লিখে রাখুন: 'তোমার কথা ভাবছি। তুমি খুব ভালোভাবে সবকিছু সামলাচ্ছ।'",
+   "text_ta": "அவருக்கு ஒரு சிறிய கனிவான செய்தி அனுப்புங்கள்: 'உன்னை நினைத்துக் கொண்டிருக்கிறேன். நீ சிறப்பாகச் செயல்படுகிறாய்.'",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_LAUGH",
+   "themes": [
+    "small_joys"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Celebrate and share the good times (S4).",
+   "text_en": "Share something light that makes her smile, like a funny story or her favourite show, and enjoy the good moments together.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "कोई हल्की-फुल्की बात साझा करें जिससे उनके चेहरे पर मुस्कान आए, जैसे कोई मजेदार किस्सा या उनका पसंदीदा शो।",
+   "text_bn": "হালকা কোনো মজার গল্প বা তার পছন্দের অনুষ্ঠান একসাথে দেখুন, যা তার মুখে হাসি ফোটাতে সাহায্য করে।",
+   "text_ta": "அவரை சிரிக்க வைக்கும் ஒரு வேடிக்கையான கதை அல்லது அவருக்குப் பிடித்த நிகழ்ச்சியைப் பகிர்ந்து, ஒன்றாக மகிழுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_DISH",
+   "themes": [
+    "small_joys",
+    "food_and_movement"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S7",
+    "S17"
+   ],
+   "evidence_note": "Cook meals to share and keep her company (S7, S17).",
+   "text_en": "Cook or bring her favourite home-cooked dish, keeping to any food advice her doctor has given.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "घर पर उनकी पसंद का खाना बनाएं या लाएं, डॉक्टर द्वारा दी गई भोजन सलाह का ध्यान रखते हुए।",
+   "text_bn": "ডাক্তারের পরামর্শ মেনে বাড়িতে তার পছন্দের খাবার রান্না করে আনুন বা পরিবেশন করুন।",
+   "text_ta": "மருத்துவர் கூறிய உணவு ஆலோசனைகளைக் கருத்தில் கொண்டு, அவருக்குப் பிடித்த வீட்டு உணவை சமைத்துக் கொடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_RUB",
+   "themes": [
+    "small_joys",
+    "protect_rest"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S1",
+    "S5"
+   ],
+   "evidence_note": "A massage may help her relax (S1); offering massage in pregnancy (S5). Both sources address partners.",
+   "text_en": "Offer a gentle head, hand or foot rub if she would like one. Stop at once if she does not want it.",
+   "needs_source": false,
+   "flag_list": [
+    "partner_source_ask_consent_and_culture_check"
+   ],
+   "text_hi": "अगर वे चाहें, तो धीरे से उनके सिर, हाथ या पैरों की मालिश कर दें। अगर वे न चाहें तो तुरंत रुक जाएं।",
+   "text_bn": "তিনি চাইলে মাথা, হাত বা পায়ে হালকা মালিশ করে দিন। তিনি না চাইলে সঙ্গে সঙ্গে বন্ধ করুন।",
+   "text_ta": "அவர் விரும்பினால் மெதுவாக தலை, கை அல்லது கால்களைப் பிடித்து விடுங்கள். அவர் விரும்பாவிட்டால் உடனே நிறுத்திவிடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_TIDY",
+   "themes": [
+    "small_joys",
+    "share_chores"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S4",
+    "S5"
+   ],
+   "evidence_note": "Take on tasks she does not feel up to (S4); help her get comfortable (S5). The gesture is ours.",
+   "text_en": "Tidy and freshen the place where she rests, so it feels calm and comfortable.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उनके आराम करने की जगह को साफ और सुव्यवस्थित रखें, ताकि वहां शांति और सुकून महसूस हो।",
+   "text_bn": "তার বিশ্রামের জায়গাটি পরিষ্কার ও পরিপাটি রাখুন, যাতে জায়গাটি আরামদায়ক ও শান্তিপূর্ণ মনে হয়।",
+   "text_ta": "அவர் ஓய்வெடுக்கும் இடத்தை சுத்தமாகவும் நேர்த்தியாகவும் வையுங்கள், இதனால் அது அமைதியாகவும் சௌகரியமாகவும் இருக்கும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_FRIEND",
+   "themes": [
+    "small_joys",
+    "help_her_connect"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S17",
+    "S7",
+    "S14"
+   ],
+   "evidence_note": "Encourage time with friends and loved ones (S17, S7); loneliness is central to low mood (S14).",
+   "text_en": "Suggest she calls or meets a friend she likes, and make some quiet time or childcare for it.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उन्हें किसी प्रिय सहेली या रिश्तेदार से बात करने या मिलने का सुझाव दें, और इसके लिए शांत समय निकालें।",
+   "text_bn": "তার কোনো প্রিয় বন্ধুর সাথে কথা বলা বা দেখা করার সুযোগ করে দিন এবং সেই সময়ে শিশুর দেখভাল করুন।",
+   "text_ta": "அவருக்குப் பிடித்த ஒரு நண்பரை அழைக்கவோ சந்திக்கவோ பரிந்துரைத்து, அதற்குரிய நேரத்தையும் குழந்தை பராமரிப்பையும் அமைத்துக் கொடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_SJ_TREAT",
+   "themes": [
+    "small_joys",
+    "appreciate"
+   ],
+   "stage": "both",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S4",
+    "S7"
+   ],
+   "evidence_note": "Show appreciation (S4, S7). The gesture is ours.",
+   "text_en": "Surprise her with a small treat she enjoys, like a sweet, some fruit or flowers. It is the thought that counts.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "उन्हें उनकी पसंद की किसी छोटी चीज़ से सरप्राइज दें, जैसे कोई मिठाई, फल या फूल। आपकी भावना सबसे ज्यादा मायने रखती है।",
+   "text_bn": "তার পছন্দের কোনো মিষ্টি, ফল বা ফুল এনে তাকে খুশি করুন। উপহারের চেয়ে আপনার ভালোবাসার টানটাই আসল।",
+   "text_ta": "அவருக்குப் பிடித்த இனிப்பு, பழம் அல்லது மலர்கள் போன்ற சிறிய பரிசளித்து ஆச்சரியப்படுத்துங்கள். அன்பான எண்ணமே முக்கியம்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_SJ_PHOTO",
+   "themes": [
+    "small_joys",
+    "bonding"
+   ],
+   "stage": "postnatal",
+   "kind": "small_joy",
+   "effort": "5min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S4"
+   ],
+   "evidence_note": "Celebrate and share the good times (S4). The gesture is ours.",
+   "text_en": "Look at photos or videos of the baby together and share a sweet or funny moment from the week.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "साथ मिलकर बच्चे की तस्वीरें या वीडियो देखें और सप्ताह के किसी प्यारे या मजेदार पल को याद करें।",
+   "text_bn": "একসাথে শিশুর ছবি বা ভিডিও দেখুন এবং সপ্তাহের কোনো মিষ্টি বা মজার মুহূর্তের স্মৃতি ভাগ করুন।",
+   "text_ta": "குழந்தையின் புகைப்படங்கள் அல்லது வீடியோக்களை ஒன்றாகப் பார்த்து, இந்த வாரத்தின் இனிமையான தருணங்களைப் பகிர்ந்து கொள்ளுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_TT_BREATHE",
+   "themes": [
+    "calm_moments",
+    "do_together"
+   ],
+   "stage": "both",
+   "kind": "try_together",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S16"
+   ],
+   "evidence_note": "WHO Thinking Healthy relaxation: slow breathing, three breaths in and out (S16).",
+   "text_en": "Sit together and breathe slowly for one minute: in through the nose for three counts, then gently out for three. Stop if it feels uncomfortable.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "साथ बैठकर एक मिनट के लिए धीरे-धीरे सांस लें: तीन गिनती तक नाक से सांस लें, और तीन गिनती में धीरे से छोड़ें। असहज लगे तो रुक जाएं।",
+   "text_bn": "একসাথে বসুন এবং এক মিনিটের জন্য ধীরে ধীরে শ্বাস নিন: তিন গোনা পর্যন্ত নাক দিয়ে শ্বাস নিন, তারপর ধীরে ধীরে তিন গুনে ছাড়ুন।",
+   "text_ta": "ஒன்றாக அமர்ந்து ஒரு நிமிடம் மெதுவாக மூச்சு விடுங்கள்: மூன்று எண்ணிக்கையில் உள்ளிழுத்து, பின்னர் மூன்று எண்ணிக்கையில் மெதுவாக வெளிவிடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_TT_CHART",
+   "themes": [
+    "do_together"
+   ],
+   "stage": "both",
+   "kind": "try_together",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S16"
+   ],
+   "evidence_note": "Thinking Healthy Health Calendar covers mood, diet, rest, exercise and sleep (S16). Adapted wording.",
+   "text_en": "Make a simple daily chart together with mood, food, rest and a short walk. Look at it each evening and notice what helps.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "मूड, भोजन, आराम और छोटी सैर का एक आसान चार्ट बनाएं। हर शाम इस पर नज़र डालें और देखें कि क्या मददगार रहा।",
+   "text_bn": "মেজাজ, খাবার, বিশ্রাম এবং হাঁটার একটি সহজ চার্ট তৈরি করুন। প্রতিদিন সন্ধ্যায় এটি দেখে বুঝুন কী সাহায্য করছে।",
+   "text_ta": "மனநிலை, உணவு, ஓய்வு மற்றும் நடைப்பயிற்சியை உள்ளடக்கிய எளிய அட்டவணையை உருவாக்குங்கள். எது உதவுகிறது என்பதைக் கவனியுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_TT_ONESTEP",
+   "themes": [
+    "do_together"
+   ],
+   "stage": "both",
+   "kind": "try_together",
+   "effort": "longer",
+   "evidence_level": "guidance_and_observational",
+   "source_refs": [
+    "S16",
+    "S18"
+   ],
+   "evidence_note": "Behavioural activation with family encouraging small steps (S16); the programme as a whole was tested in trials in Pakistan and India (S18).",
+   "text_en": "Pick one small thing she used to enjoy, such as a hobby, a show or a visit to a friend, and plan it together for this week.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनकी पुरानी पसंदीदा किसी छोटी गतिविधि को चुनें, जैसे कोई शौक, कोई शो या सहेली से मिलना, और इस सप्ताह के लिए योजना बनाएं।",
+   "text_bn": "আগে তিনি ভালোবাসতেন এমন একটি ছোট কাজ বেছে নিন, যেমন কোনো শখ বা প্রিয় অনুষ্ঠান, এবং এই সপ্তাহের জন্য পরিকল্পনা করুন।",
+   "text_ta": "அவர் முன்பு ரசித்த பொழுதுபோக்கு அல்லது நண்பரைச் சந்திப்பது போன்ற ஒரு சிறிய விஷயத்தைத் தேர்ந்தெடுத்து, இந்த வாரத்திற்குத் திட்டமிடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_TT_SMALLSTEP",
+   "themes": [
+    "notice_progress",
+    "say_kind_words"
+   ],
+   "stage": "both",
+   "kind": "try_together",
+   "effort": "1min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S16",
+    "S4"
+   ],
+   "evidence_note": "Offer encouragement for small steps (S16); notice what she does (S4).",
+   "text_en": "When she manages one small thing, like a wash, a meal or a short walk, notice it and say, 'Well done.'",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "जब वे कोई छोटा काम पूरा कर लें, जैसे नहाना, भोजन करना या थोड़ी सैर, तो ध्यान दें और कहें, 'बहुत बढ़िया किया।'",
+   "text_bn": "তিনি যখন একটি ছোট কাজ সম্পন্ন করেন, যেমন গোসল, খাবার বা একটু হাঁটা, তখন লক্ষ্য করে বলুন, 'খুব ভালো করেছ।'",
+   "text_ta": "அவர் குளிப்பது, சாப்பிடுவது அல்லது நடைப்பயிற்சி போன்ற சிறிய காரியத்தைச் செய்யும்போது, அதைக் கவனித்துப் பாராட்டுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_TT_COOK",
+   "themes": [
+    "do_together"
+   ],
+   "stage": "both",
+   "kind": "try_together",
+   "effort": "longer",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S7",
+    "S1"
+   ],
+   "evidence_note": "Keep her company, for example by cooking together (S7). Phone-free wording is ours.",
+   "text_en": "Cook a simple meal together and sit down to eat it, without phones.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "फ़ोन से दूर रहकर, साथ मिलकर एक साधारण भोजन बनाएं और बैठकर खाएं।",
+   "text_bn": "ফোন পাশে রেখে, একসাথে সহজ কোনো খাবার রান্না করুন এবং একসাথে বসে খান।",
+   "text_ta": "தொலைபேசி பயன்பாடின்றி, ஒன்றாகச் சேர்ந்து எளிய உணவை சமைத்து அமர்ந்து சாப்பிடுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_N_TT_SKIN",
+   "themes": [
+    "bonding",
+    "share_baby_care"
+   ],
+   "stage": "postnatal",
+   "kind": "try_together",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Skin-to-skin contact after birth can help partners bond (S5). Written for the caregiver, not the mother.",
+   "text_en": "Spend some quiet skin-to-skin time with the baby yourself. It helps you bond and gives her a rest.",
+   "needs_source": false,
+   "flag_list": [
+    "written_for_caregiver"
+   ],
+   "text_hi": "खुद भी बच्चे के साथ त्वचा से त्वचा का संपर्क (स्किन-टू-स्किन) बनाएं। इससे बच्चे से जुड़ाव बढ़ता है और माँ को आराम मिलता है।",
+   "text_bn": "নিজের ত্বকের সাথে শিশুর স্পর্শ (স্কিন-টু-স্কিন) করিয়ে শান্ত সময় কাটান। এটি সন্তানের সাথে বন্ধন দৃঢ় করে এবং মাকে বিশ্রাম দেয়।",
+   "text_ta": "குழந்தையுடன் நீங்கள் தனியாக அமைதியான உடலோடு உடல் தொடும் (skin-to-skin) நேரத்தை செலவிடுங்கள். இது பிணைப்பை வளர்க்கும்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_TT_CLASS",
+   "themes": [
+    "do_together"
+   ],
+   "stage": "prenatal",
+   "kind": "try_together",
+   "effort": "longer",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Attend antenatal classes together; watch videos about labour and birth (S5).",
+   "text_en": "Go to an antenatal class together, or watch a video about labour and birth, and talk about what you learned.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "साथ में प्रसवपूर्व क्लास जाएं, या प्रसव और डिलीवरी पर वीडियो देखें, और आपने जो सीखा उस पर बात करें।",
+   "text_bn": "একসাথে প্রসবপূর্ব ক্লাসে যোগ দিন বা প্রসব সংক্রান্ত শিক্ষামূলক ভিডিও দেখুন এবং যা শিখলেন তা নিয়ে আলোচনা করুন।",
+   "text_ta": "பிரசவத்திற்கு முந்தைய வகுப்புகளுக்கு ஒன்றாகச் செல்லுங்கள் அல்லது பிரசவ வீடியோக்களைப் பார்த்து, கற்றுக்கொண்டதைப் பற்றி பேசுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_TT_KICK",
+   "themes": [
+    "bonding",
+    "do_together"
+   ],
+   "stage": "prenatal",
+   "kind": "try_together",
+   "effort": "1min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Talk or sing to the baby; bonding can start before birth (S5). The idea is ours.",
+   "text_en": "If she wants to, feel the baby move together and talk about how it feels.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "अगर वे चाहें, तो साथ मिलकर बच्चे की हलचल महसूस करें और बात करें कि यह कैसा लग रहा है।",
+   "text_bn": "তিনি চাইলে একসাথে গর্ভে শিশুর নড়াচড়া অনুভব করুন এবং এটি কেমন লাগছে তা নিয়ে কথা বলুন।",
+   "text_ta": "அவர் விரும்பினால், குழந்தை உதைப்பதை ஒன்றாக உணர்ந்து, அது எப்படி இருக்கிறது என்பதைப் பற்றி பேசுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_P_TT_COMFY",
+   "themes": [
+    "protect_rest",
+    "small_joys"
+   ],
+   "stage": "prenatal",
+   "kind": "try_together",
+   "effort": "5min",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S5"
+   ],
+   "evidence_note": "Help your partner get comfortable (S5).",
+   "text_en": "Help her get comfortable, for example with extra cushions or a soft place to rest, and ask what would feel best.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उन्हें आरामदायक स्थिति में बैठने या लेटने में मदद करें, जैसे अतिरिक्त तकिए लगाकर, और पूछें कि उन्हें क्या सबसे अच्छा लगेगा।",
+   "text_bn": "তাকে আরামদায়কভাবে বসতে বা শুতে সাহায্য করুন, যেমন বাড়তি বালিশ দিয়ে, এবং তার কীভাবে সবচেয়ে ভালো লাগে তা জানতে চান।",
+   "text_ta": "கூடுதல் தலையணைகள் அல்லது மென்மையான இடத்தை அமைத்து அவர் சௌகரியமாக ஓய்வெடுக்க உதவுங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_PROGRESS",
+   "themes": [
+    "notice_progress"
+   ],
+   "stage": "both",
+   "kind": "notice",
+   "effort": "none",
+   "evidence_level": "health_service_guidance",
+   "source_refs": [
+    "S7"
+   ],
+   "evidence_note": "Celebrate their progress (S7).",
+   "text_en": "Notice small signs she is doing a little better, like a smile, a full meal or a chat, and tell her you saw it.",
+   "needs_source": false,
+   "flag_list": [],
+   "text_hi": "उनके बेहतर होने के छोटे संकेतों पर ध्यान दें, जैसे मुस्कान, पूरा भोजन या बातचीत, और उन्हें बताएं कि आपने इसे देखा।",
+   "text_bn": "তিনি ভালো বোধ করার ছোট লক্ষণগুলো লক্ষ্য করুন, যেমন একটু হাসি, ঠিকমতো খাওয়া বা কথা বলা, এবং তাকে জানান যে আপনি তা দেখেছেন।",
+   "text_ta": "ஒரு புன்னகை, முழு உணவு அல்லது பேச்சு போன்ற சிறிய முன்னேற்றங்களைக் கவனித்து, அதை அவரிடம் சுட்டிக்காட்டி ஊக்கப்படுத்துங்கள்.",
+   "status": "draft"
+  },
+  {
+   "id": "CG_B_FAMCHART",
+   "themes": [
+    "ask_others",
+    "share_chores"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "effort": "5min",
+   "evidence_level": "principle_based",
+   "source_refs": [
+    "S2",
+    "S4"
+   ],
+   "evidence_note": "Share the load with others (S2); agree arrangements together (S4). The chart idea is ours.",
+   "text_en": "Gather the family for a short chat about who will do what this week, and write it where everyone can see.",
+   "needs_source": false,
+   "flag_list": [
+    "light_tip_exact_idea_is_ours_clinician_to_confirm"
+   ],
+   "text_hi": "परिवार को इकट्ठा करके छोटी चर्चा करें कि इस सप्ताह कौन क्या काम संभालेगा, और इसे ऐसी जगह लिखें जहां सब देख सकें।",
+   "text_bn": "পরিবারকে একত্রিত করে এই সপ্তাহে কে কোন দায়িত্ব পালন করবে তা নিয়ে কথা বলুন এবং একটি দৃশ্যমান স্থানে লিখে রাখুন।",
+   "text_ta": "குடும்பத்தினரை ஒன்று கூட்டி இந்த வாரம் யார் என்ன வேலை செய்ய வேண்டும் என்பதைப் பேசி, அனைவரும் பார்க்கும்படி எழுதி வையுங்கள்.",
+   "status": "draft"
+  }
+ ]
+}

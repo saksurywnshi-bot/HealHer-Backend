@@ -1,0 +1,210 @@
+[
+  {
+    "id": "SUG_CLINICIAN_CONTACT",
+    "category": "clinical",
+    "text": {
+      "en": "Speaking with your doctor, midwife or health worker can help you explore supportive options.",
+      "hi": "अपने डॉक्टर, मिडवाइफ या स्वास्थ्य कार्यकर्ता से बात करने से आपको सही सहायता और मार्गदर्शन मिल सकता है।",
+      "bn": "আপনার ডাক্তার, মিডওয়াইফ বা স্বাস্থ্যকর্মীর সাথে কথা বললে আপনি সঠিক সহায়তা পেতে পারেন।",
+      "ta": "உங்கள் மருத்துவர், செவிலியர் அல்லது சுகாதாரப் பணியாளரிடம் பேசுவது உங்களுக்கு ஆதரவான வழிகளைத் தரும்."
+    },
+    "evidence": "guideline",
+    "evidence_note": "NICE and ACOG perinatal guidelines recommend clinical consultation for elevated depressive symptoms.",
+    "source_refs": ["NICE CG192", "ACOG"],
+    "status": "approved",
+    "show_only_in_bands": ["moderate", "moderately_severe", "severe", "possible_mild_depression", "possible_depression"],
+    "is_clinician_contact": true
+  },
+  {
+    "id": "SUG_SLEEP_PROTECT",
+    "category": "sleep",
+    "text": {
+      "en": "Prioritise rest where you can, and keep to a steady sleep and wake routine.",
+      "hi": "जहाँ तक संभव हो आराम को प्राथमिकता दें और सोने तथा जागने का एक नियमित समय रखें।",
+      "bn": "যতটা সম্ভব বিশ্রামকে অগ্রাধিকার দিন এবং ঘুমানো ও ওঠার একটি নিয়মিত নিয়ম বজায় রাখুন।",
+      "ta": "உங்களால் முடிந்தவரை ஓய்வுக்கு முன்னுரிமை கொடுங்கள், தூங்கும் மற்றும் விழிக்கும் நேரத்தை சீராக வைத்திருங்கள்."
+    },
+    "evidence": "guideline",
+    "evidence_note": "Perinatal sleep hygiene recommendation to protect emotional stability.",
+    "source_refs": ["NICE CG192", "RNAO"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "moderately_severe", "severe", "well", "possible_mild_depression", "possible_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_BEDTIME_ROUTINE",
+    "category": "sleep",
+    "text": {
+      "en": "A calm wind-down before bed with softer lighting can help prepare your body for rest.",
+      "hi": "सोने से पहले धीमी रोशनी के साथ शांत वातावरण आपके शरीर को आराम के लिए तैयार करने में मदद कर सकता है।",
+      "bn": "ঘুমাতে যাওয়ার আগে মৃদু আলোয় শান্ত পরিবেশ আপনার শরীরকে বিশ্রামের জন্য প্রস্তুত করতে পারে।",
+      "ta": "தூங்குவதற்கு முன் மெல்லிய ஒளியில் அமைதியான சூழலை உருவாக்குவது உங்கள் உடலுக்கு ஓய்வை அளிக்க உதவும்."
+    },
+    "evidence": "guideline",
+    "evidence_note": "Sleep hygiene practices recommended during pregnancy and postpartum.",
+    "source_refs": ["RNAO", "CBT-I"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "well", "possible_mild_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_TALK_TRUSTED",
+    "category": "support",
+    "text": {
+      "en": "Sharing how you feel with a trusted partner, family member or friend can bring comfort.",
+      "hi": "आप कैसा महसूस कर रही हैं, यह किसी भरोसेमंद साथी, परिवार के सदस्य या मित्र से साझा करना सुकून दे सकता है।",
+      "bn": "আপনি কেমন অনুভব করছেন তা কোনো নির্ভরযোগ্য সঙ্গী, পরিবারের সদস্য বা বন্ধুর সাথে ভাগ করে নিলে মানসিক শান্তি পাওয়া যায়।",
+      "ta": "நீங்கள் எப்படி உணர்கிறீர்கள் என்பதை உங்கள் துணைவர், குடும்பத்தினர் அல்லது நண்பரிடம் பகிர்ந்துகொள்வது அமைதியைத் தரும்."
+    },
+    "evidence": "trial",
+    "evidence_note": "Social support and peer listening reduce perinatal stress.",
+    "source_refs": ["WHO Thinking Healthy"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "moderately_severe", "severe", "well", "possible_mild_depression", "possible_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_TIME_FOR_SELF",
+    "category": "self_care",
+    "text": {
+      "en": "Take a few quiet minutes just for yourself each day to pause and breathe.",
+      "hi": "हर दिन अपने लिए कुछ शांत मिनट निकालें ताकि आप थोड़ा ठहर सकें और सुकून से सांस ले सकें।",
+      "bn": "প্রতিদিন নিজের জন্য কিছু শান্ত মুহূর্ত রাখুন যাতে আপনি একটু থামতে এবং স্বস্তি পেতে পারেন।",
+      "ta": "ஒவ்வொரு நாளும் உங்களுக்காக சில அமைதியான நிமிடங்களை ஒதுக்கி ஆசுவாசப்படுத்திக் கொள்ளுங்கள்."
+    },
+    "evidence": "expert",
+    "evidence_note": "APA maternal well-being self-care recommendations.",
+    "source_refs": ["APA Q&A"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "well", "possible_mild_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_CALMING_PRACTICE",
+    "category": "calming",
+    "text": {
+      "en": "A few minutes of quiet breathing or gentle stretching can help you feel more settled.",
+      "hi": "कुछ मिनटों की गहरी सांसें या हल्का खिंचाव आपको अधिक शांत और सहज महसूस करा सकता है।",
+      "bn": "কয়েক মিনিট শান্তভাবে শ্বাস নেওয়া বা হালকা শরীরচর্চা আপনাকে শান্ত বোধ করতে সাহায্য করতে পারে।",
+      "ta": "சில நிமிடங்கள் அமைதியாக மூச்சுப் பயிற்சி செய்வது உங்களை அமைதிப்படுத்த உதவும்."
+    },
+    "evidence": "mixed",
+    "evidence_note": "Mindfulness-based interventions show mixed or limited evidence as standalone self-care.",
+    "source_refs": ["Mindfulness Meta-analysis 2016"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "well"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_ONE_WORRY_STEP",
+    "category": "coping",
+    "text": {
+      "en": "If thoughts feel overwhelming, pick just one small task you can comfortably complete today.",
+      "hi": "यदि विचार भारी लग रहे हों, तो केवल एक छोटा काम चुनें जिसे आप आज आसानी से पूरा कर सकें।",
+      "bn": "যদি কোনো চিন্তা বেশি মনে হয়, তবে আজ সহজে করা যায় এমন একটি ছোট কাজ বেছে নিন।",
+      "ta": "சிந்தனைகள் அதிகமாகத் தோன்றினால், இன்று உங்களால் சுலபமாகச் செய்யக்கூடிய ஒரு சிறிய செயலை மட்டும் தேர்ந்தெடுங்கள்."
+    },
+    "evidence": "trial",
+    "evidence_note": "Behavioural activation step-by-step approach from WHO South Asia trial.",
+    "source_refs": ["WHO Thinking Healthy"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "well", "possible_mild_depression", "possible_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_ASK_FAMILY_HELP",
+    "category": "support",
+    "text": {
+      "en": "Allow family members to take care of one chore or meal so you can rest.",
+      "hi": "परिवार के सदस्यों को घर के किसी एक काम या भोजन की जिम्मेदारी लेने दें ताकि आपको आराम मिल सके।",
+      "bn": "পরিবারের কাউকে একটি কাজ বা রান্নার দায়িত্ব নিতে দিন যাতে আপনি বিশ্রাম নিতে পারেন।",
+      "ta": "நீங்கள் ஓய்வெடுக்க குடும்பத்தினரிடம் ஒரு வீட்டுப் பொறுப்பை ஒப்படைக்க தயங்காதீர்கள்."
+    },
+    "evidence": "expert",
+    "evidence_note": "APA postpartum guidance on practical support acceptance.",
+    "source_refs": ["APA Q&A"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "well", "possible_mild_depression", "possible_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_GENTLE_MOVEMENT",
+    "category": "movement",
+    "text": {
+      "en": "Gentle walking in daylight can help lift your spirits, if your doctor says it is safe.",
+      "hi": "दिन के उजाले में हल्की सैर आपके मूड को बेहतर बना सकती है, यदि आपके डॉक्टर ने इसकी अनुमति दी हो।",
+      "bn": "দিনের আলোয় হালকা হাঁটা আপনার মনকে ভালো করতে পারে, যদি আপনার ডাক্তার সম্মতি দেন।",
+      "ta": "இயற்கை வெளிச்சத்தில் மெதுவாக நடப்பது உங்கள் மனநிலையை உயர்த்தும், உங்கள் மருத்துவர் அனுமதித்தால்."
+    },
+    "evidence": "trial",
+    "evidence_note": "Perinatal physical activity meta-analysis (Liu et al. 2022).",
+    "source_refs": ["Liu et al. 2022", "ACOG"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "well", "possible_mild_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_BE_GENTLE",
+    "category": "compassion",
+    "text": {
+      "en": "Be kind to yourself today. Raising a child is a major transition that unfolds one day at a time.",
+      "hi": "आज खुद के प्रति दयालु रहें। बच्चे का पालन-पोषण एक बड़ा बदलाव है जो धीरे-धीरे एक दिन में आगे बढ़ता है।",
+      "bn": "আজ নিজের প্রতি সদয় হোন। সন্তান পালন একটি বড় পরিবর্তন যা ধীরে ধীরে সময় নিয়ে ঘটে।",
+      "ta": "இன்று உங்கள் மீது பரிவு கொள்ளுங்கள். ஒரு குழந்தையை வளர்ப்பது ஒவ்வொரு நாளாக நகரும் ஒரு பெரிய பயணம்."
+    },
+    "evidence": "expert",
+    "evidence_note": "Self-compassion and realistic expectations guidance.",
+    "source_refs": ["RNAO", "APA"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "well", "possible_mild_depression", "possible_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_PEER_SUPPORT",
+    "category": "support",
+    "text": {
+      "en": "Connecting with other new mothers can reassure you that your experiences are shared.",
+      "hi": "अन्य माताओं से जुड़ने से आपको यह भरोसा मिल सकता है कि आप इस यात्रा में अकेली नहीं हैं।",
+      "bn": "অন্য নতুন মায়েদের সাথে কথা বললে আপনি বুঝতে পারবেন যে এই অনুভূতিগুলি সবারই হতে পারে।",
+      "ta": "மற்ற புதிய தாய்மார்களுடன் இணைவது உங்கள் அனுபவங்கள் இயல்பானவை என்பதை உணர உதவும்."
+    },
+    "evidence": "trial",
+    "evidence_note": "Peer-delivered support programme efficacy in South Asia.",
+    "source_refs": ["WHO Thinking Healthy"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "well", "possible_mild_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_REST_PACE",
+    "category": "self_care",
+    "text": {
+      "en": "Pace your daily activities and give yourself permission to rest whenever energy dips.",
+      "hi": "अपने दैनिक कार्यों को सहज गति से करें और जब भी थकान लगे, खुद को आराम करने की अनुमति दें।",
+      "bn": "আপনার প্রতিদিনের কাজগুলি স্বাভাবিক গতিতে করুন এবং ক্লান্তি বোধ হলে বিশ্রাম নিন।",
+      "ta": "உங்கள் அன்றாடப் பணிகளை மெதுவாகச் செய்யுங்கள், சோர்வாக இருக்கும்போது ஓய்வெடுக்க தயங்காதீர்கள்."
+    },
+    "evidence": "expert",
+    "evidence_note": "Fatigue pacing guidance in postpartum recovery.",
+    "source_refs": ["RNAO"],
+    "status": "approved",
+    "show_only_in_bands": ["minimal", "mild", "moderate", "well", "possible_mild_depression", "possible_depression"],
+    "is_clinician_contact": false
+  },
+  {
+    "id": "SUG_DRAFT_EXAMPLE",
+    "category": "self_care",
+    "text": {
+      "en": "Take time to rest quietly when your baby rests.",
+      "hi": "जब आपका शिशु सोए, तब आप भी थोड़ा आराम करें।",
+      "bn": "আপনার শিশু যখন ঘুমাবে, আপনিও কিছুটা বিশ্রাম নিন।",
+      "ta": "உங்கள் குழந்தை தூங்கும் போது நீங்களும் சிறிது ஓய்வெடுங்கள்."
+    },
+    "evidence": "expert",
+    "evidence_note": "Draft suggestion awaiting clinician review.",
+    "source_refs": ["Draft Clinical Guideline Excerpt"],
+    "status": "draft",
+    "show_only_in_bands": ["minimal", "mild", "well"],
+    "is_clinician_contact": false
+  }
+]

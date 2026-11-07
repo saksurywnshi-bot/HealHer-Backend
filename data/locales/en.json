@@ -1,0 +1,40 @@
+{
+  "sentiment": {
+    "disclaimer": "This gentle reflection is an AI self-reflection companion, not a clinical diagnosis or medical evaluation.",
+    "tone": {
+      "positive": "You seem in good spirits today.",
+      "neutral": "You seem steady today.",
+      "tired_overwhelmed": "You seem exhausted and carrying a lot today.",
+      "anxious": "You seem worried or uneasy today.",
+      "low": "You seem down or heavy-hearted today.",
+      "distressed": "You are going through a very tough, distressing moment today."
+    },
+    "theme": {
+      "sleep": "Sleep & Nighttime Rest",
+      "tiredness": "Fatigue & Low Energy",
+      "baby_health_worry": "Worries About Baby's Health",
+      "family_support": "Family & Partner Support",
+      "loneliness": "Feelings of Loneliness",
+      "money": "Financial Worries",
+      "work": "Work & Career Pressures",
+      "self_criticism_guilt": "Self-Doubt & Maternal Guilt",
+      "body_physical_symptoms": "Physical Changes & Discomfort",
+      "positive_moments": "Uplifting & Joyful Moments",
+      "delivery_fear": "Birth & Delivery Apprehension",
+      "pregnancy_symptoms": "Pregnancy Symptoms & Changes",
+      "feeding_difficulty": "Feeding & Lactation Challenges",
+      "baby_crying_sleep": "Baby's Crying & Sleep Struggles",
+      "recovery_pain": "Healing, Wounds & Postpartum Pain",
+      "bonding_worries": "Connection & Bonding With Baby",
+      "identity_change": "Motherhood Identity & Life Shifts",
+      "return_to_work": "Returning to Work After Baby"
+    }
+  },
+  "pattern": {
+    "theme_frequent": "{{theme}} was on your mind in {{count}} of {{total}} check-ins.",
+    "consecutive_low": "You experienced low or anxious feelings for {{streak}} days in a row.",
+    "sleep_impact": "On lower-mood days you slept {{low_sleep}} hours on average, compared to {{other_sleep}} hours on other days.",
+    "period_comparison": "You had {{diff}} {{change}} low or anxious days compared to the previous period.",
+    "talk_to_someone": "Because you have had several difficult days recently, reaching out to your doctor, counselor, or a trusted loved one could bring gentle comfort."
+  }
+}

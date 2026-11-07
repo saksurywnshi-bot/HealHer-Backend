@@ -1,0 +1,47 @@
+{
+  "SLP_U": {
+    "status": "draft"
+  },
+  "SLP_NEWBORN": {
+    "status": "approved"
+  },
+  "SLP_PRENATAL_TELL": {
+    "status": "approved"
+  },
+  "SLP_CBTI": {
+    "status": "approved"
+  },
+  "LON_U": {
+    "status": "approved"
+  },
+  "LON_SAY": {
+    "status": "approved"
+  },
+  "LON_PEER": {
+    "status": "approved"
+  },
+  "LON_CALL": {
+    "status": "approved"
+  },
+  "TIR_CHECK": {
+    "status": "approved"
+  },
+  "TIR_HANDOVER": {
+    "status": "approved"
+  },
+  "TIR_WALK": {
+    "status": "approved"
+  },
+  "GEN_LOW_SMALL": {
+    "status": "approved"
+  },
+  "GEN_LOW_CBT": {
+    "status": "approved"
+  },
+  "GEN_TIRED_ASK": {
+    "status": "approved"
+  },
+  "GEN_NEU_ROUTINE": {
+    "status": "approved"
+  }
+}

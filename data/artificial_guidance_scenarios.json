@@ -1,0 +1,628 @@
+[
+  {
+    "scenario_id": "PHQ9_RANGE_1_MINIMAL",
+    "instrument": "PHQ9",
+    "name": "PHQ-9 Minimal Distress (Score 0-4)",
+    "description": "Mother reports occasional minor tiredness, overall doing well. Self-care and sleep routine prioritized.",
+    "submitted_answers": {
+      "1": 1,
+      "2": 1,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    "total_score": 2,
+    "band_id": "minimal",
+    "band_message": "Your answers suggest you are doing okay right now.",
+    "escalation": "routine",
+    "safety_triggered": false,
+    "language": "en",
+    "themes_requested": [
+      "sleep",
+      "positive_moments"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+      },
+      {
+        "id": "SUG_BEDTIME_ROUTINE",
+        "category": "sleep",
+        "text": "A calm wind-down before bed with softer lighting can help prepare your body for rest."
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+      },
+      {
+        "id": "SUG_TIME_FOR_SELF",
+        "category": "self_care",
+        "text": "Take a few quiet minutes just for yourself each day to pause and breathe."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": null,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "PHQ9_RANGE_2_MILD",
+    "instrument": "PHQ9",
+    "name": "PHQ-9 Mild Distress (Score 5-9)",
+    "description": "Mild fatigue and sleep disruption post-delivery. AI orders sleep protection, pacing rest, and self-care first.",
+    "submitted_answers": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 0,
+      "9": 0
+    },
+    "total_score": 7,
+    "band_id": "mild",
+    "band_message": "Your answers suggest some things are weighing on you. Be gentle with yourself and keep checking in.",
+    "escalation": "monitor",
+    "safety_triggered": false,
+    "language": "en",
+    "themes_requested": [
+      "sleep",
+      "tiredness",
+      "body_physical_symptoms"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+      },
+      {
+        "id": "SUG_BEDTIME_ROUTINE",
+        "category": "sleep",
+        "text": "A calm wind-down before bed with softer lighting can help prepare your body for rest."
+      },
+      {
+        "id": "SUG_TIME_FOR_SELF",
+        "category": "self_care",
+        "text": "Take a few quiet minutes just for yourself each day to pause and breathe."
+      },
+      {
+        "id": "SUG_GENTLE_MOVEMENT",
+        "category": "movement",
+        "text": "Gentle walking in daylight can help lift your spirits, if your doctor says it is safe."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": null,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "PHQ9_RANGE_3_MODERATE",
+    "instrument": "PHQ9",
+    "name": "PHQ-9 Moderate Distress (Score 10-14)",
+    "description": "Moderate distress. Escalation is see_clinician: Clinician Contact item MUST be pinned at position #0. Calming practice (mixed evidence) excluded.",
+    "submitted_answers": {
+      "1": 2,
+      "2": 2,
+      "3": 1,
+      "4": 2,
+      "5": 1,
+      "6": 2,
+      "7": 1,
+      "8": 1,
+      "9": 0
+    },
+    "total_score": 12,
+    "band_id": "moderate",
+    "band_message": "Your answers suggest you may be carrying a lot right now. Reaching out to a doctor, midwife or health worker can help.",
+    "escalation": "see_clinician",
+    "safety_triggered": false,
+    "language": "en",
+    "themes_requested": [
+      "loneliness",
+      "family_support",
+      "self_criticism_guilt"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_CLINICIAN_CONTACT",
+        "category": "clinical",
+        "text": "Speaking with your doctor, midwife or health worker can help you explore supportive options."
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+      },
+      {
+        "id": "SUG_ASK_FAMILY_HELP",
+        "category": "support",
+        "text": "Allow family members to take care of one chore or meal so you can rest."
+      },
+      {
+        "id": "SUG_BE_GENTLE",
+        "category": "compassion",
+        "text": "Be kind to yourself today. Raising a child is a major transition that unfolds one day at a time."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": true,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "PHQ9_RANGE_4_MODERATELY_SEVERE",
+    "instrument": "PHQ9",
+    "name": "PHQ-9 Moderately Severe Distress (Score 15-19)",
+    "description": "Elevated distress. AI model is strictly GATED (see_clinician_soon). Returns deterministic safety guidance and verified helplines.",
+    "submitted_answers": {
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 2,
+      "8": 3,
+      "9": 0
+    },
+    "total_score": 17,
+    "band_id": "moderately_severe",
+    "band_message": "Your answers suggest you are going through a difficult time. We strongly recommend speaking with a health professional.",
+    "escalation": "see_clinician_soon",
+    "safety_triggered": false,
+    "language": "en",
+    "themes_requested": [
+      "sleep",
+      "baby_health_worry"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 3,
+    "suggestions": [
+      {
+        "id": "SUG_CLINICIAN_CONTACT",
+        "category": "clinical",
+        "text": "Speaking with your doctor, midwife or health worker can help you explore supportive options."
+      },
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": true,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "PHQ9_RANGE_5_SEVERE",
+    "instrument": "PHQ9",
+    "name": "PHQ-9 Severe Distress (Score 20-27)",
+    "description": "Severe distress. AI model is strictly GATED. Urgent professional escalation, safe fallback text, and verified helplines.",
+    "submitted_answers": {
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 3,
+      "7": 2,
+      "8": 3,
+      "9": 0
+    },
+    "total_score": 23,
+    "band_id": "severe",
+    "band_message": "Your answers indicate heavy distress. Please reach out to your doctor, health worker or free helpline today.",
+    "escalation": "see_clinician_urgent",
+    "safety_triggered": false,
+    "language": "en",
+    "themes_requested": [
+      "sleep",
+      "tiredness"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 3,
+    "suggestions": [
+      {
+        "id": "SUG_CLINICIAN_CONTACT",
+        "category": "clinical",
+        "text": "Speaking with your doctor, midwife or health worker can help you explore supportive options."
+      },
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": true,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "PHQ9_RANGE_6_SAFETY_TRIGGERED",
+    "instrument": "PHQ9",
+    "name": "PHQ-9 Self-Harm Trigger (Question 9 > 0, Score 3)",
+    "description": "Low total score (3) but Q9 is 1 (self-harm thoughts). Immediately triggers safety gate, AI is NEVER called, Tele-MANAS (14416) displayed.",
+    "submitted_answers": {
+      "1": 1,
+      "2": 1,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 1
+    },
+    "total_score": 3,
+    "band_id": "minimal",
+    "band_message": "Your answers suggest you are doing okay right now.",
+    "escalation": "see_clinician_urgent",
+    "safety_triggered": true,
+    "language": "en",
+    "themes_requested": [
+      "loneliness"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_CLINICIAN_CONTACT",
+        "category": "clinical",
+        "text": "Speaking with your doctor, midwife or health worker can help you explore supportive options."
+      },
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+      },
+      {
+        "id": "SUG_BEDTIME_ROUTINE",
+        "category": "sleep",
+        "text": "A calm wind-down before bed with softer lighting can help prepare your body for rest."
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": true,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "EPDS_RANGE_1_WELL",
+    "instrument": "EPDS",
+    "name": "EPDS Well / Normal Emotional Range (Score 0-9)",
+    "description": "Mother adjusting well to postpartum routine. AI personalizes suggestions in Hindi for bonding and emotional balance.",
+    "submitted_answers": {
+      "1": 1,
+      "2": 1,
+      "3": 0,
+      "4": 1,
+      "5": 1,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    "total_score": 4,
+    "band_id": "well",
+    "band_message": "Your answers suggest you are doing okay right now.",
+    "escalation": "routine",
+    "safety_triggered": false,
+    "language": "hi",
+    "themes_requested": [
+      "bonding_worries",
+      "positive_moments"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_BE_GENTLE",
+        "category": "compassion",
+        "text": "आज खुद के प्रति दयालु रहें। बच्चे का पालन-पोषण एक बड़ा बदलाव है जो धीरे-धीरे एक दिन में आगे बढ़ता है।"
+      },
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "जहाँ तक संभव हो आराम को प्राथमिकता दें और सोने तथा जागने का एक नियमित समय रखें।"
+      },
+      {
+        "id": "SUG_BEDTIME_ROUTINE",
+        "category": "sleep",
+        "text": "सोने से पहले धीमी रोशनी के साथ शांत वातावरण आपके शरीर को आराम के लिए तैयार करने में मदद कर सकता है।"
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "आप कैसा महसूस कर रही हैं, यह किसी भरोसेमंद साथी, परिवार के सदस्य या मित्र से साझा करना सुकून दे सकता है।"
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "चीजों को एक दिन में एक बार लें, जहां संभव हो आराम करें और उन लोगों से जुड़ें जो आपका समर्थन करते हैं। टेली-मानस (14416) या आपातकालीन सेवाओं (112) के माध्यम से किसी भी समय मुफ्त सहायता उपलब्ध है।",
+    "safeguards_verification": {
+      "clinician_pinned_first": null,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "EPDS_RANGE_2_POSSIBLE_MILD",
+    "instrument": "EPDS",
+    "name": "EPDS Possible Mild Distress (Score 10-12)",
+    "description": "Score 11 above screening cutoff. Supportive monitoring. AI orders rest, sleep routines, and partner/family support.",
+    "submitted_answers": {
+      "1": 1,
+      "2": 2,
+      "3": 1,
+      "4": 2,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 0
+    },
+    "total_score": 11,
+    "band_id": "possible_mild_depression",
+    "band_message": "Your answers suggest some things are weighing on you. Be gentle with yourself and keep checking in.",
+    "escalation": "monitor",
+    "safety_triggered": false,
+    "language": "en",
+    "themes_requested": [
+      "tiredness",
+      "feeding_difficulty",
+      "sleep"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+      },
+      {
+        "id": "SUG_BEDTIME_ROUTINE",
+        "category": "sleep",
+        "text": "A calm wind-down before bed with softer lighting can help prepare your body for rest."
+      },
+      {
+        "id": "SUG_TIME_FOR_SELF",
+        "category": "self_care",
+        "text": "Take a few quiet minutes just for yourself each day to pause and breathe."
+      },
+      {
+        "id": "SUG_ASK_FAMILY_HELP",
+        "category": "support",
+        "text": "Allow family members to take care of one chore or meal so you can rest."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": null,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "EPDS_RANGE_3_POSSIBLE_DEPRESSION",
+    "instrument": "EPDS",
+    "name": "EPDS Possible Depression (Score 13-30)",
+    "description": "Score 16. Clinical band possible_depression. Clinician contact suggestion MUST be pinned at position #0. Calming practice excluded.",
+    "submitted_answers": {
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 1,
+      "8": 2,
+      "9": 1,
+      "10": 0
+    },
+    "total_score": 16,
+    "band_id": "possible_depression",
+    "band_message": "Your answers suggest you may be carrying a lot right now. Reaching out to a doctor, midwife or health worker can help.",
+    "escalation": "see_clinician",
+    "safety_triggered": false,
+    "language": "en",
+    "themes_requested": [
+      "loneliness",
+      "family_support",
+      "self_criticism_guilt"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_CLINICIAN_CONTACT",
+        "category": "clinical",
+        "text": "Speaking with your doctor, midwife or health worker can help you explore supportive options."
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+      },
+      {
+        "id": "SUG_ASK_FAMILY_HELP",
+        "category": "support",
+        "text": "Allow family members to take care of one chore or meal so you can rest."
+      },
+      {
+        "id": "SUG_BE_GENTLE",
+        "category": "compassion",
+        "text": "Be kind to yourself today. Raising a child is a major transition that unfolds one day at a time."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": true,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  },
+  {
+    "scenario_id": "EPDS_RANGE_4_SAFETY_TRIGGERED",
+    "instrument": "EPDS",
+    "name": "EPDS Self-Harm Trigger (Question 10 > 0, Score 4)",
+    "description": "Total score 4, but EPDS Item 10 is 1. AI is strictly GATED. Urgent clinician escalation, safety text, and emergency 112/14416.",
+    "submitted_answers": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 1
+    },
+    "total_score": 4,
+    "band_id": "well",
+    "band_message": "Your answers suggest you are doing okay right now.",
+    "escalation": "see_clinician_urgent",
+    "safety_triggered": true,
+    "language": "en",
+    "themes_requested": [
+      "sleep"
+    ],
+    "ai_personalised": false,
+    "ai_mode": "none",
+    "suggestions_count": 4,
+    "suggestions": [
+      {
+        "id": "SUG_CLINICIAN_CONTACT",
+        "category": "clinical",
+        "text": "Speaking with your doctor, midwife or health worker can help you explore supportive options."
+      },
+      {
+        "id": "SUG_SLEEP_PROTECT",
+        "category": "sleep",
+        "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+      },
+      {
+        "id": "SUG_BEDTIME_ROUTINE",
+        "category": "sleep",
+        "text": "A calm wind-down before bed with softer lighting can help prepare your body for rest."
+      },
+      {
+        "id": "SUG_TALK_TRUSTED",
+        "category": "support",
+        "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+      }
+    ],
+    "helplines": {
+      "tele_manas": "14416",
+      "emergency": "112",
+      "women_helpline": "181"
+    },
+    "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+    "safeguards_verification": {
+      "clinician_pinned_first": true,
+      "calming_practice_excluded_in_elevated": true,
+      "only_verified_helplines": true
+    }
+  }
+]

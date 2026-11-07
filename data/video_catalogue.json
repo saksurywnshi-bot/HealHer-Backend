@@ -1,0 +1,170 @@
+{
+  "version": "0.1",
+  "videos": [
+    {
+      "id": "general-info-ppd",
+      "audiences": [
+        "postnatal",
+        "caregiver"
+      ],
+      "stage": "postnatal",
+      "trimester": null,
+      "order": 1,
+      "topic": "mood",
+      "titles": {
+        "en": "General information about postpartum depression",
+        "hi": "प्रसवोत्तर अवसाद के बारे में सामान्य जानकारी",
+        "bn": "প্রসবোত্তর বিষণ্ণতা সম্পর্কে সাধারণ তথ্য",
+        "ta": "பிரசவத்திற்குப் பிந்தைய மனச்சோர்வு பற்றிய பொதுவான தகவல்"
+      },
+      "descriptions": {
+        "en": "Understanding early signs, emotional well-being, and seeking reassurance.",
+        "hi": "प्रारंभिक लक्षणों, भावनात्मक स्वास्थ्य और मार्गदर्शन को समझना।",
+        "bn": "প্রাথমিক লক্ষণ, মানসিক সুস্থতা এবং নির্দেশিকা বোঝা।",
+        "ta": "ஆரம்ப அறிகுறிகள், உணர்ச்சி நல்வாழ்வு மற்றும் வழிகாட்டுதலைப் புரிந்துகொள்வது."
+      },
+      "allow_condition_words": true
+    },
+    {
+      "id": "ppd",
+      "audiences": [
+        "postnatal",
+        "caregiver"
+      ],
+      "stage": "postnatal",
+      "trimester": null,
+      "order": 2,
+      "topic": "mood",
+      "titles": {
+        "en": "Postpartum depression",
+        "hi": "प्रसवोत्तर अवसाद",
+        "bn": "প্রসবোত্তর বিষণ্ণতা",
+        "ta": "பிரசவத்திற்குப் பிந்தைய மனச்சோர்வு"
+      },
+      "descriptions": {
+        "en": "Daily support, understanding your emotions, and family care.",
+        "hi": "दैनिक सहयोग, अपनी भावनाओं को समझना और पारिवारिक देखभाल।",
+        "bn": "দৈনন্দিন সহায়তা, আপনার অনুভূতি বোঝা এবং পারিবারিক যত্ন।",
+        "ta": "தினசரி ஆதரவு, உங்கள் உணர்வுகளைப் புரிந்துகொள்வது மற்றும் குடும்ப கவனிப்பு."
+      },
+      "allow_condition_words": true
+    },
+    {
+      "id": "mother-family-child-bonding",
+      "audiences": [
+        "postnatal",
+        "caregiver"
+      ],
+      "stage": "postnatal",
+      "trimester": null,
+      "order": 3,
+      "topic": "bonding",
+      "titles": {
+        "en": "Mother and family bonding with the baby",
+        "hi": "शिशु के साथ माँ और परिवार का जुड़ाव",
+        "bn": "শিশুর সাথে মা এবং পরিবারের বন্ধন",
+        "ta": "குழந்தையுடன் தாய் மற்றும் குடும்பத்தின் பிணைப்பு"
+      },
+      "descriptions": {
+        "en": "Nurturing emotional connection and family closeness with your baby.",
+        "hi": "अपने शिशु के साथ भावनात्मक संबंध और पारिवारिक निकटता को बढ़ावा देना।",
+        "bn": "আপনার শিশুর সাথে মানসিক সংযোগ এবং পারিবারিক ঘনিষ্ঠতা গড়ে তোলা।",
+        "ta": "உங்கள் குழந்தையுடன் உணர்ச்சி ரீதியான தொடர்பு மற்றும் குடும்ப நெருக்கத்தை வளர்ப்பது."
+      },
+      "allow_condition_words": false
+    },
+    {
+      "id": "mother-child-nutrition",
+      "audiences": [
+        "postnatal",
+        "caregiver"
+      ],
+      "stage": "postnatal",
+      "trimester": null,
+      "order": 4,
+      "topic": "feeding",
+      "titles": {
+        "en": "Mother and child nutrition",
+        "hi": "माँ और बच्चे का पोषण",
+        "bn": "মা ও শিশুর পুষ্টি",
+        "ta": "தாய் மற்றும் குழந்தை ஊட்டச்சத்து"
+      },
+      "descriptions": {
+        "en": "Wholesome nutrition guidance for maternal recovery and baby health.",
+        "hi": "मातृ स्वास्थ्य लाभ और शिशु स्वास्थ्य के लिए संपूर्ण पोषण मार्गदर्शन।",
+        "bn": "মায়ের স্বাস্থ্য পুনরুদ্ধার এবং শিশুর স্বাস্থ্যের জন্য স্বাস্থ্যকর পুষ্টি নির্দেশিকা।",
+        "ta": "தாய் மீட்பு மற்றும் குழந்தை ஆரோக்கியத்திற்கான ஆரோக்கியமான ஊட்டச்சத்து வழிகாட்டுதல்."
+      },
+      "allow_condition_words": false
+    },
+    {
+      "id": "trimester-1",
+      "audiences": [
+        "prenatal"
+      ],
+      "stage": "prenatal",
+      "trimester": 1,
+      "order": 1,
+      "topic": "trimester",
+      "titles": {
+        "en": "What to expact in trimester 1 ?",
+        "hi": "तिमाही 1 में क्या अपेक्षा करें?",
+        "bn": "ত্রৈমাসিক ১-এ কী প্রত্যাশা করবেন?",
+        "ta": "முப்பருவம் 1-ல் என்ன எதிர்பார்க்கலாம்?"
+      },
+      "descriptions": {
+        "en": "Key body changes, early baby development, and wellness tips for your first trimester.",
+        "hi": "आपकी पहली तिमाही के लिए शारीरिक बदलाव, शुरुआती शिशु विकास और स्वास्थ्य सुझाव।",
+        "bn": "আপনার প্রথম ত্রৈমাসিকের জন্য শারীরিক পরিবর্তন, প্রাথমিক শিশুর বিকাশ এবং সুস্থতার পরামর্শ।",
+        "ta": "உங்கள் முதல் முப்பருவத்திற்கான உடல் மாற்றங்கள், ஆரம்பகால குழந்தை வளர்ச்சி மற்றும் நல்வாழ்வு குறிப்புகள்."
+      },
+      "allow_condition_words": false
+    },
+    {
+      "id": "trimester-2",
+      "audiences": [
+        "prenatal"
+      ],
+      "stage": "prenatal",
+      "trimester": 2,
+      "order": 2,
+      "topic": "trimester",
+      "titles": {
+        "en": "What to expact in trimester 2 ?",
+        "hi": "तिमाही 2 में क्या अपेक्षा करें?",
+        "bn": "ত্রৈমাসিক ২-এ কী প্রত্যাশা করবেন?",
+        "ta": "முப்பருவம் 2-ல் என்ன எதிர்பார்க்கலாம்?"
+      },
+      "descriptions": {
+        "en": "Growing belly, feeling baby kicks, energy shifts, and routine check-ups in trimester 2.",
+        "hi": "दूसरी तिमाही में शिशु की हलचल, ऊर्जा के स्तर में बदलाव और नियमित स्वास्थ्य जांच।",
+        "bn": "দ্বিতীয় ত্রৈমাসিকে শিশুর নড়াচড়া, শক্তির পরিবর্তন এবং নিয়মিত স্বাস্থ্য পরীক্ষা।",
+        "ta": "முப்பருவம் 2-ல் குழந்தை அசைவுகள், ஆற்றல் மாற்றங்கள் மற்றும் வழக்கமான சுகாதார பரிசோதனைகள்."
+      },
+      "allow_condition_words": false
+    },
+    {
+      "id": "trimester-3",
+      "audiences": [
+        "prenatal"
+      ],
+      "stage": "prenatal",
+      "trimester": 3,
+      "order": 3,
+      "topic": "trimester",
+      "titles": {
+        "en": "What to expact in trimester 3 ?",
+        "hi": "तिमाही 3 में क्या अपेक्षा करें?",
+        "bn": "ত্রৈমাসিক ৩-এ কী প্রত্যাশা করবেন?",
+        "ta": "முப்பருவம் 3-ல் என்ன எதிர்பார்க்கலாம்?"
+      },
+      "descriptions": {
+        "en": "Preparing for labor, hospital packing, comfortable rest, and final trimester milestones.",
+        "hi": "प्रसव की तैयारी, आरामदायक नींद और अंतिम तिमाही के महत्वपूर्ण मील के पत्थर।",
+        "bn": "প্রসবের প্রস্তুতি, আরামদায়ক বিশ্রাম এবং শেষ ত্রৈমাসিকের গুরুত্বপূর্ণ মাইলফলক।",
+        "ta": "பிரசவத்திற்கான தயாரிப்பு, வசதியான ஓய்வு மற்றும் இறுதி முப்பருவ மைல்கற்கள்."
+      },
+      "allow_condition_words": false
+    }
+  ]
+}

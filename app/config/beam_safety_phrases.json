@@ -1,0 +1,55 @@
+{
+  "_notice": "CLINICIAN REVIEW REQUIRED - DRAFT PLACEHOLDERS. Conservative phrase matching for Tier 3 real-time triggers.",
+  "phrases": {
+    "en": [
+      "kill myself",
+      "suicide",
+      "end my life",
+      "want to die",
+      "better off dead",
+      "hurt myself",
+      "hurting myself",
+      "harm myself",
+      "harming myself",
+      "harm my baby",
+      "harming my baby",
+      "hurt my baby",
+      "hurting my baby",
+      "kill my baby",
+      "drown the baby",
+      "drop the baby",
+      "hearing voices",
+      "seeing things",
+      "people are watching me"
+    ],
+    "hi": [
+      "मरना चाहती हूं",
+      "मरना चाहता हूं",
+      "आत्महत्या",
+      "खुद को मारना",
+      "अपनी जान लेना",
+      "खुद को नुकसान",
+      "बच्चे को नुकसान",
+      "बच्चे को मारना",
+      "आवाजें सुनाई दे रही",
+      "कोई मेरा पीछा कर रहा"
+    ],
+    "bn": [
+      "আত্মহত্যা",
+      "মরে যেতে চাই",
+      "নিজেকে শেষ করে দেওয়া",
+      "নিজেকে আঘাত",
+      "বাচ্চাকে আঘাত",
+      "বাচ্চাকে মেরে ফেলা",
+      "অদ্ভুত আওয়াজ শুনছি"
+    ],
+    "ta": [
+      "தற்கொலை",
+      "சாக வேண்டும்",
+      "என்னை காயப்படுத்த",
+      "குழந்தையை காயப்படுத்த",
+      "குழந்தையை கொல்ல",
+      "குரல்கள் கேட்கின்றன"
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+================================================================================
+HEALHER BACKEND - RENDER DEPLOYMENT GUIDE
+================================================================================
+
+This guide describes how to deploy the FastAPI backend (Backend_heal_her) to Render.
+
+1. PREREQUISITES & PREPARATION
+--------------------------------------------------------------------------------
+- Ensure your Git repository contains only Backend_heal_her (e.g. repo "healher-backend").
+- Ensure no .env, .venv, *.db, or videos are committed.
+- Verify requirements.txt contains only production dependencies (STT is optional).
+
+2. CREATE RENDER WEB SERVICE
+--------------------------------------------------------------------------------
+- In the Render Dashboard (dashboard.render.com), click "New +" -> "Web Service".
+- Connect your "healher-backend" GitHub repository (or use Blueprint with render.yaml).
+- Configure the service:
+    Name:               healher-backend
+    Region:             Singapore (or region closest to target users)
+    Branch:             main
+    Root Directory:     .
+    Runtime:            Python
+    Build Command:      pip install -r requirements.txt
+    Start Command:      uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    Health Check Path:  /health
+
+3. ENVIRONMENT VARIABLES
+--------------------------------------------------------------------------------
+Add the following environment variables in the Render Dashboard (Environment tab):
+
+Variable Name            Recommended Value / Description
+--------------------------------------------------------------------------------
+PYTHON_VERSION           3.12.8 (or your preferred Python 3.12+ version)
+APP_ENV                  production
+PORT                     3001 (Render provides $PORT automatically to startCommand)
+GEMINI_API_KEY           <your-google-gemini-api-key>
+SUPABASE_JWT_SECRET      <legacy-jwt-secret-from-supabase-project-settings>
+ADMIN_TOKEN              <secure-random-token-for-admin-endpoints>
+FRONTEND_ORIGIN          https://<your-vercel-app>.vercel.app (no trailing slash)
+ENABLE_STT               false (keeps deployment lightweight without 2GB torch)
+SARVAM_API_KEY           <your-sarvam-api-key> (optional, if Sarvam is used)
+DEV_INCLUDE_DRAFTS       false (strictly false in production)
+
+Optional (with Persistent Disk):
+DATABASE_PATH            /var/data/healher.db
+
+4. PERSISTENT DISK (OPTIONAL / RECOMMENDED FOR DEMO)
+--------------------------------------------------------------------------------
+On Render Free tier, the filesystem is ephemeral and resets on restart.
+On Render Starter plan ($7/mo):
+- Add a Persistent Disk:
+    Name:                healher-data
+    Mount Path:          /var/data
+    Size:                1 GB
+- Set environment variable DATABASE_PATH to /var/data/healher.db so SQLite data
+  persists across redeploys.
+
+5. CLINICAL SUGGESTION APPROVALS
+--------------------------------------------------------------------------------
+In production (APP_ENV=production), unapproved draft tips are excluded by safety guardrails.
+- Prior to or after deployment, approve tips via the admin API:
+    PATCH /api/admin/library/suggestion/{id}
+    Headers: x-admin-token: <ADMIN_TOKEN>
+    Body: {"status": "approved"}
+- Approvals are saved to data/*_overrides.json. Ensure these overrides are committed
+  to the Git repository so Render loads approved items upon startup.
+
+6. HEALTH VERIFICATION
+--------------------------------------------------------------------------------
+Once deployed, open:
+https://<your-service>.onrender.com/health
+Expected response:
+{"status": "ok", "service": "HealHer Mental Health Service"}
+
+Check Render logs for the startup banner:
+"Startup Status: APP_ENV=production, ENABLE_STT=false | Sentiment Library: X approved ... | Caregiver Library: Y approved ..."
+================================================================================
+

@@ -1,0 +1,93 @@
+{
+  "version": "0.3-draft",
+  "status": "DRAFT. Every item needs clinician approval before release. Items with evidence L are optional.",
+  "evidence_labels": {
+    "G": "Clinical guideline recommendation (NICE, RNAO, ACOG, USPSTF)",
+    "R": "Randomised trial or systematic review / meta-analysis",
+    "P": "Patient guidance written by psychiatrists (American Psychiatric Association page)",
+    "L": "Limited or indirect evidence. Optional."
+  },
+  "sources": {
+    "S1": "NICE CG192 Antenatal and postnatal mental health",
+    "S2": "American Psychiatric Association, postpartum depression expert Q&A",
+    "S3": "RNAO Best Practice Guideline, perinatal depression self-care",
+    "S4": "Exercise for perinatal depression meta-analysis, Liu et al. 2022",
+    "S5": "WHO Thinking Healthy Programme, peer-delivered, South Asia",
+    "S6": "Mindfulness-based interventions in the perinatal period, meta-analysis 2016",
+    "S7": "Interpersonal and social rhythm therapy, bipolar disorder",
+    "S8": "Sleep interventions in pregnancy to prevent perinatal depression, systematic review",
+    "S9": "USPSTF counselling to prevent perinatal depression",
+    "S10": "ACOG treatment guideline summary",
+    "S11": "MGH Perinatal Psychiatry, early symptoms of postpartum psychosis",
+    "S12": "CBT for insomnia, first-line for insomnia"
+  },
+  "caveats": {
+    "exercise": "Always add: if your doctor says it is fine. Safety outcomes were not reported in the trials.",
+    "sleep_hygiene": "Recommended for sleep problems in pregnancy. Do not claim it prevents or treats depression.",
+    "mindfulness_breathing": "Controlled trials show limited benefit. Optional."
+  },
+  "suggestions": [
+    { "id": "GD1", "band": "good", "phase": "any", "text": "This was a balanced week. That's worth noticing and being proud of.", "evidence": ["tone"], "sources": [] },
+    { "id": "GD2", "band": "good", "phase": "any", "text": "Keep your sleep and meals steady, and rest whenever you can.", "evidence": ["P", "G"], "sources": ["S2", "S3"] },
+    { "id": "GD3", "band": "good", "phase": "any", "text": "Gentle regular movement, like walking or yoga a few times a week, can help your mood. Check with your doctor that it is right for you.", "evidence": ["R", "P"], "sources": ["S4", "S2"] },
+    { "id": "GD4", "band": "good", "phase": "any", "text": "Stay connected with people who support you, and keep talking openly with them.", "evidence": ["P", "G"], "sources": ["S2", "S3"] },
+    { "id": "GD5", "band": "good", "phase": "any", "text": "Pick one enjoyable or meaningful thing to look forward to next week.", "evidence": ["R"], "sources": ["S5"] },
+    { "id": "GD6", "band": "good", "phase": "pregnancy", "text": "Now is a good time to plan who can help with night time, meals and childcare after the baby arrives.", "evidence": ["P"], "sources": ["S2"] },
+    { "id": "GD7", "band": "good", "phase": "postpartum", "text": "Keep accepting help from family and friends. It makes a real difference.", "evidence": ["P"], "sources": ["S2"] },
+
+    { "id": "OK1", "band": "okay", "phase": "any", "text": "A week with ups and downs is completely normal, especially at this time of life.", "evidence": ["tone"], "sources": [] },
+    { "id": "OK2", "band": "okay", "phase": "any", "text": "Try to do one small enjoyable or meaningful thing each day, even for ten minutes.", "evidence": ["R", "G"], "sources": ["S5", "S1"] },
+    { "id": "OK3", "band": "okay", "phase": "any", "text": "A walk or gentle yoga a few times a week can lift your mood, if your doctor says it is fine.", "evidence": ["R", "P"], "sources": ["S4", "S2"] },
+    { "id": "OK4", "band": "okay", "phase": "any", "text": "A steady bedtime routine, less caffeine and quieter evenings can help you sleep.", "evidence": ["G"], "sources": ["S1", "S3"] },
+    { "id": "OK5", "band": "okay", "phase": "any", "text": "Is there one task someone could help with this week?", "evidence": ["P"], "sources": ["S2"] },
+    { "id": "OK6", "band": "okay", "phase": "any", "text": "Take a few minutes just for yourself each day.", "evidence": ["P", "G"], "sources": ["S2", "S3"] },
+    { "id": "OK7", "band": "okay", "phase": "postpartum", "text": "Ask someone to cover one night feed so you can get a longer stretch of sleep.", "evidence": ["P", "G"], "sources": ["S2", "S3"] },
+
+    { "id": "TG1", "band": "tougher", "phase": "any", "text": "Start small. Choose one simple activity you can manage today, like a short walk, a call or a warm meal.", "evidence": ["R"], "sources": ["S5"] },
+    { "id": "TG2", "band": "tougher", "phase": "any", "text": "If something is worrying you, break it into small steps and try just one.", "evidence": ["R"], "sources": ["S5"] },
+    { "id": "TG3", "band": "tougher", "phase": "any", "text": "Is there one person you could talk to today? Share how you feel with a partner, family member or friend, and accept help when it is offered.", "evidence": ["P", "R", "G"], "sources": ["S2", "S5", "S3"] },
+    { "id": "TG4", "band": "tougher", "phase": "any", "text": "A support group for mothers can help. Talking with someone who understands often feels good.", "evidence": ["P", "R"], "sources": ["S2", "S5"] },
+    { "id": "TG5", "band": "tougher", "phase": "any", "text": "Gentle movement such as walking or yoga can help, if your doctor says it is fine.", "evidence": ["R", "P"], "sources": ["S4", "S2"] },
+    { "id": "TG6", "band": "tougher", "phase": "any", "text": "Prioritise rest where you can, and keep to a regular bedtime and wake-up time.", "evidence": ["P", "G"], "sources": ["S2", "S1", "S3"] },
+    { "id": "TG7", "band": "tougher", "phase": "any", "text": "Eat regular meals and drink enough water, even on hard days.", "evidence": ["P"], "sources": ["S2"] },
+    { "id": "TG8", "band": "tougher", "phase": "any", "text": "Deep breathing, gentle stretching or a few minutes of quiet can help you feel calmer.", "evidence": ["P", "L"], "sources": ["S2", "S6"], "optional": true },
+    { "id": "TG9", "band": "tougher", "phase": "any", "text": "On the hardest days, aim for one or two things, like eating something and resting. That is enough.", "evidence": ["L"], "sources": ["S5"], "optional": true },
+    { "id": "TG10", "band": "tougher", "phase": "any", "text": "Talking to your doctor or health worker can open up options such as guided self-help or talking support. Would you like help preparing for that?", "evidence": ["G"], "sources": ["S1", "S10"], "only_if": "impaired_depressed_days_at_least_2_or_tier2" },
+    { "id": "TG11", "band": "tougher", "phase": "pregnancy", "text": "Mention how you have been feeling at your next antenatal visit. Counselling during pregnancy can help.", "evidence": ["P", "G"], "sources": ["S2", "S9"] },
+    { "id": "TG12", "band": "tougher", "phase": "postpartum", "text": "Keep your early postnatal check-ups and tell your health worker how you have been feeling.", "evidence": ["P"], "sources": ["S2"] },
+
+    { "id": "HE1", "band": "high_energy", "phase": "any", "text": "Keep regular times for sleeping, waking and eating. A steady daily rhythm helps protect your mood.", "evidence": ["R", "P"], "sources": ["S7", "S2"], "note": "S7 evidence is from bipolar disorder, not specifically perinatal." },
+    { "id": "HE2", "band": "high_energy", "phase": "any", "text": "Wind down before bed and keep caffeine to the morning.", "evidence": ["G"], "sources": ["S1", "S3"] },
+    { "id": "HE3", "band": "high_energy", "phase": "any", "text": "Is there someone close to you who could notice how you're doing this week? It helps to have a person who can spot early changes.", "evidence": ["P"], "sources": ["S2"] },
+    { "id": "HE4", "band": "high_energy", "phase": "any", "text": "If you are sleeping much less than usual but still feel full of energy, please tell your doctor or midwife soon.", "evidence": ["P", "G"], "sources": ["S2", "S1", "S11"] },
+    { "id": "HE5", "band": "high_energy", "phase": "postpartum", "text": "Plan for night time support so you can have a longer stretch of sleep.", "evidence": ["P"], "sources": ["S2"] },
+    { "id": "HE7", "band": "high_energy", "phase": "any", "text": "Try to keep this week's commitments to the essentials.", "evidence": ["L"], "sources": [], "optional": true },
+
+    { "id": "AX1", "band": "anxious_addon", "phase": "any", "text": "Feeling anxious is common during and after pregnancy. It is worth mentioning to your doctor or health worker.", "evidence": ["P", "G"], "sources": ["S2", "S10"] },
+    { "id": "AX2", "band": "anxious_addon", "phase": "any", "text": "A guided, CBT-based self-help programme over a couple of months is one option your health worker can arrange.", "evidence": ["G"], "sources": ["S1"], "only_if": "anxiety_at_least_2_on_7_or_more_of_14_days" },
+    { "id": "AX3", "band": "anxious_addon", "phase": "any", "text": "Slow breathing, gentle yoga or quiet time can help you feel calmer.", "evidence": ["P", "L"], "sources": ["S2", "S6"], "optional": true },
+    { "id": "IR1", "band": "irritable_addon", "phase": "any", "text": "Feeling short-tempered when tired is common. Resting and sharing tasks can help.", "evidence": ["P"], "sources": ["S2"] },
+
+    { "id": "SL1", "band": "sleep_good", "phase": "any", "text": "Your sleep has been steady, a real support for your mood.", "evidence": ["tone"], "sources": [] },
+    { "id": "SL2", "band": "sleep_short", "phase": "pregnancy", "text": "A consistent bedtime routine, avoiding caffeine and slowing down before bed can help.", "evidence": ["G"], "sources": ["S1", "S3"] },
+    { "id": "SL3", "band": "sleep_short", "phase": "any", "text": "If you are not asleep after about 15 minutes, get up and move to another room until you feel sleepy. Short daytime naps can also help.", "evidence": ["G"], "sources": ["S3"] },
+    { "id": "SL4", "band": "sleep_short", "phase": "postpartum", "text": "Broken sleep is expected with a newborn. Plan night time support if you can, and rest whenever possible.", "evidence": ["P", "G"], "sources": ["S2", "S3"] },
+    { "id": "SL5", "band": "sleep_poor_2_weeks", "phase": "any", "text": "If poor sleep keeps going, tell your doctor. Talking-based sleep programmes (CBT for insomnia) are the standard first treatment for insomnia.", "evidence": ["G", "R"], "sources": ["S12"], "note": "Not yet shown to prevent depression. Do not claim that." },
+    { "id": "SL7", "band": "sleep_long_low_mood", "phase": "any", "text": "You've been sleeping a lot and feeling low. It might be worth mentioning to your doctor.", "evidence": ["L"], "sources": [], "optional": true }
+  ],
+  "openings": {
+    "tougher": [
+      "This week had some heavier days. Many mothers go through patches like this, and you don't have to handle it alone.",
+      "Thank you for checking in even when it was hard."
+    ],
+    "high_energy": [
+      "You've had a lot of energy this week, which can feel great. Let's make sure rest keeps up."
+    ],
+    "good": [
+      "This was a balanced week. That's worth noticing and being proud of."
+    ],
+    "okay": [
+      "A week with ups and downs is completely normal, especially at this time of life."
+    ]
+  }
+}

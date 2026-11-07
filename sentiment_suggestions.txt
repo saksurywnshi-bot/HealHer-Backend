@@ -1,0 +1,2320 @@
+{
+ "version": "0.1-draft",
+ "date": "2026-10-31",
+ "status_note": "EVERYTHING IS DRAFT. Nothing is approved for users. Items with needs_source=true cannot be approved until a clinician supplies a source.",
+ "purpose": "Theme-specific, tone-aware, stage-aware self-care suggestions for the mood reflection (sentiment) feature.",
+ "themes": [
+  "sleep",
+  "tiredness",
+  "baby_health_worry",
+  "family_support",
+  "loneliness",
+  "money",
+  "work",
+  "self_criticism_guilt",
+  "body_physical_symptoms",
+  "positive_moments",
+  "delivery_fear",
+  "pregnancy_symptoms",
+  "feeding_difficulty",
+  "baby_crying_sleep",
+  "recovery_pain",
+  "bonding_worries",
+  "identity_change",
+  "return_to_work"
+ ],
+ "theme_labels_en": {
+  "sleep": "your sleep",
+  "tiredness": "feeling tired",
+  "baby_health_worry": "worry about your baby's health",
+  "family_support": "support from family",
+  "loneliness": "feeling lonely",
+  "money": "money worries",
+  "work": "work",
+  "self_criticism_guilt": "being hard on yourself",
+  "body_physical_symptoms": "how your body feels",
+  "positive_moments": "the good moments",
+  "delivery_fear": "fear of the birth",
+  "pregnancy_symptoms": "pregnancy symptoms",
+  "feeding_difficulty": "feeding your baby",
+  "baby_crying_sleep": "your baby's crying and sleep",
+  "recovery_pain": "recovering after birth",
+  "bonding_worries": "bonding with your baby",
+  "identity_change": "changes in who you are",
+  "return_to_work": "going back to work"
+ },
+ "tones": [
+  "positive",
+  "neutral",
+  "tired_overwhelmed",
+  "anxious",
+  "low",
+  "distressed"
+ ],
+ "selection_rules": {
+  "never_for": [
+   "distressed tone",
+   "risk_language true",
+   "escalation not none"
+  ],
+  "never_for_note": "In those cases show only the support block (verified helplines + safe fallback text); no tips from this library.",
+  "pool": "approved items where stage matches (item.stage = user stage or 'both') AND tone in item.tones AND (some item.themes in detected themes OR item.generic)",
+  "rank": {
+   "primary_theme_match": 3,
+   "secondary_theme_match": 1,
+   "tone_match": 2,
+   "stage_specific_item": 1,
+   "not_shown_recently": 2,
+   "effort_fit": 1
+  },
+  "effort_fit": "tired_overwhelmed tone prefers effort 'none','1min','5min','talk'; avoid 'longer' items as first pick",
+  "shape": "return 3 suggestions: 1 understand (normalising) + up to 2 of kind do/talk/clinician; kind clinician only if no more than 1 per result",
+  "generic_limit": "at most 1 generic item, and only when fewer than 3 theme-specific items qualify",
+  "primary_theme": "the first theme returned by the model that has qualifying items",
+  "recency": {
+   "window_days": 14,
+   "store": "SQLite suggestion_history(user_ref, suggestion_id, shown_at) holds ids only, never note text",
+   "rule": "exclude ids shown inside the window if enough alternatives remain; if not, allow the least recently shown"
+  },
+  "variety": "break ties with a deterministic shuffle seeded by SHA-256(user_ref + local date), so results are stable within a day and differ across days",
+  "why_this": "show 'Because you wrote about {theme label}' using theme_labels_en (text from this file, never from the model)",
+  "safe_fallback": "if no approved item qualifies, show the reflection only plus the standard tone text already in the app; never invent a suggestion"
+ },
+ "sources": {
+  "S7": {
+   "title": "Thinking Healthy peer-delivered trials (India, Pakistan)",
+   "url": "https://lshtm-eprints-repo-prod.lshtm-eprints.cdl.cosector.com/4655352/6/Effectiveness-of-the-Thinking-Healthy-Programme-for-perinatal-depression-delivered-through-peers.pdf",
+   "type": "trial of a whole programme"
+  },
+  "S10": {
+   "title": "Physical activity and postpartum symptoms, overview of 8 reviews",
+   "url": "https://www.uloyola.es/en/scientific-offer/publications/what-interventions-focused-on-physical-activity-could-improve-postpartum-depression-symptoms-an-overview-of-systematic-reviews-with-meta-analysis-review",
+   "type": "review overview, interpret with caution"
+  },
+  "S12": {
+   "title": "ACOG CPG 4 screening and diagnosis (hosted copy)",
+   "url": "https://www.2020mom.org/s/2023-ACOG-guideline-Screening-and-Diagnosis-of-Mental-Health-Conditions-During-Pregnancy-and-Postpar.pdf",
+   "type": "guideline"
+  },
+  "S13": {
+   "title": "ACOG CPG 5 treatment and management (hosted copy)",
+   "url": "https://starlegacyfoundation.org/wp-content/uploads/ACOG-2023-Treatment-and-management-of-mental-health-conditions-during-pregnancy.pdf",
+   "type": "guideline"
+  },
+  "T1": {
+   "title": "Sleep problems in pregnancy: screening and interventions (Women's Mental Health blog; cites Fu 2023, Li 2023, Silang 2024, Feng 2023)",
+   "url": "https://womensmentalhealth.org/posts/perinatal-sleep-screening-and-interventions/",
+   "type": "secondary summary; open the primary papers before approval"
+  },
+  "T2": {
+   "title": "Insomnia in the peripartum period, systematic review, Arch Womens Ment Health 2022 (title/authors not shown on page I opened)",
+   "url": "https://link.springer.com/article/10.1007/s00737-022-01226-8",
+   "type": "systematic review"
+  },
+  "T3": {
+   "title": "Silverwood 2023, non-pharmacological interventions for perinatal anxiety, meta-review of 24 reviews, BJGP Open",
+   "url": "https://bjgpopen.org/content/7/3/BJGPO.2023.0022",
+   "type": "meta-review"
+  },
+  "T4": {
+   "title": "Akgun 2020, psychoeducation and fear of childbirth, meta-analysis, J Psychosom Obstet Gynaecol",
+   "url": "https://avesis.akdeniz.edu.tr/yayin/49bb383a-ec4d-47a9-a56e-7127a22dd8ab/the-effect-of-psychoeducation-on-fear-of-childbirth-and-birth-type-systematic-review-and-meta-analysis",
+   "type": "meta-analysis (7 studies)"
+  },
+  "T5": {
+   "title": "Adeli Gargari 2021, psycho-education and childbirth fear, meta-analysis, Int J Women's Health Reprod Sci",
+   "url": "https://ijwhr.net/text.php?id=623",
+   "type": "meta-analysis (11 studies); reported CI looks inconsistent"
+  },
+  "T6": {
+   "title": "Breastfeeding and maternal mood (Women's Mental Health blog; cites Watkins 2011, Grattan 2024, Thompson 2023)",
+   "url": "https://womensmentalhealth.org/posts/tag/maternal-mood/about:blank",
+   "type": "secondary summary; observational"
+  },
+  "T7": {
+   "title": "Tanganhito 2020, breastfeeding experiences of women with postnatal depression, qualitative synthesis, Women and Birth",
+   "url": "https://wrap.warwick.ac.uk/id/eprint/123294",
+   "type": "qualitative synthesis (6 studies)"
+  },
+  "T8": {
+   "title": "Adlington 2023, loneliness in perinatal depression, qualitative meta-synthesis (27 studies), BMC Psychiatry (UCL news page)",
+   "url": "https://www.ucl.ac.uk/news/2023/feb/loneliness-central-perinatal-depression",
+   "type": "qualitative meta-synthesis"
+  },
+  "T9": {
+   "title": "Peer support for perinatal depression (Huang 2020 meta-analysis of 10 RCTs; Dennis 2009 BMJ) via Women's Mental Health blog",
+   "url": "https://womensmentalhealth.org/posts/essential-reads-peer-support-interventions-for-perinatal-depression/",
+   "type": "meta-analysis, secondary summary"
+  },
+  "T10": {
+   "title": "Pathak 2023, kangaroo mother care and maternal/paternal health, Bull WHO",
+   "url": "https://research.tuni.fi/uploads/2023/06/564a8b4f-pathak-et.-al.-effects-of-kangaroo-mother-care-on-maternal-and-paternal-health.-bull-world-health-organ-2023..pdf",
+   "type": "systematic review; preterm or low-birth-weight infants only"
+  },
+  "T11": {
+   "title": "Marc 2011, Cochrane: mind-body interventions in pregnancy for anxiety",
+   "url": "https://www.cochrane.org/CD007559/PREG_mind-body-interventions-during-pregnancy-preventing-or-treating-womens-anxiety",
+   "type": "Cochrane review; some but not strong evidence"
+  },
+  "T12": {
+   "title": "Lewkowitz 2023, digital health interventions for postpartum depression or anxiety, Am J Obstet Gynecol (via Contemporary OB/GYN)",
+   "url": "https://www.contemporaryobgyn.net/view/digital-health-interventions-reduce-postpartum-anxiety-and-depression",
+   "type": "meta-analysis of 31 RCTs, secondary summary"
+  },
+  "T13": {
+   "title": "Technology-based self-help for postpartum depression and anxiety, JMIR Nov 2024",
+   "url": "https://doaj.org/article/785bf42944614f02962aa340ab05861c",
+   "type": "meta-analysis (14 RCTs)"
+  },
+  "T14": {
+   "title": "Weobong 2017, Healthy Activity Programme (behavioural activation), India, PLoS Med",
+   "url": "https://discovery.ucl.ac.uk/id/eprint/1574489/",
+   "type": "RCT in general adults, not perinatal"
+  },
+  "T15": {
+   "title": "Franzoi 2024, returning to work after maternity leave, systematic review (52 articles), Arch Womens Ment Health",
+   "url": "https://link.springer.com/article/10.1007/s00737-024-01464-y",
+   "type": "systematic review; only 3 studies on mental health"
+  },
+  "T16": {
+   "title": "Pasinringi 2024, self-compassion and postpartum depression, meta-analysis of 9 studies, INCOHELIV proceedings",
+   "url": "https://journal.ubaya.ac.id/index.php/incoheliv/article/view/6558",
+   "type": "correlational; conference proceeding"
+  },
+  "T17": {
+   "title": "Coast 2012, poverty and postnatal depression in low and lower-middle income countries, mapping review, Health & Place",
+   "url": "https://researchonline.lse.ac.uk/id/eprint/44533",
+   "type": "mapping review; risk factor only, no intervention"
+  },
+  "T18": {
+   "title": "Shaken baby prevention programme, 7,051 parents, Child Abuse & Neglect 2008 (NCJRS abstract)",
+   "url": "https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=247286",
+   "type": "programme evaluation; title/authors not shown on page I opened"
+  },
+  "T19": {
+   "title": "ACOG Practice Bulletin 153 on nausea and vomiting of pregnancy, 2015 (via HealthDay)",
+   "url": "https://www.healthday.com/healthpro-news/pregnancy/acog-best-evidence-for-rx-of-nausea-vomiting-in-pregnancy-702451.html",
+   "type": "guideline summary; older bulletin, check for update"
+  }
+ },
+ "suggestions": [
+  {
+   "id": "SLP_U",
+   "themes": [
+    "sleep"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "observational",
+   "source_refs": [
+    "T1"
+   ],
+   "evidence_note": "Pooled studies: disrupted sleep linked with about 3.7x risk of low mood in pregnancy and 2.7x after birth (Fu 2023, via blog).",
+   "text_en": "Sleep often gets harder in pregnancy and after birth, and poor sleep and low mood tend to go together. You are not doing something wrong.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "SLP_NEWBORN",
+   "themes": [
+    "sleep"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "tones": [
+    "tired_overwhelmed",
+    "anxious",
+    "low",
+    "neutral"
+   ],
+   "effort": "5min",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13",
+    "T1"
+   ],
+   "evidence_note": "ACOG CPG 5 self-care lists sleep and asking for support (ungraded); T1 says teaching newborn sleep patterns is linked with lower risk.",
+   "text_en": "Newborn sleep comes in short stretches. Ask someone you trust to take over baby care for one stretch so you can sleep for longer.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "SLP_PRENATAL_TELL",
+   "themes": [
+    "sleep"
+   ],
+   "stage": "prenatal",
+   "kind": "clinician",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "observational",
+   "source_refs": [
+    "T1"
+   ],
+   "evidence_note": "T1: screening and treating significant sleep problems early in pregnancy may lower later low-mood risk.",
+   "text_en": "If poor sleep goes on for weeks, tell your doctor or midwife. Sleep problems in pregnancy can be treated, and this may help your mood after birth.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "SLP_CBTI",
+   "themes": [
+    "sleep"
+   ],
+   "stage": "both",
+   "kind": "clinician",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "review",
+   "source_refs": [
+    "T1",
+    "T2"
+   ],
+   "evidence_note": "CBT-I called first-line for perinatal insomnia; RCT and reviews show better sleep and mood. T2 advises adapting sleep restriction in pregnancy.",
+   "text_en": "If sleep problems last, ask your doctor about a short talking programme for sleep called CBT-I. Studies show it can improve sleep and mood.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "TIR_U",
+   "themes": [
+    "tiredness"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: normalising statement; no source opened.",
+   "text_en": "Feeling very tired is common in pregnancy and with a new baby. It is not laziness, and resting is part of looking after your baby.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "TIR_CHECK",
+   "themes": [
+    "tiredness"
+   ],
+   "stage": "both",
+   "kind": "clinician",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "guideline",
+   "source_refs": [
+    "S12"
+   ],
+   "evidence_note": "ACOG CPG 4 lists checking for medical causes of low mood or fatigue (thyroid, blood count, iron, B12). Re-check wording against the PDF.",
+   "text_en": "If tiredness is heavy or does not ease with rest, ask your doctor about simple blood checks. Low iron or thyroid problems can cause tiredness.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "verify_page"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "TIR_HANDOVER",
+   "themes": [
+    "tiredness"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "tones": [
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13"
+   ],
+   "evidence_note": "ACOG CPG 5 self-care: ask for support (ungraded).",
+   "text_en": "Choose one job today that someone else can do, and ask them. Handing over one task is a real way to protect your energy.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "TIR_WALK",
+   "themes": [
+    "tiredness"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "S10",
+    "S13"
+   ],
+   "evidence_note": "Overview of 8 reviews: physical activity helps postpartum symptoms, interpret with caution. ACOG lists activity as self-care.",
+   "text_en": "On days when you have a little energy, a short gentle walk may help. On days when you have none, resting is fine too.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BHW_U",
+   "themes": [
+    "baby_health_worry"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [
+    "T3"
+   ],
+   "evidence_note": "T3 supports offering women choices of support for anxiety; the normalising sentence itself has no direct source.",
+   "text_en": "Worrying about your baby's health is very common and shows how much you care. Worry that takes over your day is worth talking about.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BHW_LIST",
+   "themes": [
+    "baby_health_worry"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "T3"
+   ],
+   "evidence_note": "T3: educational activities limited to promising evidence for anxiety.",
+   "text_en": "Write down your worries about the baby and take the list to the next check-up. Clear answers from your doctor or midwife can ease worry.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BHW_YOGA",
+   "themes": [
+    "baby_health_worry"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "tones": [
+    "anxious",
+    "neutral",
+    "low"
+   ],
+   "effort": "longer",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "T3",
+    "T11"
+   ],
+   "evidence_note": "T3: yoga and mind-body activities led by trained instructors seemed more effective than self-guided. T11 Cochrane: some but not strong evidence.",
+   "text_en": "A relaxation or gentle prenatal yoga class led by a trained teacher may ease anxiety. The evidence is encouraging but not strong.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BHW_DIGITAL",
+   "themes": [
+    "baby_health_worry"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "tones": [
+    "anxious",
+    "neutral",
+    "low"
+   ],
+   "effort": "longer",
+   "evidence_level": "review",
+   "source_refs": [
+    "T12",
+    "T13"
+   ],
+   "evidence_note": "T12: digital programmes reduced postpartum anxiety (SMD -0.49), more with psychotherapy content. T13: web-based CBT with reminders worked best.",
+   "text_en": "Guided online or app-based programmes using CBT have helped with worry after birth. Ask your care team which ones they trust.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BHW_CBT",
+   "themes": [
+    "baby_health_worry"
+   ],
+   "stage": "both",
+   "kind": "clinician",
+   "tones": [
+    "anxious",
+    "tired_overwhelmed"
+   ],
+   "effort": "talk",
+   "evidence_level": "review",
+   "source_refs": [
+    "T3"
+   ],
+   "evidence_note": "T3: CBT and mindfulness-based therapies had the strongest evidence among reviews of perinatal anxiety.",
+   "text_en": "If worry keeps you from sleeping or eating, or you cannot switch it off for days, tell your doctor. Talking therapy such as CBT has the strongest evidence.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "DEL_U",
+   "themes": [
+    "delivery_fear"
+   ],
+   "stage": "prenatal",
+   "kind": "understand",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "review",
+   "source_refs": [
+    "T4",
+    "T5"
+   ],
+   "evidence_note": "Meta-analyses: psychoeducation reduced fear of childbirth (Hedges g 0.59, 6 studies; T4).",
+   "text_en": "Fear of childbirth is common, and it can be eased. Asking your doctor or midwife to explain each stage of labour is a good start.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "DEL_CLASS",
+   "themes": [
+    "delivery_fear"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low",
+    "positive"
+   ],
+   "effort": "longer",
+   "evidence_level": "review",
+   "source_refs": [
+    "T4",
+    "T5"
+   ],
+   "evidence_note": "T4, T5: education programmes and childbirth counselling reduced fear. T5 notes heterogeneity.",
+   "text_en": "Join an antenatal class or a one-to-one session that explains labour, pain relief choices and what to expect. Education has reduced fear in several studies.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "DEL_TELL",
+   "themes": [
+    "delivery_fear"
+   ],
+   "stage": "prenatal",
+   "kind": "clinician",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "review",
+   "source_refs": [
+    "T5"
+   ],
+   "evidence_note": "T5: psychologically based interventions reduced fear and anxiety.",
+   "text_en": "Tell your doctor or midwife that you feel afraid of the birth. They can arrange extra counselling and walk you through your options.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "DEL_YOGA",
+   "themes": [
+    "delivery_fear"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "tones": [
+    "anxious",
+    "neutral"
+   ],
+   "effort": "longer",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "T5",
+    "T11"
+   ],
+   "evidence_note": "T5 included yoga courses among interventions; T11 evidence not strong.",
+   "text_en": "Gentle prenatal yoga with a trained teacher was one of the approaches used in studies on fear of childbirth. Ask if a class is available near you.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "PRG_TELL",
+   "themes": [
+    "pregnancy_symptoms"
+   ],
+   "stage": "prenatal",
+   "kind": "clinician",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "guideline",
+   "source_refs": [
+    "T19"
+   ],
+   "evidence_note": "ACOG PB 153: early treatment of nausea and vomiting prevents complications.",
+   "text_en": "If nausea, vomiting or other symptoms are making daily life hard, tell your doctor or midwife early. Early care can prevent bigger problems.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "PRG_U",
+   "themes": [
+    "pregnancy_symptoms"
+   ],
+   "stage": "prenatal",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: normalising statement.",
+   "text_en": "Pregnancy symptoms can wear you down emotionally as well as physically. Feeling low about them is understandable and worth mentioning at your check-up.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "PRG_NOTE",
+   "themes": [
+    "pregnancy_symptoms"
+   ],
+   "stage": "prenatal",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: symptom diary is common practice, no source opened.",
+   "text_en": "Keep a short note of your symptoms and when they happen. It helps your doctor or midwife find what will help you.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BOD_U",
+   "themes": [
+    "body_physical_symptoms"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: normalising statement.",
+   "text_en": "Your body is changing a lot, and aches or discomfort can affect your mood. It is fine to ask about anything that worries you.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BOD_TELL",
+   "themes": [
+    "body_physical_symptoms"
+   ],
+   "stage": "both",
+   "kind": "clinician",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "guideline",
+   "source_refs": [
+    "S12"
+   ],
+   "evidence_note": "ACOG CPG 4: evaluate medical contributors to mood symptoms.",
+   "text_en": "Tell your doctor or midwife about physical symptoms that worry you or do not settle. Physical health and mood affect each other.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "verify_page"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BOD_MOVE",
+   "themes": [
+    "body_physical_symptoms"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "low",
+    "positive"
+   ],
+   "effort": "5min",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "S10",
+    "S13"
+   ],
+   "evidence_note": "Physical activity overview (interpret with caution); ACOG self-care. Needs doctor's clearance in pregnancy or after surgery.",
+   "text_en": "If your doctor says it is fine for you, gentle movement such as a short walk may help how you feel in your body and mind.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "REC_TELL",
+   "themes": [
+    "recovery_pain"
+   ],
+   "stage": "postnatal",
+   "kind": "clinician",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: searched for postpartum pain guidance (nursingcenter summary) but could not read it.",
+   "text_en": "If pain from stitches, a caesarean wound or your back is not easing or is getting worse, tell your doctor or midwife. Pain care is part of your care.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "REC_U",
+   "themes": [
+    "recovery_pain"
+   ],
+   "stage": "postnatal",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: normalising statement.",
+   "text_en": "Recovery after birth takes time, and ongoing pain can wear down your mood and sleep. Asking for help with pain is not complaining.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "REC_HELP",
+   "themes": [
+    "recovery_pain"
+   ],
+   "stage": "postnatal",
+   "kind": "talk",
+   "tones": [
+    "tired_overwhelmed",
+    "anxious",
+    "low",
+    "neutral"
+   ],
+   "effort": "talk",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13"
+   ],
+   "evidence_note": "ACOG CPG 5 self-care: ask for support (ungraded).",
+   "text_en": "Ask someone to help with lifting, chores and baby care while your body heals.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "FED_U",
+   "themes": [
+    "feeding_difficulty"
+   ],
+   "stage": "postnatal",
+   "kind": "understand",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "observational",
+   "source_refs": [
+    "T6",
+    "T7"
+   ],
+   "evidence_note": "T6: pressure to breastfeed linked with more anxiety when expectations are unmet. T7: women wanted non-judgemental help.",
+   "text_en": "Many mothers find feeding harder than expected. Struggling does not mean you are failing, and it is not a reason for guilt.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "FED_HELP",
+   "themes": [
+    "feeding_difficulty"
+   ],
+   "stage": "postnatal",
+   "kind": "clinician",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "observational",
+   "source_refs": [
+    "T6",
+    "T7"
+   ],
+   "evidence_note": "T6: help with breastfeeding pain was linked with lower later low-mood risk (Watkins 2011, observational). T7: timely professional support valued.",
+   "text_en": "Ask a lactation counsellor, midwife or doctor to watch a feed and help. Early practical help is linked with better mood when feeding hurts.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "sensitive"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "FED_ASK",
+   "themes": [
+    "feeding_difficulty"
+   ],
+   "stage": "postnatal",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "qualitative",
+   "source_refs": [
+    "T7"
+   ],
+   "evidence_note": "T7: practical, non-judgemental help from family and friends valued.",
+   "text_en": "Tell family or friends the kind of help you want, such as holding the baby, bringing food, or listening without judging.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "FED_CHOICE",
+   "themes": [
+    "feeding_difficulty"
+   ],
+   "stage": "postnatal",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "observational",
+   "source_refs": [
+    "T6"
+   ],
+   "evidence_note": "T6: individualised care respecting the mother's goals and choices, without guilt or shame. Clinician to confirm wording for India.",
+   "text_en": "How you feed your baby is your decision to make with your care team. Your own wellbeing matters as much as your feeding goal.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "sensitive"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "CRY_U",
+   "themes": [
+    "baby_crying_sleep"
+   ],
+   "stage": "postnatal",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "programme",
+   "source_refs": [
+    "T18"
+   ],
+   "evidence_note": "T18: authors argue parents need more education on infant crying and soothing.",
+   "text_en": "Babies cry a lot, and it is normal to feel stressed by it. Crying does not mean you are a bad mother.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "CRY_BREAK",
+   "themes": [
+    "baby_crying_sleep"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "tones": [
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "programme",
+   "source_refs": [
+    "T18"
+   ],
+   "evidence_note": "T18 programme taught that, once the baby is fed, changed and well, it is acceptable to let them cry after soothing attempts.",
+   "text_en": "If your baby is fed, changed and well and you feel overwhelmed, it is okay to lay them safely in the cot and step away for a few minutes.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "safety_review"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "CRY_HANDOVER",
+   "themes": [
+    "baby_crying_sleep"
+   ],
+   "stage": "postnatal",
+   "kind": "talk",
+   "tones": [
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "programme",
+   "source_refs": [
+    "T18",
+    "S13"
+   ],
+   "evidence_note": "T18: few parents used coping techniques or community support. S13: ask for support.",
+   "text_en": "When crying feels like too much, hand your baby to someone you trust and take a short break.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "CRY_CHECK",
+   "themes": [
+    "baby_crying_sleep"
+   ],
+   "stage": "postnatal",
+   "kind": "clinician",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "gap",
+   "source_refs": [
+    "T18"
+   ],
+   "evidence_note": "Partly sourced: T18 emphasises parent mental health, but 'baby check' advice is common sense and needs clinician wording.",
+   "text_en": "If your baby cries for hours most days or you think something is wrong, ask your doctor to check the baby, and tell them how you are coping.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BON_U",
+   "themes": [
+    "bonding_worries"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [
+    "T10"
+   ],
+   "evidence_note": "NEEDS SOURCE for 'grows gradually'. T10 only shows kangaroo care improved bonding (low certainty).",
+   "text_en": "Bonding does not always happen straight away. Many mothers feel it grow gradually, and support is there if it worries you.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BON_SKIN",
+   "themes": [
+    "bonding_worries"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low",
+    "positive"
+   ],
+   "effort": "longer",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "T10"
+   ],
+   "evidence_note": "T10 covers preterm or low-birth-weight infants only: high-certainty drop in mothers' low mood, low-certainty better bonding. Extending to term babies is an extrapolation for the clinician to decide.",
+   "text_en": "Try holding your baby skin-to-skin when you can. Studies of this 'kangaroo care' with small or early babies found better bonding and less stress in mothers.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "extrapolation"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "BON_TELL",
+   "themes": [
+    "bonding_worries"
+   ],
+   "stage": "postnatal",
+   "kind": "clinician",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "guideline",
+   "source_refs": [
+    "S12"
+   ],
+   "evidence_note": "ACOG CPG 4: positive screens or concerns need clinician assessment. Not specific to bonding.",
+   "text_en": "If you feel little connection with your baby after some weeks, tell your doctor or midwife. Support is available and asking is the right step.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "verify_page"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "LON_U",
+   "themes": [
+    "loneliness"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "qualitative",
+   "source_refs": [
+    "T8"
+   ],
+   "evidence_note": "T8: loneliness is central to perinatal low mood; advise telling women early that it is common and acceptable.",
+   "text_en": "Feeling lonely in pregnancy or after birth is common, and it can feed low mood. Naming it is a good first step, and it is nothing to be ashamed of.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "LON_SAY",
+   "themes": [
+    "loneliness"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "qualitative",
+   "source_refs": [
+    "T8"
+   ],
+   "evidence_note": "T8: feeling heard and validated matters, especially from professionals.",
+   "text_en": "Tell one person you trust how lonely you feel. Being heard helps, and you do not need to have the answer.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "LON_PEER",
+   "themes": [
+    "loneliness"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low",
+    "positive"
+   ],
+   "effort": "longer",
+   "evidence_level": "review",
+   "source_refs": [
+    "T9",
+    "T8"
+   ],
+   "evidence_note": "T9: peer support lowered postpartum low-mood incidence (OR 0.69, 7 studies) and eased symptoms. T8: peers with similar stories help; peers who seem to cope perfectly can worsen loneliness. Local peer groups must be verified.",
+   "text_en": "Ask your doctor, midwife or local health worker about a mothers' group or peer supporter, ideally someone who has had similar feelings.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "verify_local"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "LON_CALL",
+   "themes": [
+    "loneliness"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "T9",
+    "S7"
+   ],
+   "evidence_note": "T9 included a telephone-based peer trial; S7 peers improved social support. Weak for a single call.",
+   "text_en": "Plan one short call or message with a friend or relative today. Small, regular contact adds up.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "FAM_NAME",
+   "themes": [
+    "family_support"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "qualitative",
+   "source_refs": [
+    "T8",
+    "S13"
+   ],
+   "evidence_note": "T8: gap between expected and actual support from partners and family. S13: ask for support (ungraded).",
+   "text_en": "Many women feel a gap between the support they hoped for and what they get. Naming one specific thing you need can help close it.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "FAM_VISIT",
+   "themes": [
+    "family_support"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: partner involvement in visits was searched but no abstract opened.",
+   "text_en": "Ask your partner or a family member to come to a check-up with you, so they hear what you need.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "FAM_THANK",
+   "themes": [
+    "family_support"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "positive",
+    "neutral"
+   ],
+   "effort": "1min",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "S7"
+   ],
+   "evidence_note": "S7: Thinking Healthy improved perceived social support. Weak for a thank-you.",
+   "text_en": "Thank the person who helped you this week. Noticing support can strengthen it.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "SCG_U",
+   "themes": [
+    "self_criticism_guilt"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "qualitative",
+   "source_refs": [
+    "T8"
+   ],
+   "evidence_note": "T8: fear of being judged a 'bad mother' leads women to hide symptoms and withdraw.",
+   "text_en": "Many mothers fear being judged as a 'bad mother' and are very hard on themselves. You are not alone in that.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "SCG_KIND",
+   "themes": [
+    "self_criticism_guilt"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "1min",
+   "evidence_level": "correlational",
+   "source_refs": [
+    "T16"
+   ],
+   "evidence_note": "T16: self-compassion shows a negative correlation with postpartum low mood (pooled 0.586). Correlation only; conference proceeding.",
+   "text_en": "Try speaking to yourself as you would to a friend in your place. Mothers who are kinder to themselves tend to feel better after birth.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "low_certainty"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "SCG_CBT",
+   "themes": [
+    "self_criticism_guilt"
+   ],
+   "stage": "both",
+   "kind": "clinician",
+   "tones": [
+    "low",
+    "anxious",
+    "tired_overwhelmed"
+   ],
+   "effort": "talk",
+   "evidence_level": "guideline",
+   "source_refs": [
+    "S13",
+    "T3"
+   ],
+   "evidence_note": "S13: CBT and IPT first-line for mild to moderate perinatal low mood. T3: CBT strongest for anxiety.",
+   "text_en": "If harsh thoughts keep coming back, ask about a talking therapy such as CBT. It works directly on these thoughts.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "IDC_U",
+   "themes": [
+    "identity_change"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "positive",
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "qualitative",
+   "source_refs": [
+    "T8"
+   ],
+   "evidence_note": "T8: emotional disconnection from pre-pregnancy life described across 27 studies.",
+   "text_en": "Becoming a mother changes how you see yourself, and many women miss parts of their old life. Missing it does not mean you love your baby less.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "IDC_OWN",
+   "themes": [
+    "identity_change"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low",
+    "positive"
+   ],
+   "effort": "5min",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13",
+    "S7"
+   ],
+   "evidence_note": "S13 self-care: time for yourself (ungraded). S7 behavioural activation.",
+   "text_en": "Pick one small thing that is just yours, like a favourite song, a short walk or a chat with an old friend, and do it today.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "IDC_PEER",
+   "themes": [
+    "identity_change"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "longer",
+   "evidence_level": "qualitative",
+   "source_refs": [
+    "T8",
+    "T9"
+   ],
+   "evidence_note": "T8: connecting with similar peers helps. Weak for identity specifically.",
+   "text_en": "Meeting other mothers who feel the same can make this change feel less lonely. Ask about a mothers' group near you.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "verify_local"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "RTW_U",
+   "themes": [
+    "return_to_work"
+   ],
+   "stage": "postnatal",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low",
+    "positive"
+   ],
+   "effort": "none",
+   "evidence_level": "systematic_review_weak",
+   "source_refs": [
+    "T15"
+   ],
+   "evidence_note": "T15: work-life balance, health and job wellbeing all linked with return to work; only 3 studies on mental health.",
+   "text_en": "Going back to work after a baby brings mixed feelings, and worry about it is common. Many women need time to find a new balance.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "RTW_ASK",
+   "themes": [
+    "return_to_work"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "systematic_review_weak",
+   "source_refs": [
+    "T15"
+   ],
+   "evidence_note": "T15: coworker and supervisor support linked to lower prenatal stress and lower postpartum low-mood risk. Indian maternity rights not covered; clinician or HR to verify.",
+   "text_en": "Talk to your supervisor early about what would help you. Support from managers and colleagues has been linked with better wellbeing.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "verify_local"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "RTW_PLAN",
+   "themes": [
+    "return_to_work"
+   ],
+   "stage": "postnatal",
+   "kind": "do",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: practical planning advice.",
+   "text_en": "Plan childcare and your first week back ahead of time, and keep it simple: fewer tasks and early nights.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "WRK_ASK",
+   "themes": [
+    "work"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "systematic_review_weak",
+   "source_refs": [
+    "T15"
+   ],
+   "evidence_note": "T15: coworker and supervisor support during pregnancy linked with lower prenatal stress.",
+   "text_en": "If work is wearing you down, talk to your supervisor about what would make it easier. Work support has been linked with lower stress in pregnancy.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [
+    "verify_local"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "WRK_BREAK",
+   "themes": [
+    "work"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "1min",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13"
+   ],
+   "evidence_note": "S13 self-care: time for yourself (ungraded).",
+   "text_en": "Protect one short break in your day that is only for you, even a few quiet minutes.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "WRK_U",
+   "themes": [
+    "work"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE: normalising statement.",
+   "text_en": "Balancing work with pregnancy or a new baby is demanding. Feeling stretched is a sign the load is heavy, not that you are failing.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "MON_U",
+   "themes": [
+    "money"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "none",
+   "evidence_level": "observational_risk_factor",
+   "source_refs": [
+    "T17"
+   ],
+   "evidence_note": "T17 maps money stress as a risk factor for postnatal low mood in low and lower-middle income countries. No intervention evidence.",
+   "text_en": "Money worries are a real source of stress for many women in pregnancy and after birth. Feeling the strain is understandable.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "MON_TELL",
+   "themes": [
+    "money"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "gap",
+   "source_refs": [
+    "T17"
+   ],
+   "evidence_note": "NEEDS SOURCE for the signposting claim. Do not name schemes until a social worker verifies them.",
+   "text_en": "Tell your doctor, midwife or health worker about money worries. They may know of local services that can help.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "MON_SHARE",
+   "themes": [
+    "money"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "neutral",
+    "tired_overwhelmed",
+    "anxious",
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13"
+   ],
+   "evidence_note": "S13: ask for support (ungraded).",
+   "text_en": "Share the worry with your partner or a family member you trust, so you are not carrying it alone.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "POS_MORE",
+   "themes": [
+    "positive_moments"
+   ],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "positive",
+    "neutral"
+   ],
+   "effort": "5min",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "S7",
+    "T14"
+   ],
+   "evidence_note": "T14: behavioural activation drives benefit (adults in India, not perinatal). S7: perinatal peer programme.",
+   "text_en": "Notice what is bringing you these good moments, and make a little more room for it this week.",
+   "needs_source": false,
+   "generic": false,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "POS_SHARE",
+   "themes": [
+    "positive_moments"
+   ],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "positive"
+   ],
+   "effort": "1min",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE.",
+   "text_en": "Share one good moment from today with someone close. Shared good moments strengthen your support.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "POS_BOTH",
+   "themes": [
+    "positive_moments"
+   ],
+   "stage": "both",
+   "kind": "understand",
+   "tones": [
+    "positive",
+    "neutral"
+   ],
+   "effort": "none",
+   "evidence_level": "gap",
+   "source_refs": [],
+   "evidence_note": "NEEDS SOURCE.",
+   "text_en": "Good days and hard days can sit side by side in the same week. Both are normal, and the good ones count.",
+   "needs_source": true,
+   "generic": false,
+   "flag_list": [
+    "needs_source"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_LOW_SMALL",
+   "themes": [],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "low"
+   ],
+   "effort": "5min",
+   "evidence_level": "trial",
+   "source_refs": [
+    "S7",
+    "T14"
+   ],
+   "evidence_note": "Behavioural activation core of Thinking Healthy (remission 58% vs 50%) and HAP (India).",
+   "text_en": "Pick one small thing you used to enjoy and do it for a few minutes today. Starting small is enough.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_LOW_CBT",
+   "themes": [],
+   "stage": "both",
+   "kind": "clinician",
+   "tones": [
+    "low"
+   ],
+   "effort": "talk",
+   "evidence_level": "guideline",
+   "source_refs": [
+    "S13"
+   ],
+   "evidence_note": "ACOG CPG 5: CBT and IPT first-line for mild to moderate perinatal low mood (strong recommendation).",
+   "text_en": "Talking therapies such as CBT can help with low mood in pregnancy and after birth. Ask your doctor about options near you.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_ANX_MB",
+   "themes": [],
+   "stage": "prenatal",
+   "kind": "do",
+   "tones": [
+    "anxious"
+   ],
+   "effort": "longer",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "T3",
+    "T11"
+   ],
+   "evidence_note": "Mind-body activities led by trained instructors; Cochrane evidence not strong.",
+   "text_en": "A guided relaxation or yoga session led by a trained teacher may ease anxiety. Ask if one is offered near you.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_ANX_DIGI",
+   "themes": [],
+   "stage": "postnatal",
+   "kind": "do",
+   "tones": [
+    "anxious",
+    "low"
+   ],
+   "effort": "longer",
+   "evidence_level": "review",
+   "source_refs": [
+    "T12",
+    "T13"
+   ],
+   "evidence_note": "Digital CBT-based programmes reduce postpartum anxiety and low mood.",
+   "text_en": "A guided online or app-based CBT programme can help with worry and low mood after birth. Ask your care team which they trust.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_TIRED_ASK",
+   "themes": [],
+   "stage": "both",
+   "kind": "talk",
+   "tones": [
+    "tired_overwhelmed"
+   ],
+   "effort": "talk",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13"
+   ],
+   "evidence_note": "Ask for support (ungraded).",
+   "text_en": "Ask for help with one task today. Letting others carry a little is part of getting through a hard stretch.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_NEU_ROUTINE",
+   "themes": [],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "neutral"
+   ],
+   "effort": "none",
+   "evidence_level": "ungraded_selfcare",
+   "source_refs": [
+    "S13"
+   ],
+   "evidence_note": "S13 self-care: sleep, meals, time for yourself (ungraded).",
+   "text_en": "Keep up regular meals, rest and a little time for yourself. Small routines protect your mood.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_POS_KEEP",
+   "themes": [],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "positive"
+   ],
+   "effort": "none",
+   "evidence_level": "review_weak",
+   "source_refs": [
+    "S7"
+   ],
+   "evidence_note": "Pleasant activities (behavioural activation).",
+   "text_en": "Keep doing what is working for you right now. Good routines are worth protecting on busy days.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  },
+  {
+   "id": "GEN_PEER",
+   "themes": [],
+   "stage": "both",
+   "kind": "do",
+   "tones": [
+    "low",
+    "anxious",
+    "tired_overwhelmed"
+   ],
+   "effort": "longer",
+   "evidence_level": "review",
+   "source_refs": [
+    "T9"
+   ],
+   "evidence_note": "Peer support lowered postpartum low-mood incidence (OR 0.69).",
+   "text_en": "Ask your doctor, midwife or local health worker about a mothers' group or peer supporter. Talking with someone who has been there helps.",
+   "needs_source": false,
+   "generic": true,
+   "flag_list": [
+    "verify_local"
+   ],
+   "text_hi": "",
+   "text_bn": "",
+   "text_ta": "",
+   "status": "draft"
+  }
+ ],
+ "coverage_note": "counts of (items, items with a source) per theme and stage",
+ "coverage": {
+  "sleep|prenatal": [
+   3,
+   3
+  ],
+  "sleep|postnatal": [
+   3,
+   3
+  ],
+  "tiredness|prenatal": [
+   3,
+   2
+  ],
+  "tiredness|postnatal": [
+   4,
+   3
+  ],
+  "baby_health_worry|prenatal": [
+   4,
+   3
+  ],
+  "baby_health_worry|postnatal": [
+   4,
+   3
+  ],
+  "family_support|prenatal": [
+   3,
+   2
+  ],
+  "family_support|postnatal": [
+   3,
+   2
+  ],
+  "loneliness|prenatal": [
+   4,
+   4
+  ],
+  "loneliness|postnatal": [
+   4,
+   4
+  ],
+  "money|prenatal": [
+   3,
+   2
+  ],
+  "money|postnatal": [
+   3,
+   2
+  ],
+  "work|prenatal": [
+   3,
+   2
+  ],
+  "work|postnatal": [
+   3,
+   2
+  ],
+  "self_criticism_guilt|prenatal": [
+   3,
+   3
+  ],
+  "self_criticism_guilt|postnatal": [
+   3,
+   3
+  ],
+  "body_physical_symptoms|prenatal": [
+   3,
+   2
+  ],
+  "body_physical_symptoms|postnatal": [
+   3,
+   2
+  ],
+  "positive_moments|prenatal": [
+   3,
+   1
+  ],
+  "positive_moments|postnatal": [
+   3,
+   1
+  ],
+  "delivery_fear|prenatal": [
+   4,
+   4
+  ],
+  "delivery_fear|postnatal": [
+   0,
+   0
+  ],
+  "pregnancy_symptoms|prenatal": [
+   3,
+   1
+  ],
+  "pregnancy_symptoms|postnatal": [
+   0,
+   0
+  ],
+  "feeding_difficulty|prenatal": [
+   0,
+   0
+  ],
+  "feeding_difficulty|postnatal": [
+   4,
+   4
+  ],
+  "baby_crying_sleep|prenatal": [
+   0,
+   0
+  ],
+  "baby_crying_sleep|postnatal": [
+   4,
+   3
+  ],
+  "recovery_pain|prenatal": [
+   0,
+   0
+  ],
+  "recovery_pain|postnatal": [
+   3,
+   1
+  ],
+  "bonding_worries|prenatal": [
+   1,
+   0
+  ],
+  "bonding_worries|postnatal": [
+   3,
+   2
+  ],
+  "identity_change|prenatal": [
+   3,
+   3
+  ],
+  "identity_change|postnatal": [
+   3,
+   3
+  ],
+  "return_to_work|prenatal": [
+   1,
+   1
+  ],
+  "return_to_work|postnatal": [
+   3,
+   2
+  ]
+ }
+}

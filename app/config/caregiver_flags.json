@@ -1,0 +1,10 @@
+{
+  "_notice": "Caregiver questionnaire risk area to favoured themes mapping (proposals for clinician review).",
+  "money_food": ["share_chores", "ask_others"],
+  "tension": ["calm_home"],
+  "isolated": ["help_her_connect"],
+  "baby_hard": ["share_baby_care"],
+  "no_support": ["ask_others", "share_chores", "help_her_connect"],
+  "signs_high": ["appointments", "start_conversation", "notice_changes"]
+}
+

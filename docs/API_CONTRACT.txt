@@ -1,0 +1,633 @@
+HEALHER QUESTIONNAIRE GUIDANCE & PERSONALISATION API CONTRACT
+=============================================================
+
+1. OVERVIEW
+-----------
+This document specifies the contract for the Questionnaire Scoring and Optional AI Personalisation Layer (PHQ-9 and EPDS) in the HealHer backend.
+
+The guidance system helps mothers receive supportive, evidence-based self-care suggestions following a perinatal screening.
+The approved suggestions library in data/questionnaire_suggestions.json (plus data/library_overrides.json) is the ONLY source of suggestions.
+The AI model may ONLY choose and order approved library items (Mode A), and optionally reword them into the user's language or simpler words (Mode B).
+The model NEVER adds advice, facts, numbers, phone numbers, medicines, or medical content.
+On any exception, timeout, 429, invalid JSON, or safety gating, the system falls back seamlessly to the deterministic non-AI result.
+
+
+2. AUTHENTICATION & SECURITY
+----------------------------
+- Authentication Header:
+  Production/Staging: Authorization: Bearer <supabase_jwt_token>
+  Development: x-user-ref: <dev_user_identifier> (only if APP_ENV=development)
+- Rate Limit: 20 requests per minute per user (enforced by user reference).
+- Request Body Limit: 10 KB maximum.
+- CORS: Restricted strictly to FRONTEND_ORIGIN.
+- Privacy & Logging:
+  Request bodies, prompts, and model outputs are NEVER logged.
+  Only internal telemetry error codes (e.g. error_code=select_exception) are recorded.
+  Tracing remains strictly disabled (LANGCHAIN_TRACING_V2=false, LANGSMITH_TRACING=false).
+
+
+3. ENDPOINTS
+------------
+
+### A. POST /api/questionnaire/score
+Scores a submitted PHQ-9 or EPDS screening, persists the clinical result, and returns the deterministic result.
+
+Request Headers:
+  Content-Type: application/json
+  Authorization: Bearer <token> (or x-user-ref in dev)
+
+Request Body:
+{
+  "instrument": "phq9",
+  "answers": {
+    "1": 1,
+    "2": 0,
+    "3": 1,
+    "4": 2,
+    "5": 0,
+    "6": 1,
+    "7": 0,
+    "8": 0,
+    "9": 0
+  },
+  "stage": "postnatal",
+  "language": "en"
+}
+
+Request Parameters:
+  - instrument (string, required): "phq9" or "epds"
+  - answers (object, required): Map of question id to integer score (0-3)
+  - stage (string, optional, default "postnatal"): "prenatal" or "postnatal"
+  - language (string, optional, default "en"): "en", "hi", "bn", or "ta"
+
+Response (200 OK):
+{
+  "result_id": "c1f7b029-7c98-4c21-9988-341e04130099",
+  "instrument": "phq9",
+  "total_score": 5,
+  "band_id": "mild",
+  "band_message": "Your answers suggest some things are weighing on you. Be gentle with yourself and keep checking in.",
+  "escalation": "monitor",
+  "suggestions": [
+    {
+      "id": "SUG_SLEEP_PROTECT",
+      "category": "sleep",
+      "text": "Prioritise rest where you can, and keep to a steady sleep and wake routine."
+    },
+    {
+      "id": "SUG_TALK_TRUSTED",
+      "category": "support",
+      "text": "Sharing how you feel with a trusted partner, family member or friend can bring comfort."
+    }
+  ],
+  "safety_triggered": false,
+  "helplines": {
+    "tele_manas": "14416",
+    "emergency": "112",
+    "women_helpline": "181"
+  },
+  "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112).",
+  "disclaimer_key": "sentiment.disclaimer",
+  "previous": null,
+  "personalised": false,
+  "mode": "none",
+  "library_version": "383578a65436cefd"
+}
+
+
+### B. POST /api/questionnaire/guidance
+Runs the LangGraph personalisation workflow to select, order, and optionally reword suggestions for a previously stored result.
+
+Request Headers:
+  Content-Type: application/json
+  Authorization: Bearer <token> (or x-user-ref in dev)
+
+Request Body:
+{
+  "result_id": "c1f7b029-7c98-4c21-9988-341e04130099",
+  "language": "hi",
+  "themes": ["sleep", "tiredness"]
+}
+
+Request Parameters:
+  - result_id (string, required): Stored result ID. Must belong to the authenticated user (404 otherwise).
+  - language (string, optional, default "en"): Target language ("en", "hi", "bn", "ta").
+  - themes (array of strings, optional): Subset of the 18 fixed theme tags:
+      sleep, tiredness, baby_health_worry, family_support, loneliness, money,
+      work, self_criticism_guilt, body_physical_symptoms, positive_moments,
+      delivery_fear, pregnancy_symptoms, feeding_difficulty, baby_crying_sleep,
+      recovery_pain, bonding_worries, identity_change, return_to_work.
+    Any unrecognized strings in themes are silently dropped.
+
+Response (200 OK):
+{
+  "band_id": "mild",
+  "band_message": "Your answers suggest some things are weighing on you. Be gentle with yourself and keep checking in.",
+  "escalation": "monitor",
+  "suggestions": [
+    {
+      "id": "SUG_SLEEP_PROTECT",
+      "category": "sleep",
+      "text": "जहाँ तक संभव हो आराम को प्राथमिकता दें और सोने तथा जागने का एक नियमित समय रखें।"
+    },
+    {
+      "id": "SUG_TIME_FOR_SELF",
+      "category": "self_care",
+      "text": "हर दिन अपने लिए कुछ शांत मिनट निकालें और गहरी साँस लें।"
+    }
+  ],
+  "safety_triggered": false,
+  "helplines": {
+    "tele_manas": "14416",
+    "emergency": "112",
+    "women_helpline": "181"
+  },
+  "safe_fallback_text": "एक बार में एक दिन पर ध्यान दें, जहाँ संभव हो आराम करें और उन लोगों से जुड़ें जो आपका समर्थन करते हैं। टेली-मानस (14416) या आपातकालीन सेवाओं (112) के माध्यम से किसी भी समय निःशुल्क मानसिक स्वास्थ्य सहायता उपलब्ध है।",
+  "disclaimer_key": "sentiment.disclaimer",
+  "previous": null,
+  "personalised": true,
+  "mode": "select",
+  "library_version": "383578a65436cefd"
+}
+
+Response Fields Explanation:
+  - personalised (boolean): true only if the model's selection or rewording was successfully validated and used; false if gated, fallen back, or disabled.
+  - mode (string): "none" (deterministic fallback), "select" (Mode A: AI ordered approved items), or "reword" (Mode B: AI ordered and reworded).
+  - library_version (string): 16-character SHA-256 hash of suggestions and overrides. Changes immediately whenever either library file is modified, invalidating the cache.
+
+
+4. SAFETY GATING & DETERMINISTIC FALLBACK
+-----------------------------------------
+The AI model is NEVER invoked when any of the following conditions hold:
+  1. safety_triggered is true (e.g. PHQ-9 Q9 > 0 or EPDS Q10 > 0)
+  2. escalation level is "see_clinician_soon" or "see_clinician_urgent"
+  3. No approved candidate suggestions exist for the band and stage
+  4. GUIDANCE_AI_ENABLED is false in environment configuration
+  5. APP_ENV is "forbidden"
+In all these gated cases, the backend immediately returns the deterministic library result with personalised=false and mode="none".
+
+Mandatory Clinical Rules:
+  - Clinician Contact Item (SUG_CLINICIAN_CONTACT): In any result with escalation "see_clinician" or higher, the clinician contact recommendation is strictly pinned at position 0 (first item), regardless of model ordering.
+  - Mixed Evidence Items (e.g. SUG_CALMING_PRACTICE): Practice recommendations graded with "mixed" evidence are strictly excluded from "moderate", "moderately_severe", and "severe" bands.
+  - Verified Helplines Only: Helplines are strictly verified Indian national services (Tele-MANAS 14416, National Emergency 112, Women Helpline 181). Disallowed foreign helplines (1800-889-4357) and legacy numbers (102, 108) are prohibited.
+
+
+5. MODEL PROMPT PRIVACY BOUNDARIES
+----------------------------------
+The model NEVER receives user free text, notes, names, emails, user IDs, or numerical scores.
+The prompt contains ONLY 7 structural metadata fields:
+  - instrument (phq9 | epds)
+  - stage (prenatal | postnatal)
+  - language (en | hi | bn | ta)
+  - band_id (minimal | mild | moderate | moderately_severe | severe | well | possible_mild_depression | possible_depression)
+  - escalation (routine | monitor | see_clinician | see_clinician_soon | see_clinician_urgent)
+  - themes (filtered subset of 18 fixed tags)
+  - candidates (list of candidate objects with id, category, English text only)
+
+
+6. REWORDING VALIDATION RULES (Mode B)
+--------------------------------------
+When GUIDANCE_AI_REWORD=true, the model rewrites selected items. Every rewritten sentence undergoes strict code validation before display:
+  - Length: At most 1.3 times the original English word count.
+  - Digits: No new digits allowed unless identical to digits present in the original sentence.
+  - Phone Numbers & URLs: No phone numbers or URLs permitted unless present in original.
+  - Diagnostic & Clinical Words: None of the forbidden diagnostic terms (depression, depressed, severe, diagnosis, disorder, etc.) across en, hi, bn, ta.
+  - Medication Words: None of the medication terms (tablet, medicine, antidepressant, SSRI, dose, etc.) across en, hi, bn, ta.
+  - Language Script Check: Devanagari script for Hindi, Bengali script for Bengali, Tamil script for Tamil, Latin script for English.
+Any item failing validation is discarded and replaced with approved library text in that language.
+
+
+7. SENTIMENT MOOD REFLECTION API CONTRACT
+-----------------------------------------
+
+### POST /api/sentiment/analyze
+Analyzes mother's check-in note for tone, intensity, themes, and gentle reflection.
+Selects theme-specific, tone-aware, stage-aware suggestions using deterministic code from data/sentiment_suggestions.json.
+The AI model NEVER generates, rewrites, or invents suggestions; suggestions are strictly selected by code.
+
+Request Headers:
+  Content-Type: application/json
+  Authorization: Bearer <supabase_jwt_token> (or x-user-ref in development)
+
+Request Body:
+{
+  "note_text": "I could barely sleep last night. Every sound wakes me up and I feel exhausted today.",
+  "language": "en",
+  "stage": "postnatal"
+}
+
+Request Parameters:
+  - note_text (string, required): Minimum 10 words or 50 characters (excluding spaces). Max 50 KB body.
+  - language (string, optional, default "en"): "en", "hi", "bn", or "ta".
+  - stage (string, optional, default "postnatal"): "prenatal" or "postnatal".
+
+Response (200 OK):
+{
+  "status": "ok",
+  "tone": "tired_overwhelmed",
+  "intensity": "medium",
+  "themes": ["sleep", "tiredness"],
+  "risk_language": false,
+  "reflection": "It sounds like broken sleep is leaving you completely drained today.",
+  "suggestions": [
+    {
+      "id": "SLP_U",
+      "kind": "understand",
+      "text": "Sleep often gets harder in pregnancy and after birth, and poor sleep and low mood tend to go together. You are not doing something wrong.",
+      "text_language": "en",
+      "why_this_theme": "your sleep",
+      "why_this_key": "suggestion.why.sleep"
+    },
+    {
+      "id": "SLP_NEWBORN",
+      "kind": "do",
+      "text": "Newborn sleep comes in short stretches. Ask someone you trust to take over baby care for one stretch so you can sleep for longer.",
+      "text_language": "en",
+      "why_this_theme": "your sleep",
+      "why_this_key": "suggestion.why.sleep"
+    },
+    {
+      "id": "TIR_HANDOVER",
+      "kind": "do",
+      "text": "Choose one job today that someone else can do, and ask them. Handing over one task is a real way to protect your energy.",
+      "text_language": "en",
+      "why_this_theme": "feeling tired",
+      "why_this_key": "suggestion.why.tiredness"
+    }
+  ],
+  "suggestion": "Sleep often gets harder in pregnancy and after birth, and poor sleep and low mood tend to go together. You are not doing something wrong.",
+  "library_version": "ac81fb1cb5f9978d",
+  "support": false,
+  "mismatch": false,
+  "helplines": {
+    "tele_manas": "14416",
+    "emergency": "112",
+    "women_helpline": "181"
+  },
+  "safe_fallback_text": "Take things one day at a time, rest where you can, and connect with people who support you. Free mental health support is available anytime through Tele-MANAS (14416) or emergency services (112)."
+}
+
+Suggestions Shape Specification:
+  - suggestions (array of objects): Up to 3 selected library items.
+      id (string): Unique identifier (e.g. "SLP_U").
+      kind (string): "understand" (normalising), "do" (action), "talk" (social support), or "clinician" (professional care).
+      text (string): Localized advice text. Falls back to English if requested language is empty.
+      text_language (string): Language of text ("en", "hi", "bn", "ta").
+      why_this_theme (string | null): Human-readable theme label from theme_labels_en (e.g. "your sleep"), omitted/null for generic items.
+      why_this_key (string | null): i18n key (e.g. "suggestion.why.sleep"), omitted/null for generic items.
+  - suggestion (string): Legacy backward-compatible field containing the text of the first suggestion, or empty string.
+  - library_version (string): 16-character SHA-256 hash of active library content and overrides.
+
+Special Safety & Distress Response:
+  If tone is "distressed", risk_language is true, or escalation is not "none":
+  - suggestions is strictly [] (empty array).
+  - suggestion is "" (empty string).
+  - support is true.
+  - helplines contains ONLY verified Indian helplines: Tele-MANAS (14416), Emergency (112), Women Helpline (181). Disallowed foreign helplines (1800-889-4357) and legacy 102/108 numbers NEVER appear.
+
+
+8. ADMIN SENTIMENT LIBRARY MANAGEMENT ROUTES
+--------------------------------------------
+All admin endpoints require the header `x-admin-token: <ADMIN_TOKEN>`.
+
+### A. GET /api/admin/sentiment-library
+Returns all library suggestions and metadata, along with coverage per theme and stage for served items.
+
+Response:
+{
+  "version": "0.1-draft",
+  "library_version": "ac81fb1cb5f9978d",
+  "count": 70,
+  "served_count": 55,
+  "suggestions": [
+    {
+      "id": "SLP_U",
+      "themes": ["sleep"],
+      "stage": "both",
+      "kind": "understand",
+      "tones": ["neutral", "tired_overwhelmed", "anxious", "low"],
+      "effort": "none",
+      "status": "approved",
+      "evidence_level": "observational",
+      "source_refs": ["T1"],
+      "needs_source": false,
+      "flag_list": [],
+      "text_en": "Sleep often gets harder in pregnancy and after birth..."
+    }
+  ],
+  "sources": { "T1": { ... } },
+  "coverage": { "sleep|prenatal": [3, 3], ... },
+  "coverage_served": { "sleep|prenatal": 3, ... },
+  "thin_themes": {
+    "prenatal": ["bonding_worries", "return_to_work", "feeding_difficulty", ...],
+    "postnatal": ["delivery_fear", "pregnancy_symptoms"]
+  }
+}
+
+### B. PATCH /api/admin/sentiment-library/suggestion/{id}
+Updates a suggestion's status ('approved' or 'draft') or localized wording (text_hi, text_bn, text_ta, text_en).
+Clinician edits are persisted into data/sentiment_overrides.json and never modify the immutable data/sentiment_suggestions.json file.
+
+Safety Constraints:
+  - Setting status to 'approved' is strictly REFUSED (HTTP 400) if needs_source is true or source_refs is empty.
+  - Text must not contain digits, forbidden diagnostic words, or medication terms.
+
+Request Body:
+{
+  "status": "approved",
+  "text_hi": "गर्भावस्था और जन्म के बाद नींद अक्सर कठिन हो जाती है...",
+  "text_bn": "গর্ভাবস্থায় এবং প্রসবের পরে ঘুম প্রায়শই কঠিন হয়ে পড়ে...",
+  "text_ta": "கர்ப்ப காலத்திலும் பிரசவத்திற்குப் பிறகும் தூக்கம் கடினமாகிறது..."
+}
+
+Response:
+{
+  "success": true,
+  "suggestion": { ... },
+  "library_version": "6a9e102bc45d8123"
+}
+
+### C. GET /api/admin/sentiment-library/untranslated
+Returns all served library items that are missing translated text for Hindi (hi), Bengali (bn), or Tamil (ta).
+
+Response:
+{
+  "count": 55,
+  "untranslated": [
+    {
+      "id": "SLP_NEWBORN",
+      "missing_languages": ["hi", "bn", "ta"],
+      "text_en": "Newborn sleep comes in short stretches..."
+    }
+  ]
+}
+
+### D. GET /api/admin/sentiment-library/stats
+Privacy-preserving aggregate statistics on suggestion impressions over the last 30 days. No user identifiers, note texts, or themes are ever returned.
+
+Response:
+{
+  "window_days": 30,
+  "recency_days": 14,
+  "total_impressions": 142,
+  "repeat_rate_14d": 0.042,
+  "empty_results_count": 0,
+  "suggestion_counts": {
+    "SLP_U": 28,
+    "SLP_NEWBORN": 22,
+    "TIR_HANDOVER": 19
+  }
+}
+
+
+9. USER SUGGESTION HISTORY DELETION
+-----------------------------------
+
+### DELETE /api/me/suggestion-history (and /api/sentiment/me/suggestion-history)
+Deletes all recorded suggestion impression history for the authenticated user.
+
+Request Headers:
+  Authorization: Bearer <supabase_jwt_token>
+
+Response (200 OK):
+{
+  "success": true,
+  "deleted_count": 6
+}
+
+
+10. CAREGIVER 'HOW YOU CAN HELP HER TODAY' TRACK (V0.2)
+--------------------------------------------------------
+
+### A. GET /api/caregiver/daily
+Retrieves 5 stage-aware daily tips for the partner/caregiver from the 86-tip library.
+Deterministic for the same user, stage, and local calendar day (Asia/Kolkata).
+
+Query Parameters:
+  - stage (string, required): "prenatal" or "postnatal"
+  - language (string, optional, default "en"): "en", "hi", "bn", or "ta"
+  - result_state (string, optional, default "keep_supporting"): "get_help_today", "talk_soon", "extra_support", "keep_supporting"
+  - flags (list of strings, optional): Flagged risk areas from questionnaire
+  - date (string, optional, YYYY-MM-DD): Override local date for deterministic testing
+
+Request Headers:
+  Authorization: Bearer <token> (or x-user-ref in dev)
+
+Response (200 OK):
+{
+  "stage": "prenatal",
+  "result_state": "keep_supporting",
+  "help_today": [
+    {
+      "id": "CG_P_APPT",
+      "kind": "do",
+      "kind_label_key": "caregiver.kind.do",
+      "text": "Offer to go with her to her next antenatal visit, or help make a list of questions she wants to ask.",
+      "text_language": "en"
+    },
+    {
+      "id": "CG_B_CHECKIN_DAY",
+      "kind": "check_in",
+      "kind_label_key": "caregiver.kind.check_in",
+      "text": "Ask her today: 'What was the heaviest part of your day, and what was one light moment?' Then listen without trying to fix it.",
+      "text_language": "en"
+    },
+    {
+      "id": "CG_P_SNACKS",
+      "kind": "small_joy",
+      "kind_label_key": "caregiver.kind.small_joy",
+      "text": "Bring her a small snack or a drink she enjoys without waiting for her to ask.",
+      "text_language": "en"
+    },
+    {
+      "id": "CG_B_SAY_PROUD",
+      "kind": "say",
+      "kind_label_key": "caregiver.kind.say",
+      "text": "Tell her one specific thing she did this week that you admire.",
+      "text_language": "en"
+    },
+    {
+      "id": "CG_B_WALK",
+      "kind": "try_together",
+      "kind_label_key": "caregiver.kind.try_together",
+      "text": "Invite her on a short, slow walk outside together if she feels up to it, with no agenda.",
+      "text_language": "en"
+    }
+  ],
+  "library_version": "f4b7df9076127889"
+}
+
+
+### B. POST /api/caregiver/score
+Scores the 15-question caregiver observation log (Q1-Q7 risks, Q8-Q12 signs, Q13-Q15 safety).
+Returns clinical result state, safety trigger, verified helplines, and 5 stage-aware help_today tips.
+If result_state is get_help_today, help_today is strictly empty [].
+
+Request Body:
+{
+  "stage": "postnatal",
+  "answers": {
+    "q1": "No",
+    "q2": "Yes",
+    "q3": "No",
+    "q4": "No",
+    "q5": "Yes",
+    "q6": "No",
+    "q7": "No",
+    "q8": "Sometimes",
+    "q9": "Rarely",
+    "q10": "Never",
+    "q11": "Never",
+    "q12": "Never",
+    "q13": "No",
+    "q14": "No",
+    "q15": "No"
+  },
+  "language": "en"
+}
+
+Response (200 OK):
+{
+  "result_state": "keep_supporting",
+  "result_message": "Thank you for checking in. Your support matters. Keep staying close, listening and sharing the load. We will ask again at the next check.",
+  "safety_triggered": false,
+  "helplines": {
+    "tele_manas": "14416",
+    "emergency": "112",
+    "women_helpline": "181"
+  },
+  "help_today": [
+    {
+      "id": "CG_B_CHECKIN_DAY",
+      "kind": "check_in",
+      "kind_label_key": "caregiver.kind.check_in",
+      "text": "Ask her today: 'What was the heaviest part of your day, and what was one light moment?' Then listen without trying to fix it.",
+      "text_language": "en"
+    }
+  ],
+  "library_version": "f4b7df9076127889",
+  "suggestions": []
+}
+
+
+### C. DELETE /api/me/caregiver-tip-history
+Deletes all recorded caregiver tip history for the authenticated user.
+
+Request Headers:
+  Authorization: Bearer <supabase_jwt_token>
+
+Response (200 OK):
+{
+  "success": true,
+  "deleted_count": 10
+}
+
+
+11. CAREGIVER ADMIN ROUTES
+-------------------------
+Protected by Header: x-admin-token: <ADMIN_TOKEN>
+
+### A. GET /api/admin/caregiver-library
+Returns all tips with status, evidence_level, source_refs, needs_source, flag_list, kind, stage, texts,
+sources dictionary, coverage per stage by kind, and repeat warnings.
+
+### B. PATCH /api/admin/caregiver-library/tip/{id}
+Clinician edits to status ("draft" | "approved"), text_hi, text_bn, text_ta, or text_en wording.
+Refuses approved if needs_source=True or source_refs is empty.
+Writes into data/caregiver_overrides.json and re-validates.
+
+### C. GET /api/admin/caregiver-library/untranslated
+Returns tips missing Hindi, Bengali, or Tamil text.
+
+### D. GET /api/admin/caregiver-library/stats
+Aggregate counts only: times each tip was shown in the last 30 days and number of days with fewer than 5 tips.
+Zero user identifiers returned.
+
+
+12. EDUCATIONAL VIDEO LIBRARY ROUTES
+------------------------------------
+General educational content. Non-diagnostic, does not trigger scoring, bands, or safety actions.
+
+### A. GET /api/videos
+Protected by Header: Authorization: Bearer <supabase_jwt_token> (or x-user-ref in dev mode).
+Rate limit: 60/minute.
+
+Query Parameters:
+- audience (required): prenatal | postnatal | caregiver.
+  Only returns videos whose catalogue entry includes this audience.
+- language (optional, default: en): en | hi | bn | ta.
+- trimester (optional): 1 | 2 | 3.
+  If provided, videos matching this trimester are sorted first without hiding others.
+
+Language Fallback Rule:
+- If a video in the requested language exists on disk, it is served with fallback: false.
+- Otherwise, English video is served with fallback: true, and the requested language's captions
+  (.vtt) are attached if present.
+- If neither the requested language nor English video exists on disk, the video is skipped.
+- Titles and descriptions use the requested language if non-empty, otherwise English.
+
+Response (200 OK):
+{
+  "count": 4,
+  "videos": [
+    {
+      "id": "general-info-ppd",
+      "title": "General information about PPD",
+      "description": "",
+      "stage": "postnatal",
+      "trimester": null,
+      "topic": "mood",
+      "audiences": ["postnatal", "caregiver"],
+      "order": 1,
+      "title_needs_review": false,
+      "language_used": "en",
+      "fallback": false,
+      "video_url": "/media/videos/general-info-ppd/en.mp4",
+      "poster_url": null,
+      "captions": [],
+      "available_languages": ["bn", "en", "hi", "ta"]
+    }
+  ]
+}
+
+### B. GET /media/videos/{video_id}/{filename}
+Public media endpoint (no Authorization header required so HTML5 video tags and mobile browsers work).
+Zero user identifiers logged, no cookies, no analytics.
+
+Supported extensions:
+- .mp4 (Content-Type: video/mp4)
+- .vtt (Content-Type: text/vtt, verified WEBVTT header)
+- .jpg / .jpeg (Content-Type: image/jpeg)
+
+Headers & Streaming:
+- Cache-Control: public, max-age=3600
+- Accept-Ranges: bytes
+- Full request returns 200 OK with Content-Length.
+- Range request (e.g. Range: bytes=0-1048575) returns 206 Partial Content with Content-Range
+  (e.g. bytes 0-1048575/10056948) and Content-Length.
+- Out of bounds or invalid Range returns 416 Range Not Satisfiable.
+- Strict path traversal prevention: any unmanifested video_id or filename returns 404.
+
+### C. POST /api/admin/videos/refresh
+Protected by Header: x-admin-token: <ADMIN_TOKEN>
+Rescans VIDEO_DIR, validates MP4 and VTT files, re-checks catalogue against forbidden words,
+and updates in-memory manifest.
+
+Response (200 OK):
+{
+  "status": "refreshed",
+  "video_count": 4,
+  "catalogue_entries_active": 4
+}
+
+### D. GET /api/admin/videos/report
+Protected by Header: x-admin-token: <ADMIN_TOKEN>
+Returns comprehensive clinical and technical report:
+- per_video_details: languages present/missing, captions present/missing, audiences, codec warnings,
+  files exceeding VIDEO_MAX_MB_WARN, ignored unknown files.
+- entries_refused_forbidden_words: catalogue entries refused for forbidden non-diagnostic words.
+- entries_using_allow_condition_words: catalogue entries using allow_condition_words flag for clinician review.
+- folders_no_catalogue_entry: folders scanned on disk with no catalogue entry.
+- catalogue_entries_no_folder: catalogue entries with no playable files on disk.
+- fallback_videos: videos currently falling back to English for any language.
+

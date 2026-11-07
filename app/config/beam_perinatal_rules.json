@@ -1,0 +1,184 @@
+{
+  "version": "0.2-draft",
+  "status": "DRAFT heuristics. Requires clinician review before release. See beam_perinatal_mood_sleep_guidelines.md",
+  "chart": "BEAM",
+  "mood_levels": [
+    { "label": "Severe Elevated", "score": 3, "description": "Significant impairment, not able to work", "user_label": "A very high-energy day I could not manage my usual tasks" },
+    { "label": "Moderate Elevated", "score": 2, "description": "Significant impairment, able to work", "user_label": "A very high-energy day, but I managed my usual tasks" },
+    { "label": "Mild Elevated", "score": 1, "description": "Without significant impairment", "user_label": "A little extra energy or a lifted mood" },
+    { "label": "Normal", "score": 0, "description": "Balanced mood", "user_label": "A balanced day" },
+    { "label": "Mild Depressed", "score": -1, "description": "Without significant impairment", "user_label": "A little low" },
+    { "label": "Moderate Depressed", "score": -2, "description": "Significant impairment, able to work", "user_label": "A hard day, but I managed my usual tasks" },
+    { "label": "Severe Depressed", "score": -3, "description": "Significant impairment, not able to work", "user_label": "A very hard day, I could not manage my usual tasks" }
+  ],
+  "other_scales": {
+    "anxiety": { "min": 0, "max": 3, "labels": ["None", "Mild", "Moderate", "Severe"] },
+    "irritability": { "min": 0, "max": 3, "labels": ["None", "Mild", "Moderate", "Severe"] },
+    "hours_slept": { "unit": "hours", "field": "hours_slept" },
+    "usual_sleep_hours": { "source": "onboarding_or_median_of_first_7_entries" }
+  },
+  "day_classification": {
+    "balanced_day": { "mood_equals": 0 },
+    "depressed_day": { "mood_at_most": -1 },
+    "impaired_depressed_day": { "mood_at_most": -2 },
+    "elevated_day": { "mood_at_least": 1 },
+    "marked_elevated_day": { "mood_at_least": 2 },
+    "anxious_day": { "anxiety_at_least": 2 },
+    "irritable_day": { "irritability_at_least": 2 },
+    "reduced_sleep_night": { "hours_below_usual_by_at_least": 2 }
+  },
+  "minimum_data": {
+    "weekly_entries_required": 4,
+    "tier2_entries_required_in_14_days": 10
+  },
+  "sleep_bands_hours": {
+    "pregnancy": { "good_min": 7, "good_max": 9, "a_bit_short_min": 6, "short_below": 6, "long_above": 10 },
+    "postpartum": { "good_min": 6, "a_bit_short_min": 5, "short_below": 5, "long_above": 10 }
+  },
+  "weekly_bands": {
+    "window_days": 7,
+    "count_days_not_averages": true,
+    "good_balanced": {
+      "min_days_balanced_or_mild_elevated_with_normal_sleep": 5,
+      "max_depressed_days": 1,
+      "max_days_at_abs_mood_2_or_more": 0,
+      "max_anxious_days": 2
+    },
+    "tougher_low": {
+      "any_of": [
+        { "depressed_days_at_least": 3 },
+        { "impaired_depressed_days_at_least": 2 }
+      ]
+    },
+    "high_energy": {
+      "any_of": [
+        { "all_of": [{ "elevated_days_at_least": 3 }, { "reduced_sleep_nights_on_elevated_days_at_least": 2 }] },
+        { "marked_elevated_days_at_least": 1 }
+      ]
+    },
+    "mixed_swings": "tougher_low AND high_energy in the same week; apply tier2 elevated-side rule",
+    "anxious_or_irritable_addon": {
+      "any_of": [
+        { "anxious_days_at_least": 4 },
+        { "irritable_days_at_least": 4 }
+      ]
+    },
+    "okay_mixed": "otherwise"
+  },
+  "monthly": {
+    "window_days": 30,
+    "tier2_if_depressed_day_share_at_least": 0.5,
+    "tier2_if_tougher_or_high_energy_weeks_at_least": 2
+  },
+  "tiers": {
+    "tier1_gentle_checkin": {
+      "any_of": [
+        { "consecutive_depressed_days_at_least": 3 },
+        { "weekly_band": "tougher_low" },
+        { "weekly_addon": "anxious_or_irritable" },
+        { "all_of": [{ "reduced_sleep_nights_at_least": 2 }, { "mood_at_least_on_those_days": 1 }] }
+      ]
+    },
+    "tier2_suggest_professional_conversation": {
+      "window_days": 14,
+      "any_of": [
+        { "depressed_days_at_least": 8 },
+        { "impaired_depressed_days_at_least": 4 },
+        { "consecutive_days_at_mood": { "value": -3, "days_at_least": 2 } },
+        {
+          "all_of": [
+            { "depressed_days_at_least": 6 },
+            { "any_of": [{ "short_sleep_nights_at_least": 7 }, { "anxious_days_at_least": 7 }] }
+          ]
+        },
+        { "consecutive_marked_elevated_days_at_least": 2 },
+        {
+          "all_of": [
+            { "elevated_days_in_last_7_at_least": 3 },
+            { "reduced_sleep_nights_at_least": 2 }
+          ]
+        },
+        {
+          "all_of": [
+            { "elevated_days_at_least": 2 },
+            { "irritable_days_on_elevated_days_at_least": 2 }
+          ]
+        },
+        { "monthly_rule_met": true }
+      ],
+      "actions": ["offer_epds", "offer_gad7_if_anxiety_flagged", "offer_mdq_if_elevated_rule_fired", "suggest_doctor_midwife_or_health_worker", "offer_summary_to_share"]
+    },
+    "tier3_urgent_same_day": {
+      "any_of": [
+        "self_harm_thoughts_epds_item_10_positive",
+        "self_harm_language_detected_in_text_or_voice",
+        "thoughts_of_harming_baby",
+        "confusion_or_hallucinations",
+        { "mood_equals": 3, "on_any_day": true },
+        {
+          "all_of": [
+            { "phase": "postpartum" },
+            { "weeks_since_delivery_at_most": 12 },
+            { "consecutive_days_at_mood_at_least": { "value": 2, "days_at_least": 2 } },
+            { "consecutive_reduced_sleep_nights_at_least": 2 }
+          ]
+        }
+      ],
+      "uses_fixed_script_only": true,
+      "language_model_allowed": false,
+      "evaluate_on_every_entry": true,
+      "avoid_user_facing_words": ["psychosis", "mania", "bipolar"]
+    }
+  },
+  "rules_for_signals": {
+    "sleep_can_only_strengthen_a_tier": true,
+    "anxiety_can_only_strengthen_a_tier": true,
+    "irritability_can_only_strengthen_a_tier": true,
+    "sentiment_can_only_strengthen_a_tier": true,
+    "language_model_decides_tier": false,
+    "ignore_user_saying_they_are_fine_for_elevated_rules": true
+  },
+  "phase_adjustments": {
+    "pregnancy": {
+      "ignore_somatic_symptoms_as_depression_evidence": true,
+      "mild_elevated_with_normal_sleep_is_a_good_day": true
+    },
+    "postpartum": {
+      "days_1_to_14_depressed_side_max_tier": 1,
+      "days_1_to_14_elevated_side_capped": false,
+      "tier3_always_applies": true,
+      "full_rules_from_day": 15,
+      "clinician_decision_pending": "Should days 1 to 7 be excluded from the 14-day depressed-day count?"
+    }
+  },
+  "user_history_flags": {
+    "history_of_bipolar_or_postpartum_psychosis": {
+      "note": "Ask gently and make skippable. If yes, apply elevated-side tier 2 rules one step earlier (clinician to decide how)."
+    }
+  },
+  "clinician_flags": {
+    "exclude_postpartum_days_1_to_7_from_14_day_count": false,
+    "count_mild_depressed_in_half_days_rule": true,
+    "postpartum_urgent_elevated_window_weeks": 12,
+    "include_optional_suggestions": false
+  },
+  "screening_followups": {
+    "epds": { "positive_if_total_at_least": 10, "positive_if_item_10_at_least_2": true, "meta_analysis_best_cutoff": 11, "more_specific_cutoff": 13, "present_cutoff": "clinician_to_confirm", "item_10_goes_to": "tier3_urgent_same_day" },
+    "gad7": { "positive_if_total_at_least": 5 },
+    "mdq": { "positive_if_yes_answers_at_least": 7, "note": "Further assessment indicated" },
+    "languages": ["hi", "bn", "ta", "en"],
+    "use_validated_translations_only": true
+  },
+  "helplines_verify_before_release": {
+    "emergency_india": "112",
+    "tele_manas": "14416"
+  },
+  "tier_scripts": {
+    "tier3_urgent_script": "Thank you for telling us. What you are feeling matters, and you don't have to face it alone. Please contact your doctor or go to the nearest hospital today, or call a helpline right away. If you are in immediate danger, call emergency services (112 in India). Tele-MANAS (14416) offers free mental health support. *Verify helpline numbers before release.*",
+    "tier3_fail_safe_script": "Please contact your doctor or health worker today. What you are feeling matters, and support is available right now. Emergency: 112 | Tele-MANAS: 14416.",
+    "tier2_depressed_script": "Over the last two weeks, many of your days have felt low. This is common and it can get better with the right support. It may help to chat with your doctor, midwife or health worker about how you've been feeling. Would you like to answer a few short questions we can share with them?",
+    "tier2_elevated_script": "You've had lots of energy and shorter nights these past few days. That can feel good, but your body still needs rest. It would be worth mentioning this to your doctor or midwife soon. Would you like to answer a few quick questions we can share with them?",
+    "tier1_script": "This week had a few heavy days, and that's okay. Many women feel this way during pregnancy and after birth. Would you like a couple of small ideas that might lighten things a little?",
+    "not_enough_data_script": "We'd love to see a bit more of your week. A quick daily check-in makes these insights more useful."
+  }
+}

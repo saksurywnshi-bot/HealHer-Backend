@@ -1,0 +1,180 @@
+# HealHer - Caregiver "How you can help her today": daily tips library (DRAFT v0.2 for clinician review)
+
+**Nothing here is approved.** 86 tips: 16 prenatal only, 14 postnatal only, 56 for both stages. A prenatal caregiver draws from 72 tips and a postnatal caregiver from 70. The app shows **five a day**, picked at random.
+
+## 0. What changed in v0.2
+
+Version 0.1 had 55 practical tips. To keep the daily list fresh, v0.2 adds **31 lighter tips** in three new types, and a daily mix so that every day has some variety:
+
+- **Ask her** (quick check-in questions, for example "How are you feeling today, really?")
+- **A little kindness** (small gestures, for example a favourite drink, a kind note, a song she loves)
+- **Try together** (short things to do side by side, for example a slow-breathing minute, a daily chart, a meal)
+
+Each tip also carries a short label for its type (table below), which the app can show as a small tag so the list does not look the same every day.
+
+| Type | Label shown |
+|---|---|
+| do | Something to do |
+| say | Something to say |
+| notice | Something to notice |
+| avoid | Something to avoid |
+| self_care | For you |
+| clinician | When to get help |
+| check_in | Ask her |
+| small_joy | A little kindness |
+| try_together | Try together |
+
+## 1. What "validated" means here (please read first)
+
+- The **practical tips** come from advice that health services and clinical charities publish for partners and families: Ireland's HSE, NSW Health, the Queensland Government, the Australian Government's pregnancy information service, Raising Children Network, PANDA, Tommy's (reviewed by a midwife) and the WHO Thinking Healthy Programme manual. Where possible each is also backed by research on partner support [S8].
+- **The new light tips are different.** The principle behind each one is sourced (listening without rushing, noticing progress, sharing good times, encouraging small steps, a mood and rest chart, slow breathing). **The exact question or gesture is ours.** They are labelled *Principle-based (confirm)*, and a clinician must approve them one by one.
+- **No trial tested any individual tip.** The research shows that partner emotional closeness, communication and practical support protect against low mood and anxiety [S8], and that family-involved programmes help in some trials [S9].
+- **Evidence labels:** *Health-service guidance* = published advice from at least one health body. *Guidance + research* = guidance plus a research source. *Principle-based (confirm)* = the principle is sourced, the wording is ours. *Derived (confirm)* = our wording based on risk-factor research, with no direct advice source.
+- **All sources are from Ireland, Australia, the UK and WHO.** None speaks to Indian family life: joint families, mothers-in-law, visitors and customs after birth, or pressure about the baby's sex. Local clinicians should review the tips and add their own.
+- Most sources speak to **partners**. Applying them to mothers, mothers-in-law or other relatives is our assumption, flagged on some tips.
+- The app never shows scores, severity labels or the word "depression" to a caregiver. No tip mentions medication.
+
+## 2. How the daily five works (plain code, no AI)
+
+1. If the caregiver's result is **"Get help today"**, show **no tips**, only the support screen with verified helplines (Tele-MANAS 14416, Women Helpline 181, 112).
+2. Use only tips for the woman's stage plus the "both" tips. Only **approved** tips are shown (drafts only in development).
+3. **The daily mix:** one *Ask her* question, one *little kindness* or *try together* tip, one *do* tip, one *say* tip, and **a wildcard**. A seeded coin makes the wildcard either a "notice", "avoid", "for you" or "when to get help" tip, or any type.
+4. Limits: at most one each of notice, avoid, "for you" and "when to get help"; at most two "say" and two light tips; and no two tips on the same main topic.
+5. Fixed for the day: the shuffle uses the caregiver, the stage and the local date, so the same five show all day and change at midnight.
+6. **Variety:** tips shown in the last seven days are used last. If a tip has to repeat, the one shown longest ago goes first.
+7. **Result-aware nudge:** "Talk to her doctor soon" always includes a tip about appointments or starting a conversation. "Extra support would help" favours tips that match flagged areas (money, tension, isolation, baby, support). Both mappings are proposals.
+8. Only tip ids and the date shown are stored. Never the caregiver's answers.
+
+**Tested** (reference code, 90-day simulation per stage): always five different tips; every day has a check-in, a light tip, a "do" and a "say"; the limits hold; a prenatal woman never gets a postnatal tip and the reverse; the same caregiver and day give the same five; different caregivers get different lists; and no tip returned sooner than six days after it was shown. About 70 of the 72 prenatal and 69 of the 70 postnatal tips were shown in 90 days. A check-in question can come back after about a week, because there are only eight or nine per stage. That seems acceptable for a daily check-in, but you may want more.
+
+## 3. Tips for prenatal only (16)
+
+| ID | Tip shown to the family | Type | Evidence | Sources | Flags |
+|---|---|---|---|---|---|
+| CG_P_APPT | If she would like it, go with her to a check-up. Hearing the baby's heartbeat together and asking questions can bring you closer. | Something to do | Health-service guidance | S5, S6 | - |
+| CG_P_HELPPLAN | Sit down together and talk about who will help at home once the baby arrives, so she knows she will not be doing it alone. | Something to do | Guidance + research | S5, S10 | - |
+| CG_P_HOSPBAG | Plan the way to the hospital and keep her bag packed and ready before the due date, so she feels calm if labour starts. | Something to do | Health-service guidance | S5 | - |
+| CG_P_BIRTHHOPES | Ask what she hopes for the birth and listen without arguing. Plans can change, and it helps her to know you are with her whichever way it goes. | Something to do | Health-service guidance | S5 | - |
+| CG_P_GETREADY | Get things ready for the baby together, such as clothes and a place for the baby to sleep, and let her choose what matters to her. | Something to do | Health-service guidance | S5 | - |
+| CG_P_MOODSWING | Try not to take her mood swings personally. Feelings can change quickly in pregnancy, and patience helps her more than advice. | Something to say | Health-service guidance | S5, S6 | - |
+| CG_P_NAP | Help her find time for a daytime rest. Take over a small job so she can lie down for a while. | Something to do | Health-service guidance | S5 | - |
+| CG_P_SNACKS | If she feels sick, offer small snacks often rather than big meals. If she cannot keep food down, help her tell her doctor. | Something to do | Health-service guidance | S5 | - |
+| CG_P_SING | Talk or sing to the baby together. The baby can hear you, and it can help you both feel close before the birth. | Something to do | Health-service guidance | S5 | guidance_only_no_trial |
+| CG_P_WORRYALWAYS | Some worry in pregnancy is common. If she seems worried or low most of the time, or says she cannot cope, gently ask how she is and suggest she tells her doctor or midwife. | Something to notice | Health-service guidance | S6 | - |
+| CG_P_TALKFEEL | Talk openly about how she feels about the pregnancy and the baby, including the hard parts. Pregnancy can put pressure on a family. | Something to do | Health-service guidance | S5, S6 | - |
+| CG_P_HISTORY | If she has felt very low or anxious before, or has lost a baby, she may fear it will come back. Tell her you are with her, and encourage her to share this with her midwife. | Something to say | Health-service guidance | S6 | sensitive_wording_clinician_review |
+| CG_P_CI_ABOUT | Ask about her, not only the pregnancy: 'How are you doing, apart from the check-ups and the plans?' | Ask her | Principle-based (confirm) | S6, S4 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_P_TT_CLASS | Go to an antenatal class together, or watch a video about labour and birth, and talk about what you learned. | Try together | Health-service guidance | S5 | - |
+| CG_P_TT_KICK | If she wants to, feel the baby move together and talk about how it feels. | Try together | Principle-based (confirm) | S5 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_P_TT_COMFY | Help her get comfortable, for example with extra cushions or a soft place to rest, and ask what would feel best. | Try together | Health-service guidance | S5 | - |
+
+## 4. Tips for postnatal only (14)
+
+| ID | Tip shown to the family | Type | Evidence | Sources | Flags |
+|---|---|---|---|---|---|
+| CG_N_TAKEBABY | Take the baby for a while so she can wash, rest or sit quietly on her own. Do this every day if you can. | Something to do | Health-service guidance | S3, S4, S7 | - |
+| CG_N_NIGHT | At night, take over what you can, such as changing, settling or burping the baby, or a bottle of expressed milk if she has chosen that, so she gets a longer stretch of sleep. | Something to do | Guidance + research | S1, S3, S11 | only_if_feeding_plan_allows |
+| CG_N_WALK | Give her time to herself. Take the baby out for a walk and let her have the house to herself. | Something to do | Health-service guidance | S3, S4 | - |
+| CG_N_VISITORS | Agree together who will visit and when. Help keep visits short or fewer if she is tired, so they suit her and not only others. | Something to do | Health-service guidance | S4 | - |
+| CG_N_BLUESLONG | Tearfulness and low spirits in the first few days after birth are common and usually pass. If they last longer, gently encourage her to talk to her doctor or nurse. | Something to notice | Health-service guidance | S4 | - |
+| CG_N_PULLAWAY | Notice if she pulls away from you, the baby or other people, stops enjoying things, or worries a great deal about the baby's health. Ask her gently about it. | Something to notice | Health-service guidance | S2, S4 | - |
+| CG_N_GOODMOTHER | Tell her she is doing a good job as a mother, especially on days when she feels she is not. | Something to say | Health-service guidance | S3 | - |
+| CG_N_CRYING | When the baby cries a lot, take turns settling the baby so she does not carry it alone. | Something to do | Derived (confirm) | S7, S15 | derived_clinician_to_confirm |
+| CG_N_FEEDING | If feeding is hard, be patient and tell her it is not her fault. Help her reach a nurse or feeding helper if she would like that. | Something to say | Derived (confirm) | S2, S15 | derived_clinician_to_confirm |
+| CG_N_HERCHECKUP | Offer to look after the baby so she can go to her own check-up, and go with her if she wants you to. | Something to do | Health-service guidance | S7 | - |
+| CG_N_TOGETHER | Spend a short time together without the baby, like a walk or a quiet meal, but never pressure her if she is not ready. | Something to do | Health-service guidance | S1 | partner_source_extended_to_other_relatives |
+| CG_N_CI_ABOUT | Ask about her, not only the baby: 'How are you doing, apart from the baby?' | Ask her | Principle-based (confirm) | S4, S7 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_N_SJ_PHOTO | Look at photos or videos of the baby together and share a sweet or funny moment from the week. | A little kindness | Principle-based (confirm) | S4 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_N_TT_SKIN | Spend some quiet skin-to-skin time with the baby yourself. It helps you bond and gives her a rest. | Try together | Health-service guidance | S5 | written_for_caregiver |
+
+## 5. Tips for both stages (56)
+
+| ID | Tip shown to the family | Type | Evidence | Sources | Flags |
+|---|---|---|---|---|---|
+| CG_B_LISTEN | Sit with her for a few minutes without your phone and listen to how she feels. You do not need to fix anything. | Something to do | Guidance + research | S4, S7, S8 | - |
+| CG_B_ASK | Ask her, 'What can I do to help today?' Her answer may be different from what you expect. | Something to say | Health-service guidance | S4, S7 | - |
+| CG_B_HERE | Tell her, 'I'm here for you.' Say it often, because she may need to hear it again and again. | Something to say | Health-service guidance | S3, S4 | - |
+| CG_B_NOTFAULT | Tell her that how she feels is not her fault, and that with support things can get better. | Something to say | Health-service guidance | S2, S7 | - |
+| CG_B_NOTHINK | Avoid telling her to 'think positive' or 'just get on with it'. When she is struggling, she cannot switch it off by willpower. | Something to avoid | Health-service guidance | S2 | - |
+| CG_B_NOBLAME | Avoid blaming or criticising her, even when you are tired or worried. | Something to avoid | Health-service guidance | S1, S2 | - |
+| CG_B_NOLABEL | Avoid guessing what is wrong or putting a name to it. Tell her what you have noticed, and leave the rest to her doctor. | Something to avoid | Health-service guidance | S4 | - |
+| CG_B_NOTAKEOVER | Try not to take over or decide everything for her. Ask what she needs, and let her choose when she can. | Something to avoid | Health-service guidance | S4 | - |
+| CG_B_CHORE | Do a household job without being asked, such as cooking, washing up or laundry. | Something to do | Guidance + research | S4, S7, S8 | - |
+| CG_B_ONETASK | Take over one job she usually does, for the whole day. | Something to do | Guidance + research | S4, S8 | - |
+| CG_B_THANKS | Notice something she did today for the family and thank her for it in words. | Something to say | Health-service guidance | S4, S7 | - |
+| CG_B_ASKOTHERS | Tell relatives and friends exactly how they can help, such as bringing a meal or minding an older child for an hour. Say yes when they offer. | Something to do | Health-service guidance | S1, S7 | - |
+| CG_B_CONNECT | Help her stay in touch with people she trusts, with a phone call, a visit or a trip out together. | Something to do | Guidance + research | S1, S12, S14 | - |
+| CG_B_GROUP | If she would like it, help her find a group of other mothers or families. Do not push if she is not ready. | Something to do | Health-service guidance | S1 | - |
+| CG_B_WALKTOGETHER | Go for a short, gentle walk together if she feels up to it. Fresh air and moving can lift the mood. | Something to do | Health-service guidance | S1, S7 | - |
+| CG_B_MEALS | Make sure she is eating regular meals and drinking water. Make something simple and sit with her while she eats. | Something to do | Health-service guidance | S1 | - |
+| CG_B_REST | Make sure she gets some real rest today. Ask others to cover a chore or the children for a short while. | Something to do | Health-service guidance | S1, S11 | - |
+| CG_B_QUIETTALK | Choose a quiet time and place and put phones and the TV away. Tell her kindly what you have noticed and that you care, then listen. | Something to say | Health-service guidance | S4 | - |
+| CG_B_STAYCLOSE | If she does not want to talk, stay close anyway. You do not need to make her talk about everything. | Something to do | Health-service guidance | S3 | - |
+| CG_B_HELPSEEK | Offer to help her see a doctor, nurse or counsellor. You could make the call, take her, or look after the children. Ask what she would like. | Something to do | Health-service guidance | S4, S7 | - |
+| CG_B_PREPARE | Before a visit, write down together what to ask. If she prefers to see the doctor on her own, give her that space. | Something to do | Health-service guidance | S2, S4 | - |
+| CG_B_NOTEBOOK | Keep a short note of what you notice, such as sleep, eating and mood. Share it with her doctor only with her agreement. | Something to do | Health-service guidance | S2 | consent_wording_added_by_us |
+| CG_B_CALMHOME | If there is tension at home, try to settle it calmly and away from her, and avoid arguments in front of her. | Something to do | Derived (confirm) | S8, S9 | derived_clinician_to_confirm |
+| CG_B_CLOSENESS | Make time to talk about how the two of you are getting on. Feeling close to someone is protective for her. | Something to do | Guidance + research | S8, S4 | partner_source_extended_to_other_relatives |
+| CG_B_LEARN | Learn a little about the mood changes that can come around pregnancy and birth, so you can notice them early and respond kindly. | Something to do | Health-service guidance | S1, S7 | - |
+| CG_B_TWOWEEKS | If low mood, loss of interest, or changes in sleep or eating last more than two weeks and get in the way of daily life, suggest she sees a doctor. | Something to notice | Health-service guidance | S7 | - |
+| CG_B_ANXIOUS | Notice if she seems very anxious, restless or keeps worrying. Worry often goes with low mood, and it can be helped too. | Something to notice | Health-service guidance | S7 | - |
+| CG_B_DONTWAIT | Do not wait. Many families say they wish they had asked for help sooner. If you are worried, help her speak to a doctor or nurse. | When to get help | Health-service guidance | S4 | - |
+| CG_S_YOU | Look after yourself too. Eat, move and sleep as well as you can. You can support her better when you are well. | For you | Health-service guidance | S4, S7 | - |
+| CG_S_TALK | Share your own worries with a trusted friend, relative or your doctor. Supporting someone can wear you down. | For you | Health-service guidance | S2, S7 | - |
+| CG_S_LOAD | Share the load with other family members so you can take regular breaks. | For you | Health-service guidance | S2 | - |
+| CG_S_DOCTOR | If you feel tired all the time, very low or anxious yourself, see your own doctor. Many partners go through this too. | For you | Guidance + research | S2, S13, S6 | - |
+| CG_B_CI_FEEL | Ask her, 'How are you feeling today, really?' Then listen without rushing her or jumping in with fixes. | Ask her | Health-service guidance | S16, S4 | - |
+| CG_B_CI_GOODHARD | Ask her, 'What was one hard thing and one good thing about today?' Listen to both, and do not hurry to fix the hard one. | Ask her | Principle-based (confirm) | S16, S8 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_CI_MOOD | Ask her, 'Is your mood low, okay or good today?' A quick question each day helps you both notice changes over time. | Ask her | Principle-based (confirm) | S16 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_CI_SLEEPEAT | Ask her, 'Have you been able to eat and sleep enough today?' If not, ask what would make tomorrow easier. | Ask her | Principle-based (confirm) | S16, S1 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_CI_WORRY | Ask her, 'Is anything on your mind that we have not talked about?' Let her answer in her own time. | Ask her | Principle-based (confirm) | S7, S16 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_CI_ENOUGH | Ask her, 'Is the help I am giving what you need, or would something else help more?' | Ask her | Principle-based (confirm) | S4 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_CI_PROUD | Ask her what she is proud of this week, however small. Then tell her one thing you are proud of in her. | Ask her | Principle-based (confirm) | S7, S4 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_PRIVACY | Before you tell anyone else how she is doing, ask what she is comfortable with you sharing. | Something to do | Health-service guidance | S17 | - |
+| CG_B_SJ_TEA | Bring her a warm drink or her favourite snack without being asked, and sit with her for a few minutes. | A little kindness | Principle-based (confirm) | S1, S8 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_SJ_SONG | Play a song she loves and sit with her while it plays. A favourite song can lift the mood for a little while. | A little kindness | Principle-based (confirm) | S19 | light_tip_exact_idea_is_ours_clinician_to_confirm, immediate_mood_benefit_only |
+| CG_B_SJ_NOTE | Send her a short, kind message or leave a note: 'Thinking of you. You are doing well.' | A little kindness | Principle-based (confirm) | S3, S7 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_SJ_LAUGH | Share something light that makes her smile, like a funny story or her favourite show, and enjoy the good moments together. | A little kindness | Health-service guidance | S4 | - |
+| CG_B_SJ_DISH | Cook or bring her favourite home-cooked dish, keeping to any food advice her doctor has given. | A little kindness | Health-service guidance | S7, S17 | - |
+| CG_B_SJ_RUB | Offer a gentle head, hand or foot rub if she would like one. Stop at once if she does not want it. | A little kindness | Health-service guidance | S1, S5 | partner_source_ask_consent_and_culture_check |
+| CG_B_SJ_TIDY | Tidy and freshen the place where she rests, so it feels calm and comfortable. | A little kindness | Principle-based (confirm) | S4, S5 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_SJ_FRIEND | Suggest she calls or meets a friend she likes, and make some quiet time or childcare for it. | A little kindness | Health-service guidance | S17, S7, S14 | - |
+| CG_B_SJ_TREAT | Surprise her with a small treat she enjoys, like a sweet, some fruit or flowers. It is the thought that counts. | A little kindness | Principle-based (confirm) | S4, S7 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_TT_BREATHE | Sit together and breathe slowly for one minute: in through the nose for three counts, then gently out for three. Stop if it feels uncomfortable. | Try together | Health-service guidance | S16 | - |
+| CG_B_TT_CHART | Make a simple daily chart together with mood, food, rest and a short walk. Look at it each evening and notice what helps. | Try together | Health-service guidance | S16 | - |
+| CG_B_TT_ONESTEP | Pick one small thing she used to enjoy, such as a hobby, a show or a visit to a friend, and plan it together for this week. | Try together | Guidance + research | S16, S18 | - |
+| CG_B_TT_SMALLSTEP | When she manages one small thing, like a wash, a meal or a short walk, notice it and say, 'Well done.' | Try together | Health-service guidance | S16, S4 | - |
+| CG_B_TT_COOK | Cook a simple meal together and sit down to eat it, without phones. | Try together | Principle-based (confirm) | S7, S1 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+| CG_B_PROGRESS | Notice small signs she is doing a little better, like a smile, a full meal or a chat, and tell her you saw it. | Something to notice | Health-service guidance | S7 | - |
+| CG_B_FAMCHART | Gather the family for a short chat about who will do what this week, and write it where everyone can see. | Something to do | Principle-based (confirm) | S2, S4 | light_tip_exact_idea_is_ours_clinician_to_confirm |
+
+## 6. Gaps and decisions for the clinician
+
+1. Approve, edit or remove every tip. Review the flagged ones first: *Principle-based* and *Derived* tips, the sensitive loss and history tip (CG_P_HISTORY), the head and foot rub (needs consent and a cultural check), the partner-only tips, and the night-feed tip.
+2. Add tips for Indian family settings (in-laws, visitors, customs after birth), written with local advisers. Check that gestures such as gifts, flowers or a rub suit the family's culture.
+3. Confirm the mapping from questionnaire flags to favoured topics, the seven-day variety window, and five tips a day.
+4. The Royal College of Psychiatrists carers page and the NICE guideline could not be read, and the full list of 214 expert-consensus recommendations [S10] was not available. Only the first part of the WHO manual was read (sessions 10 onward were not), so more family-related content may exist.
+5. Hindi, Bengali and Tamil text needs a proper translation process. The fields are empty. The type labels need translating too.
+6. The tips use "her". Decide whether the wording should also allow for non-birthing parents or other family members.
+7. One idea for later: a one-line "why this helps" under each tip. It would make the list more engaging but adds a review and translation load.
+
+## 7. Sources
+- **S1** HSE Ireland: Postnatal depression, a guide for mothers, family and friends (national health service leaflet for families): https://www.hse.ie/eng/services/publications/children/postnatal-depression-a-guide-for-mothers,-family-and-friends.pdf
+- **S2** HSE Ireland: Postnatal depression, information for carers (national health service leaflet for carers): https://www.hse.ie/eng/services/publications/mentalhealth/postnatal-depression-information-for-carers.pdf
+- **S3** NSW Health (Australia): How to support your partner (state government health page): https://www.health.nsw.gov.au/mentalhealth/services/parents/dads/pages/supporting-partner.aspx
+- **S4** Queensland Government (Australia): Supporting your partner (state government health page): https://www.qld.gov.au/health/pregnancy-and-birth/emotional-and-mental-wellbeing-during-pregnancy-and-early-parenting/for-dads-and-partners/supporting-your-partner
+- **S5** Pregnancy, Birth and Baby (Australian Government): Supporting your partner during their pregnancy (government health information service): https://www.pregnancybirthbaby.org.au/supporting-your-partner-during-pregnancy
+- **S6** Tommy's (UK): Your partner's emotions during pregnancy (clinically reviewed by a midwife) (clinical charity page, reviewed January 2026): https://www.tommys.org/pregnancy-information/dads-and-partners/your-partners-emotions-during-pregnancy
+- **S7** Raising Children Network (Australia): Postnatal depression and your partner (government-supported parenting site; no named reviewer): https://raisingchildren.net.au/grown-ups/fathers/mental-health-wellbeing/pnd-your-partner
+- **S8** Pilkington 2015: Modifiable partner factors associated with perinatal depression and anxiety, meta-analysis, J Affect Disord (meta-analysis of observational studies): https://consensus.app/papers/details/f4bdcca591665392ab0d2df9b80e1a64/?utm_source=claude_desktop
+- **S9** Gopalakrishnan 2026: Couples-based interventions for perinatal depression and anxiety, systematic review (systematic review, mixed evidence): https://consensus.app/papers/details/f7d69490fca75f7e99a348d6c2a63c4d/?utm_source=claude_desktop
+- **S10** Pilkington 2016 Delphi consensus on reciprocal partner support (thesis chapter, ACU): 214 recommendations rated important or essential by at least 80 percent of two expert panels (21 consumer advocates, 39 professionals) (expert consensus (full item list not read)): https://acuresearchbank.acu.edu.au/item/87035/enhancing-reciprocal-partner-support-to-prevent-perinatal-depression-and-anxiety-a-delphi-consensus-study
+- **S11** La Rosa 2025: Psychological and social factors influencing mother-child bonding (sleep, support), Front Psychol (cross-sectional study, 1495 mothers): https://consensus.app/papers/details/150a6ebc9f8b5de8830aa0b06fb6e3f3/?utm_source=claude_desktop
+- **S12** Singla 2019: Mediation analysis of the Thinking Healthy Programme, India and Pakistan, Br J Psychiatry (mediation analysis of two trials): https://consensus.app/papers/details/26a10e746fe4528b947db765dfb151f1/?utm_source=claude_desktop
+- **S13** Goldstein 2020: Interventions for paternal perinatal depression, systematic review, J Affect Disord (systematic review): https://consensus.app/papers/details/d1c98544354c5b05bedf8e0bb13b0720/?utm_source=claude_desktop
+- **S14** Adlington 2023: Loneliness and perinatal depression, BMC Psychiatry (UCL news) (cohort study report): https://www.ucl.ac.uk/news/2023/feb/loneliness-central-perinatal-depression
+- **S15** Vengadavaradan 2019: Frequency and correlates of mother-infant bonding disorders in India, Asian J Psychiatry (cohort study, Tamil Nadu): https://consensus.app/papers/details/8c82f7e4d23c5ce2b3b6ef64abeae9cd/?utm_source=claude_desktop
+- **S16** WHO Thinking Healthy Programme manual (family support, Health Calendar, slow-breathing relaxation, basic helping skills) (WHO manual; first part of the manual read (sessions 10 onward not read)): https://mhpsshub.org/wp-content/uploads/2023/01/Thinking-Healthy-Interractive-for-web.pdf
+- **S17** PANDA (Australia): Tips for caring for your partner (national perinatal mental health charity; no named reviewer): https://www.panda.org.au/articles/tips-for-caring-for-your-partner
+- **S18** MHPSS Network: Thinking Healthy Programme summary (trial of over 900 women in Pakistan; behavioural activation, family support) (toolkit summary of a WHO programme): https://www.mhpss.net/toolkit/curated-space-for-psychological-interventions/resource/thinking-healthy-programme
+- **S19** Wulff 2021: Maternal singing and well-being, randomised trial, BMC Pregnancy Childbirth (mood lifted at the time; no lasting effect on bonding or low mood) (randomised trial, immediate effect only): https://consensus.app/papers/details/b1aa632cc8f452a0a9e8a98e0f1eb32a/?utm_source=claude_desktop

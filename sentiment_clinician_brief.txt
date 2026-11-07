@@ -1,0 +1,149 @@
+# HealHer: personalised suggestions for the mood reflection (DRAFT v0.1 for clinician review)
+
+Prepared 31 Oct 2026. Companion file: `sentiment_suggestions.json`. **Nothing here is approved for users.**
+
+## 1. Why this change
+The old library had about 12 generic suggestions, so most reflections got the same tips. The new library has 70 draft items. Each is tied to a theme the writer mentioned (sleep, feeding, loneliness and so on), the pregnancy stage, and the tone of the note. Code picks the items; the model only reads the note and returns tone and themes, as before.
+
+## 2. How an item is chosen
+1. No tips at all for a distressed tone, risk language or any escalation. Those users see only the support block (verified helplines and the safe text).
+2. Candidates must match the stage, the tone and at least one detected theme. Generic items are a last resort, at most one per result.
+3. A result has 3 items: one that normalises ("many mothers feel this"), plus up to two actions or ways to get help. At most one "see a clinician" item.
+4. Items shown in the last 14 days are skipped when other choices exist. Only item ids are stored, never note text.
+5. A tired user gets low-effort items first. A low-mood user gets a small-step action.
+6. Each tip says "Because you wrote about ...", using fixed labels, not model text.
+
+## 3. What the research supports (and how strongly)
+| Theme | What I found | Strength |
+|---|---|---|
+| Sleep | Disrupted sleep goes with about 3.7x risk of low mood in pregnancy and 2.7x after birth. CBT-I is first-line for perinatal insomnia; an RCT of a 5-week adapted programme lowered symptoms at 6 months after birth. Sleep restriction should be adapted in pregnancy | Moderate. I read a summary blog and one review; open the primary papers |
+| Anxiety and baby-health worry | Meta-review of 24 reviews: CBT and mindfulness-based therapy strongest; mind-body (yoga, relaxation) positive, better when led by a trained instructor; Cochrane found some but not strong evidence | Moderate |
+| Fear of childbirth | Psychoeducation lowered fear (Hedges g 0.59, 6 studies); a second meta-analysis agrees but its reported CI looks wrong | Moderate. Check the CI and the odd cesarean odds ratio in the full text |
+| Feeding | Pain and unmet expectations link to worse mood; help with feeding linked to lower later risk; pressure to breastfeed raises anxiety. Mostly observational | Weak to moderate. Sensitive wording |
+| Baby crying | Parent programme taught that it is acceptable to lay a fed, changed, well baby down and step away. Authors say crying education and parent mental health need more weight | Programme content only |
+| Bonding | Kangaroo care raised bonding and lowered mothers' low mood, but **only in preterm or low-birth-weight babies** | Moderate for that group; extrapolation for others |
+| Loneliness and peer support | Loneliness is central to perinatal low mood (27 studies). Peer support cut postpartum low-mood incidence (OR 0.69, 7 studies) | Qualitative plus meta-analysis |
+| Family support | Women describe a gap between hoped-for and real support | Qualitative |
+| Self-criticism and guilt | Self-compassion correlates negatively with postpartum low mood (9 studies, correlation only, conference proceeding). Fear of being a "bad mother" is a common theme | Weak |
+| Money | Money stress is a risk factor; **no intervention evidence found** | Risk factor only |
+| Work and return to work | Supervisor and colleague support linked with lower stress and lower risk; longer leave linked with better health. Only 3 mental-health studies | Weak |
+| Low mood, any theme | Behavioural activation (Thinking Healthy; Healthy Activity Programme, adults in India); CBT and IPT first-line (ACOG CPG 5); digital CBT lowers postpartum low mood and anxiety (31 RCTs, SMD -0.64 and -0.49) | Strongest tier |
+| Tiredness | ACOG lists medical checks (thyroid, blood count, iron, B12). The fatigue-intervention meta-analysis was blocked | Guideline for checks only |
+| Nausea | ACOG PB 153: early treatment prevents complications. Ginger evidence limited. Medicines not mentioned by the app | Guideline (2015; check for a newer one) |
+
+## 4. Gaps you should know about
+- **15 of 70 items have no source yet** (`needs_source = true`). The app cannot approve them until you supply one or delete them. They are mostly "this is common" sentences for tiredness, body symptoms, recovery, pregnancy symptoms, work and positive moments.
+- **No evidence found or opened for:** postpartum perineal and caesarean pain care (the guideline page would not open), postpartum fatigue interventions (PMC blocked), partner involvement, a positive-moments or gratitude practice, and recovery after a traumatic birth.
+- **Thin coverage:** prenatal feeding worries, prenatal bonding, and postnatal fear of childbirth have no items. These fall back to tone-level items.
+- **Secondary sources:** sleep, peer support, breastfeeding and digital health findings came from summary pages, not the papers. Open the papers before approval.
+- **India:** I found no India-specific evidence for peer groups, workplace rights or money schemes. Items that mention local help are flagged `verify_local`, and no scheme is named.
+- **Not used:** medication, supplements, ginger, herbal products, acupuncture (evidence limited or outside the app's scope).
+
+## 5. Decisions for the clinician
+1. Approve, edit or delete each item. Delete or source the 15 `needs_source` items.
+2. Skin-to-skin (BON_SKIN): keep for all babies, or only when the baby was early or small?
+3. Feeding items (FED_HELP, FED_CHOICE): confirm wording suits your service's stance on breastfeeding.
+4. CRY_BREAK ("lay baby safely in the cot and step away"): confirm this is the message you want, and the safe-sleep wording to add.
+5. Check TIR_CHECK, BOD_TELL, BON_TELL and SCG_CBT against the ACOG pages (flag `verify_page`).
+6. Is storing the ids of shown suggestions per user acceptable for privacy? It lets us avoid repeats; it can be switched off.
+7. Review Hindi, Bengali and Tamil text after translation.
+
+## 6. Item register
+| id | themes | stage | kind | evidence | sources | flags |
+|---|---|---|---|---|---|---|
+| SLP_U | sleep | both | understand | observational | T1 |  |
+| SLP_NEWBORN | sleep | postnatal | do | ungraded_selfcare | S13, T1 |  |
+| SLP_PRENATAL_TELL | sleep | prenatal | clinician | observational | T1 |  |
+| SLP_CBTI | sleep | both | clinician | review | T1, T2 |  |
+| TIR_U | tiredness | both | understand | gap | NONE | needs_source |
+| TIR_CHECK | tiredness | both | clinician | guideline | S12 | verify_page |
+| TIR_HANDOVER | tiredness | postnatal | do | ungraded_selfcare | S13 |  |
+| TIR_WALK | tiredness | both | do | review_weak | S10, S13 |  |
+| BHW_U | baby_health_worry | both | understand | gap | T3 | needs_source |
+| BHW_LIST | baby_health_worry | both | talk | review_weak | T3 |  |
+| BHW_YOGA | baby_health_worry | prenatal | do | review_weak | T3, T11 |  |
+| BHW_DIGITAL | baby_health_worry | postnatal | do | review | T12, T13 |  |
+| BHW_CBT | baby_health_worry | both | clinician | review | T3 |  |
+| DEL_U | delivery_fear | prenatal | understand | review | T4, T5 |  |
+| DEL_CLASS | delivery_fear | prenatal | do | review | T4, T5 |  |
+| DEL_TELL | delivery_fear | prenatal | clinician | review | T5 |  |
+| DEL_YOGA | delivery_fear | prenatal | do | review_weak | T5, T11 |  |
+| PRG_TELL | pregnancy_symptoms | prenatal | clinician | guideline | T19 |  |
+| PRG_U | pregnancy_symptoms | prenatal | understand | gap | NONE | needs_source |
+| PRG_NOTE | pregnancy_symptoms | prenatal | do | gap | NONE | needs_source |
+| BOD_U | body_physical_symptoms | both | understand | gap | NONE | needs_source |
+| BOD_TELL | body_physical_symptoms | both | clinician | guideline | S12 | verify_page |
+| BOD_MOVE | body_physical_symptoms | both | do | review_weak | S10, S13 |  |
+| REC_TELL | recovery_pain | postnatal | clinician | gap | NONE | needs_source |
+| REC_U | recovery_pain | postnatal | understand | gap | NONE | needs_source |
+| REC_HELP | recovery_pain | postnatal | talk | ungraded_selfcare | S13 |  |
+| FED_U | feeding_difficulty | postnatal | understand | observational | T6, T7 |  |
+| FED_HELP | feeding_difficulty | postnatal | clinician | observational | T6, T7 | sensitive |
+| FED_ASK | feeding_difficulty | postnatal | talk | qualitative | T7 |  |
+| FED_CHOICE | feeding_difficulty | postnatal | understand | observational | T6 | sensitive |
+| CRY_U | baby_crying_sleep | postnatal | understand | programme | T18 |  |
+| CRY_BREAK | baby_crying_sleep | postnatal | do | programme | T18 | safety_review |
+| CRY_HANDOVER | baby_crying_sleep | postnatal | talk | programme | T18, S13 |  |
+| CRY_CHECK | baby_crying_sleep | postnatal | clinician | gap | T18 | needs_source |
+| BON_U | bonding_worries | both | understand | gap | T10 | needs_source |
+| BON_SKIN | bonding_worries | postnatal | do | review_weak | T10 | extrapolation |
+| BON_TELL | bonding_worries | postnatal | clinician | guideline | S12 | verify_page |
+| LON_U | loneliness | both | understand | qualitative | T8 |  |
+| LON_SAY | loneliness | both | talk | qualitative | T8 |  |
+| LON_PEER | loneliness | both | do | review | T9, T8 | verify_local |
+| LON_CALL | loneliness | both | do | review_weak | T9, S7 |  |
+| FAM_NAME | family_support | both | talk | qualitative | T8, S13 |  |
+| FAM_VISIT | family_support | both | talk | gap | NONE | needs_source |
+| FAM_THANK | family_support | both | do | review_weak | S7 |  |
+| SCG_U | self_criticism_guilt | both | understand | qualitative | T8 |  |
+| SCG_KIND | self_criticism_guilt | both | do | correlational | T16 | low_certainty |
+| SCG_CBT | self_criticism_guilt | both | clinician | guideline | S13, T3 |  |
+| IDC_U | identity_change | both | understand | qualitative | T8 |  |
+| IDC_OWN | identity_change | both | do | ungraded_selfcare | S13, S7 |  |
+| IDC_PEER | identity_change | both | do | qualitative | T8, T9 | verify_local |
+| RTW_U | return_to_work | postnatal | understand | systematic_review_weak | T15 |  |
+| RTW_ASK | return_to_work | both | talk | systematic_review_weak | T15 | verify_local |
+| RTW_PLAN | return_to_work | postnatal | do | gap | NONE | needs_source |
+| WRK_ASK | work | both | talk | systematic_review_weak | T15 | verify_local |
+| WRK_BREAK | work | both | do | ungraded_selfcare | S13 |  |
+| WRK_U | work | both | understand | gap | NONE | needs_source |
+| MON_U | money | both | understand | observational_risk_factor | T17 |  |
+| MON_TELL | money | both | talk | gap | T17 | needs_source |
+| MON_SHARE | money | both | talk | ungraded_selfcare | S13 |  |
+| POS_MORE | positive_moments | both | do | review_weak | S7, T14 |  |
+| POS_SHARE | positive_moments | both | talk | gap | NONE | needs_source |
+| POS_BOTH | positive_moments | both | understand | gap | NONE | needs_source |
+| GEN_LOW_SMALL | (generic) | both | do | trial | S7, T14 |  |
+| GEN_LOW_CBT | (generic) | both | clinician | guideline | S13 |  |
+| GEN_ANX_MB | (generic) | prenatal | do | review_weak | T3, T11 |  |
+| GEN_ANX_DIGI | (generic) | postnatal | do | review | T12, T13 |  |
+| GEN_TIRED_ASK | (generic) | both | talk | ungraded_selfcare | S13 |  |
+| GEN_NEU_ROUTINE | (generic) | both | do | ungraded_selfcare | S13 |  |
+| GEN_POS_KEEP | (generic) | both | do | review_weak | S7 |  |
+| GEN_PEER | (generic) | both | do | review | T9 | verify_local |
+
+## 7. Sources
+S7 Thinking Healthy peer-delivered trials (India, Pakistan) (trial of a whole programme): https://lshtm-eprints-repo-prod.lshtm-eprints.cdl.cosector.com/4655352/6/Effectiveness-of-the-Thinking-Healthy-Programme-for-perinatal-depression-delivered-through-peers.pdf
+S10 Physical activity and postpartum symptoms, overview of 8 reviews (review overview, interpret with caution): https://www.uloyola.es/en/scientific-offer/publications/what-interventions-focused-on-physical-activity-could-improve-postpartum-depression-symptoms-an-overview-of-systematic-reviews-with-meta-analysis-review
+S12 ACOG CPG 4 screening and diagnosis (hosted copy) (guideline): https://www.2020mom.org/s/2023-ACOG-guideline-Screening-and-Diagnosis-of-Mental-Health-Conditions-During-Pregnancy-and-Postpar.pdf
+S13 ACOG CPG 5 treatment and management (hosted copy) (guideline): https://starlegacyfoundation.org/wp-content/uploads/ACOG-2023-Treatment-and-management-of-mental-health-conditions-during-pregnancy.pdf
+T1 Sleep problems in pregnancy: screening and interventions (Women's Mental Health blog; cites Fu 2023, Li 2023, Silang 2024, Feng 2023) (secondary summary; open the primary papers before approval): https://womensmentalhealth.org/posts/perinatal-sleep-screening-and-interventions/
+T2 Insomnia in the peripartum period, systematic review, Arch Womens Ment Health 2022 (title/authors not shown on page I opened) (systematic review): https://link.springer.com/article/10.1007/s00737-022-01226-8
+T3 Silverwood 2023, non-pharmacological interventions for perinatal anxiety, meta-review of 24 reviews, BJGP Open (meta-review): https://bjgpopen.org/content/7/3/BJGPO.2023.0022
+T4 Akgun 2020, psychoeducation and fear of childbirth, meta-analysis, J Psychosom Obstet Gynaecol (meta-analysis (7 studies)): https://avesis.akdeniz.edu.tr/yayin/49bb383a-ec4d-47a9-a56e-7127a22dd8ab/the-effect-of-psychoeducation-on-fear-of-childbirth-and-birth-type-systematic-review-and-meta-analysis
+T5 Adeli Gargari 2021, psycho-education and childbirth fear, meta-analysis, Int J Women's Health Reprod Sci (meta-analysis (11 studies); reported CI looks inconsistent): https://ijwhr.net/text.php?id=623
+T6 Breastfeeding and maternal mood (Women's Mental Health blog; cites Watkins 2011, Grattan 2024, Thompson 2023) (secondary summary; observational): https://womensmentalhealth.org/posts/tag/maternal-mood/about:blank
+T7 Tanganhito 2020, breastfeeding experiences of women with postnatal depression, qualitative synthesis, Women and Birth (qualitative synthesis (6 studies)): https://wrap.warwick.ac.uk/id/eprint/123294
+T8 Adlington 2023, loneliness in perinatal depression, qualitative meta-synthesis (27 studies), BMC Psychiatry (UCL news page) (qualitative meta-synthesis): https://www.ucl.ac.uk/news/2023/feb/loneliness-central-perinatal-depression
+T9 Peer support for perinatal depression (Huang 2020 meta-analysis of 10 RCTs; Dennis 2009 BMJ) via Women's Mental Health blog (meta-analysis, secondary summary): https://womensmentalhealth.org/posts/essential-reads-peer-support-interventions-for-perinatal-depression/
+T10 Pathak 2023, kangaroo mother care and maternal/paternal health, Bull WHO (systematic review; preterm or low-birth-weight infants only): https://research.tuni.fi/uploads/2023/06/564a8b4f-pathak-et.-al.-effects-of-kangaroo-mother-care-on-maternal-and-paternal-health.-bull-world-health-organ-2023..pdf
+T11 Marc 2011, Cochrane: mind-body interventions in pregnancy for anxiety (Cochrane review; some but not strong evidence): https://www.cochrane.org/CD007559/PREG_mind-body-interventions-during-pregnancy-preventing-or-treating-womens-anxiety
+T12 Lewkowitz 2023, digital health interventions for postpartum depression or anxiety, Am J Obstet Gynecol (via Contemporary OB/GYN) (meta-analysis of 31 RCTs, secondary summary): https://www.contemporaryobgyn.net/view/digital-health-interventions-reduce-postpartum-anxiety-and-depression
+T13 Technology-based self-help for postpartum depression and anxiety, JMIR Nov 2024 (meta-analysis (14 RCTs)): https://doaj.org/article/785bf42944614f02962aa340ab05861c
+T14 Weobong 2017, Healthy Activity Programme (behavioural activation), India, PLoS Med (RCT in general adults, not perinatal): https://discovery.ucl.ac.uk/id/eprint/1574489/
+T15 Franzoi 2024, returning to work after maternity leave, systematic review (52 articles), Arch Womens Ment Health (systematic review; only 3 studies on mental health): https://link.springer.com/article/10.1007/s00737-024-01464-y
+T16 Pasinringi 2024, self-compassion and postpartum depression, meta-analysis of 9 studies, INCOHELIV proceedings (correlational; conference proceeding): https://journal.ubaya.ac.id/index.php/incoheliv/article/view/6558
+T17 Coast 2012, poverty and postnatal depression in low and lower-middle income countries, mapping review, Health & Place (mapping review; risk factor only, no intervention): https://researchonline.lse.ac.uk/id/eprint/44533
+T18 Shaken baby prevention programme, 7,051 parents, Child Abuse & Neglect 2008 (NCJRS abstract) (programme evaluation; title/authors not shown on page I opened): https://www.ncjrs.gov/App/Publications/abstract.aspx?ID=247286
+T19 ACOG Practice Bulletin 153 on nausea and vomiting of pregnancy, 2015 (via HealthDay) (guideline summary; older bulletin, check for update): https://www.healthday.com/healthpro-news/pregnancy/acog-best-evidence-for-rx-of-nausea-vomiting-in-pregnancy-702451.html
+S7, S10, S12, S13 are the same sources as in the PHQ-9 / EPDS brief.
