@@ -1,0 +1,151 @@
+================================================================================
+HEALHER - DEPLOYMENT VALUES SHEET (RENDER & VERCEL)
+================================================================================
+
+This sheet lists all environment variables by NAME only, their source, and their
+requirement status. Never paste or commit actual secret values into this file.
+
+--------------------------------------------------------------------------------
+PART 1: RENDER ENVIRONMENT VARIABLES (Web Service: healher-backend)
+--------------------------------------------------------------------------------
+Enter these in the Render Dashboard (Environment tab) in this order:
+
+1.  PYTHON_VERSION
+    - Required: Yes
+    - Where to get: Enter "3.12.8" (pins runtime to Python 3.12).
+
+2.  APP_ENV
+    - Required: Yes
+    - Where to get: Enter "production" (CRITICAL: disables dev user spoofing & enforces auth).
+
+3.  ENABLE_STT
+    - Required: Yes
+    - Where to get: Enter "false" (CRITICAL: keeps Render build lightweight without 2GB torch).
+
+4.  PORT
+    - Required: Yes (Render provides this automatically; default 3001)
+    - Where to get: Leave default or enter "3001".
+
+5.  SUPABASE_JWT_SECRET
+    - Required: Yes
+    - Where to get: Supabase Dashboard -> Project Settings -> API -> JWT Settings -> JWT Secret (Legacy Secret for HS256).
+
+6.  GEMINI_API_KEY
+    - Required: Yes
+    - Where to get: Google AI Studio (aistudio.google.com) -> API Keys.
+
+7.  ADMIN_TOKEN
+    - Required: Yes
+    - Where to get: Generate a long random secret token (e.g. run "openssl rand -hex 24" in terminal).
+
+8.  FRONTEND_ORIGIN
+    - Required: Yes
+    - Where to get: Enter the deployed Vercel URL (e.g. "https://your-app.vercel.app" - no trailing slash). Update after Step 3.
+
+9.  SARVAM_API_KEY
+    - Required: No (Optional)
+    - Where to get: Sarvam AI Dashboard (only if server-side Indian language fallback translation/TTS is enabled).
+
+10. DEV_INCLUDE_DRAFTS
+    - Required: No
+    - Where to get: Enter "false" (unapproved drafts are strictly hidden in production).
+
+11. DATABASE_PATH
+    - Required: No (Optional, only if Persistent Disk is attached)
+    - Where to get: Enter "/var/data/healher.db" (mount path on Render Starter plan).
+
+--------------------------------------------------------------------------------
+PART 2: VERCEL ENVIRONMENT VARIABLES (Project: healher-frontend)
+--------------------------------------------------------------------------------
+Enter these in the Vercel Dashboard (Project Settings -> Environment Variables):
+
+1.  NITRO_PRESET
+    - Required: Yes
+    - Where to get: Enter "vercel" (CRITICAL: directs Nitro to produce Vercel serverless output).
+
+2.  VITE_BACKEND_URL
+    - Required: Yes
+    - Where to get: Enter your deployed Render URL (e.g. "https://your-backend.onrender.com" - no trailing slash).
+
+3.  VITE_SUPABASE_URL
+    - Required: Yes
+    - Where to get: Supabase Dashboard -> Project Settings -> API -> Project URL.
+
+4.  VITE_SUPABASE_PUBLISHABLE_KEY
+    - Required: Yes
+    - Where to get: Supabase Dashboard -> Project Settings -> API -> Project API Keys -> "anon" / public key.
+
+5.  VITE_SUPABASE_PROJECT_ID
+    - Required: Yes
+    - Where to get: Supabase Dashboard -> Project Settings -> General -> Reference ID.
+
+6.  SUPABASE_URL
+    - Required: Yes
+    - Where to get: Same value as VITE_SUPABASE_URL (used by server functions).
+
+7.  SUPABASE_PUBLISHABLE_KEY
+    - Required: Yes
+    - Where to get: Same value as VITE_SUPABASE_PUBLISHABLE_KEY (used by server functions).
+
+8.  SUPABASE_PROJECT_ID
+    - Required: Yes
+    - Where to get: Same value as VITE_SUPABASE_PROJECT_ID (used by server functions).
+
+9.  SARVAM_API_KEY
+    - Required: No (Optional)
+    - Where to get: Sarvam AI Dashboard (server-side only, NEVER use VITE_ prefix).
+
+10. VITE_CLERK_PUBLISHABLE_KEY
+    - Required: No
+    - Where to get: Clerk Dashboard (only if Clerk authentication is toggled on).
+
+CRITICAL PROHIBITION:
+Do NOT add LOVABLE_API_KEY or ENABLE_EXTERNAL_AI on Vercel. Clinical safety rules
+forbid transmitting patient questionnaire/sleep answers to outside third-party AI.
+
+--------------------------------------------------------------------------------
+PART 3: ORDERED MANUAL DASHBOARD STEPS
+--------------------------------------------------------------------------------
+Follow these steps in exact sequence:
+
+Step 1: Retrieve Supabase Settings
+  - Open Supabase Dashboard -> Project Settings -> API.
+  - Copy the Legacy JWT Secret (for Render SUPABASE_JWT_SECRET).
+  - Copy the Project URL and anon public key (for Vercel).
+
+Step 2: Create and Deploy Backend Web Service on Render
+  - Go to dashboard.render.com -> "New +" -> "Web Service".
+  - Select your "healher-backend" GitHub repository.
+  - Runtime: Python.
+  - Build Command: pip install -r requirements.txt
+  - Start Command: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+  - Health Check Path: /health
+  - Add Environment Variables from Part 1 (set APP_ENV=production, ENABLE_STT=false).
+  - Deploy service. Once live, test https://<your-backend>.onrender.com/health (returns 200 OK).
+
+Step 3: Create and Deploy Frontend Project on Vercel
+  - Go to vercel.com -> "Add New..." -> "Project".
+  - Import your "healher-frontend" GitHub repository.
+  - Framework Preset: Other (TanStack Start / Nitro).
+  - Build Command: npm run build
+  - Output Directory: .vercel/output
+  - Add Environment Variables from Part 2 (NITRO_PRESET=vercel, VITE_BACKEND_URL=<render-url>).
+  - Click Deploy. Note your live URL: https://<your-frontend>.vercel.app.
+
+Step 4: Update Backend CORS on Render
+  - Return to Render Dashboard -> Web Service -> Environment.
+  - Set FRONTEND_ORIGIN to your exact Vercel URL (e.g. https://<your-frontend>.vercel.app).
+  - Trigger manual redeploy so Render picks up the frontend CORS origin.
+
+Step 5: Configure Supabase Authentication Redirects
+  - Open Supabase Dashboard -> Authentication -> URL Configuration.
+  - Set Site URL to your live Vercel URL.
+  - Add your Vercel URL and any redirect callbacks to Redirect URLs list.
+
+Step 6: Run Post-Deployment Smoke Test
+  - In your local terminal, run:
+    BACKEND_URL="https://<your-backend>.onrender.com" \
+    FRONTEND_URL="https://<your-frontend>.vercel.app" \
+    python Backend_heal_her/scripts/smoke_test.py
+  - Ensure all core checks report [PASS].
+================================================================================
