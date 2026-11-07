@@ -74,5 +74,13 @@ Expected response:
 
 Check Render logs for the startup banner:
 "Startup Status: APP_ENV=production, ENABLE_STT=false | Sentiment Library: X approved ... | Caregiver Library: Y approved ..."
-================================================================================
 
+7. POST-DEPLOYMENT SMOKE TEST
+--------------------------------------------------------------------------------
+After both Render and Vercel are running, execute the verification smoke test:
+
+BACKEND_URL=https://<your-service>.onrender.com FRONTEND_URL=https://<your-app>.vercel.app python scripts/smoke_test.py
+
+This verifies /health, production authentication blocking, CORS rules, frontend
+assets, and approved library items without leaking any secrets.
+================================================================================
